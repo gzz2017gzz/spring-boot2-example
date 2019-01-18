@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	使用th:if和th:unless属性进行条件判断，下面的例子中，标签只有在th:if中条件成立时才显示：
+	<br> th:href="@{/exercise/2}" th:unless=${count == 2}
+	<br> th:href="@{/exercise/2}" th:if=${count=="2"}
+	<br>
+	<a th:href="@{/exercise/2}" th:unless="${count=='2'}">引入URL1</a>
+	<br>
+	<a th:href="@{/exercise/2}" th:if="${count=='2'}"> 引入URL2</a>
+	<br>
+	<br>
+	<br> th:switch="${count}"
+	<br> th:case="1" User is an administrator
+	<br> th:case="2" User is a manager
+	<br> th:case="*" User is some other thing
+	<br>
+	<div th:switch="${count}">
+		<p th:case="1">User is an administrator</p>
+		<p th:case="2">User is a manager</p>
+		<p th:case="*">User is some other thing</p>
+	</div>
+</body>
+</html>

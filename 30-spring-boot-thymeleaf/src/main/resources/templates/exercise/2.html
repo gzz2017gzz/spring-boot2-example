@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	Thymeleaf对于URL的处理是通过语法@{…}来处理的
+	<br> th:href="@{http://www.cnblogs.com/nbfujx/}"
+	<br>
+	<a th:href="@{https://www.jianshu.com/u/3bd57d5f1074}">绝对路径</a>
+	<br> th:href="@{'/exercise/'+${index}}"
+	<br>
+	<a th:href="@{'/exercise/'+${index}}">相对路径</a>
+	<br> th:href="@{/js/jquery-3.1.1.js}"
+	<br>
+	<a th:href="@{/js/jquery-3.1.1.js}">Content路径,默认访问static下的js文件夹</a>
+	<br>
+</body>
+</html>

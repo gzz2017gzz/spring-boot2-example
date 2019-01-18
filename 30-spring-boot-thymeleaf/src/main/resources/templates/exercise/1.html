@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	th:text="'Hello! , ' + ${name} + '!'"
+	<br> 可以看出获取变量值用$符号,对于javaBean的话使用变量名.属性名方式获取,这点和EL表达式一样.
+	<br> 另外$表达式只能写在th标签内部,不然不会生效,
+	<br> 上面例子就是使用th:text标签的值替换p标签里面的值,
+	<br> 至于p里面的原有的值只是为了给前端开发时做展示用的.这样的话很好的做到了前后端分离.
+	<br>
+	<p th:text="'Hello! , ' + ${name} + '!'">Hello!, EXT</p>
+</body>
+</html>

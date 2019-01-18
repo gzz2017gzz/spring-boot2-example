@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	1.字符串拼接：th:text="'Welcome to our application, ' + ${name} + '!'"
+	<br>
+	<span th:text="'Welcome to our application, ' + ${name} + '!'"></span>
+	<br> 2.文字替换：th:text="|Welcome to our application, ${name}!|"
+	<br>
+
+	<span th:text="|Welcome to our application, ${name}!|"></span>
+
+</body>
+</html>

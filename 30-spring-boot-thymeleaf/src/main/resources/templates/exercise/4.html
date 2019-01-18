@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	在表达式中可以使用各类算术运算符，例如+, -, *, /, %
+	<br> th:with="isEven=(${count1} % 2 == 0)"
+	<br> th:with="isEven=(${count2} % 2 == 0)"
+	<br>
+
+	<div th:with="isEven=(${count1} % 2 == 0)">
+		<p>
+			count1 is <span th:text="${count1}">4</span>. isEven is <span
+				th:text="${isEven}">4</span>.
+		</p>
+	</div>
+	<div th:with="isEven=(${count2} % 2 ==0)">
+		<p>
+			count2 is <span th:text="${count2}">5</span>. isEven is <span
+				th:text="${isEven}">4</span>.
+		</p>
+	</div>
+
+</body>
+</html>

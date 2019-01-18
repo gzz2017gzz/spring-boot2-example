@@ -1,0 +1,23 @@
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.4.RELEASE)
+
+2019-01-11 16:06:37,204[StartupInfoLogger.java:50][INFO]:Starting TestSource on YN-20180106QBPM with PID 10060 (started by Administrator in E:\work\37-spring-boot-DynamicDataSource)
+2019-01-11 16:06:37,204[SpringApplication.java:662][INFO]:No active profile set, falling back to default profiles: default
+2019-01-11 16:06:37,235[AbstractApplicationContext.java:590][INFO]:Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1033576a: startup date [Fri Jan 11 16:06:37 CST 2019]; root of context hierarchy
+2019-01-11 16:06:38,286[StartupInfoLogger.java:59][INFO]:Started TestSource in 1.332 seconds (JVM running for 2.055)
+2019-01-11 16:06:38,419[HikariDataSource.java:110][INFO]:HikariPool-1 - Starting...
+2019-01-11 16:06:38,687[HikariDataSource.java:123][INFO]:HikariPool-1 - Start completed.
+2019-01-11 16:06:38,712[TestSource.java:24][INFO]:[User(id=1, name=db1, birthday=2018-03-08 22:56:52.0)]
+2019-01-11 16:06:38,712[HikariDataSource.java:110][INFO]:HikariPool-2 - Starting...
+2019-01-11 16:06:38,716[HikariDataSource.java:123][INFO]:HikariPool-2 - Start completed.
+2019-01-11 16:06:38,718[TestSource.java:25][INFO]:[User(id=1, name=db2, birthday=2018-03-08 22:56:52.0)]
+2019-01-11 16:06:38,723[AbstractApplicationContext.java:993][INFO]:Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@1033576a: startup date [Fri Jan 11 16:06:37 CST 2019]; root of context hierarchy
+2019-01-11 16:06:38,727[HikariDataSource.java:381][INFO]:HikariPool-2 - Shutdown initiated...
+2019-01-11 16:06:38,732[HikariDataSource.java:383][INFO]:HikariPool-2 - Shutdown completed.
+2019-01-11 16:06:38,732[HikariDataSource.java:381][INFO]:HikariPool-1 - Shutdown initiated...
+2019-01-11 16:06:38,733[HikariDataSource.java:383][INFO]:HikariPool-1 - Shutdown completed.

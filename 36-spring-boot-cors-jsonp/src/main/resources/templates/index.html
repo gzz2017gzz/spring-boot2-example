@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>title</title>
+<script type="text/javascript" src="/static/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	$.ajax({
+		url : "http://localhost:8080/api/count",
+		dataType : "jsonp",
+		success : function(data) {
+			console.log(data)
+		}
+	});
+</script>
+</html>
