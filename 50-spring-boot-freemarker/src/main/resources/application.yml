@@ -1,0 +1,11 @@
+spring:
+  freemarker:
+    request-context-attribute: req  #req访问request
+    suffix: .html  #后缀名
+    content-type: text/html
+    enabled: true
+    cache: false #缓存配置
+    template-loader-path: classpath:/page/ #模板加载路径 按需配置
+    charset: UTF-8 #编码格式
+ 
+ 
