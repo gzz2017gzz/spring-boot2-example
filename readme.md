@@ -50,6 +50,10 @@
 #### 45-spring-boot-Interceptor-jjwt2//拦截器令牌验证2
 #### 46-spring-boot-filter-jjwt//过滤器令牌验证
 #### 47-spring-boot-exception//全局异常处理与api结果封装
-#### 48-spring-boot-freemarker//整合freemarker
 #### 49-spring-boot-dubbo//整合dubbo
-#### 50-spring-boot-hessian//整合hessian
+#### 50-spring-boot-freemarker//整合freemarker
+#### 51-spring-boot-activemq//整合activemq
+#### 53-spring-boot-repeat-submit//防重复提交集群版
+#### 54-spring-boot-repeat-submit-single//防重复提交单机版
+#### 55-spring-boot-hessianserver//hessian服务器
+#### 56-spring-boot-hessianclient//hessian客户端
