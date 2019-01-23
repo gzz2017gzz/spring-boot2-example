@@ -1,0 +1,14 @@
+spring: 
+  dubbo:
+      application: 
+        name: consumer
+      registry: 
+        address: zookeeper://127.0.0.1:2181
+#      protocol: 
+#        name: dubbo   #默认值
+#        port: 20880   #默认值
+#      consumer:
+#        check: false  #默认值 
+#      reference: 
+#        loadbalance: roundrobin  #默认值
+ 
