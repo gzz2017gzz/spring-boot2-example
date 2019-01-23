@@ -63,4 +63,8 @@
 #### 63-spring-boot-mybatis-mini//mybatis最小实例    
 #### 64-spring-boot-aop-token//AOP实现令牌       
 #### 65-spring-boot-task//自动任务            
-#### 66-spring-boot-aop-annotation//AOP与自定义注解   
+#### 66-spring-boot-aop-annotation//AOP与自定义注解
+#### 48-spring-boot-mongodb//使用mongodb
+#### 52-spring-boot-multi-mongodb//多数据源
+#### 57-spring-boot-mongodb-first//第一个例子
+#### 58-spring-boot-MongoTemplate//使用MongoTemplate
