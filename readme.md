@@ -57,3 +57,10 @@
 #### 54-spring-boot-repeat-submit-single//防重复提交单机版
 #### 55-spring-boot-hessianserver//hessian服务器
 #### 56-spring-boot-hessianclient//hessian客户端
+#### 60-spring-boot-TestRestTemplate//Http测试
+#### 61-spring-boot-mybatis-page//mybatis分页插件与tk-mybatis      
+#### 62-spring-boot-jdk8-date//jdk8日期格式化      
+#### 63-spring-boot-mybatis-mini//mybatis最小实例    
+#### 64-spring-boot-aop-token//AOP实现令牌       
+#### 65-spring-boot-task//自动任务            
+#### 66-spring-boot-aop-annotation//AOP与自定义注解   
