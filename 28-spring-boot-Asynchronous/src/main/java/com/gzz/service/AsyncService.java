@@ -1,5 +1,7 @@
 package com.gzz.service;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.scheduling.annotation.Async;
@@ -12,7 +14,7 @@ public class AsyncService {
 	@Async
 	public void update(int num) {
 		try {
-			Thread.sleep(100);
+			 TimeUnit.SECONDS.sleep(1);//秒
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
