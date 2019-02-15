@@ -30,7 +30,7 @@ public class BaseDao {
 	/**
 	 * @功能描述:分页
 	 */
-	protected <T> Page<T> queryPage(String sql, BaseCondition cond, Class<T> clazz) {
+	protected <T, C extends BaseCondition> Page<T> queryPage(String sql, C cond, Class<T> clazz) {
 		String countSQL = "SELECT count(1) FROM (" + sql + ") t";
 		int rowCount = jdbcTemplate.queryForObject(countSQL, cond.getArray(), Integer.class);
 		int pageSize = cond.getSize();
