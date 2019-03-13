@@ -38,7 +38,7 @@ public class InfoController {
 	public Object callback() throws Exception {
 		// 发现消息
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		messagingTemplate.convertAndSend("/topic/callback", df.format(new Date()));
+		messagingTemplate.convertAndSend("/topic/callback", df.format(new Date())+"AAAAAA");
 		return "callback";
 	}
 }
