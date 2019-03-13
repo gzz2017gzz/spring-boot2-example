@@ -1,0 +1,73 @@
+<script type="text/javascript" src="vue.min.js"></script>
+<script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+<link rel="stylesheet" type="text/css" href="element.css">
+<script type="text/javascript" src="element.min.js"></script>
+<div id="app">
+	<button v-on:click="sendmessage">Greet</button>
+	<input v-model="message" placeholder="编辑我……">
+	<p>
+	<a href="https://www.jianshu.com/u/3bd57d5f1074">我的主页</a> 
+</div>
+<script>
+  new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          message: "高振中",
+          websock :null,
+          stompClient:null
+        }
+      },
+      created() {
+        this.initWebSocket()
+      },
+      destroyed: function () {
+        this.websocketclose();
+      },
+      methods: {
+        initWebSocket () {
+        	const that=this;
+        	that.websock = new SockJS("/myweb");
+        	that.websock.onopen = this.websocketonopen;
+        	that.websock.onerror = this.websocketonerror;
+//         	that.websock.onmessage = this.websocketonmessage;
+        	that.websock.onclose = this.websocketclose;
+        	that.stompClient = Stomp.over(this.websock);
+        	that.stompClient.connect({}, function(frame) {
+				// 注册发送消息
+				that.stompClient.subscribe('/topic/send', function(msg) {
+					console.log(msg)
+				});
+				// 注册推送时间回调
+				that.stompClient.subscribe('/topic/callback', function(r) {
+					console.log(r.body)
+				});
+			});  
+        },
+        websocketonopen  () {
+          console.log("WebSocket连接成功");
+        },
+        websocketonerror (e) {
+          console.log("WebSocket连接发生错误");
+        },
+//         websocketonmessage (e) {
+//            var da = JSON.parse(e.data);
+//            console.log(e);
+//            this.msg_data.unshift(da);
+//         },
+        sendmessage() {
+        	console.log(000);
+        	this.stompClient.send("/app/send", {}, JSON.stringify({
+				'message' : this.message
+			}));
+        },
+        websocketclose  (e) {
+          console.log("connection closed (" + e.code + ")");
+        }
+      }
+    }
+  
+  );
+</script>
+ 

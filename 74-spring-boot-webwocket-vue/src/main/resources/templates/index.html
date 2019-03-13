@@ -1,0 +1,46 @@
+<script type="text/javascript" src="vue.min.js"></script>
+<div id="app">
+    <a :href="auth">点击F12查看控制台信息</a><br><br>
+    <a :href="jianshu">点击F12查看控制台信息</a>
+</div>
+<script>
+  new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          auth: "http://www.gaozz.club",
+          jianshu:"https://www.jianshu.com/u/3bd57d5f1074"
+        }
+      },
+      created() {
+        this.initWebSocket()
+      },
+      destroyed: function () {
+        this.websocketclose();
+      },
+      methods: {
+        initWebSocket: function () {
+          this.websock = new WebSocket("ws://localhost:8080/gzz/websocket");
+          this.websock.onopen = this.websocketonopen;
+          this.websock.onerror = this.websocketonerror;
+          this.websock.onmessage = this.websocketonmessage;
+          this.websock.onclose = this.websocketclose;
+        },
+        websocketonopen: function () {
+          console.log("WebSocket连接成功");
+        },
+        websocketonerror: function (e) {
+          console.log("WebSocket连接发生错误");
+        },
+        websocketonmessage: function (e) {
+          console.log(e);
+        },
+        websocketclose: function (e) {
+          console.log("connection closed (" + e.code + ")");
+        }
+      }
+    }
+ 
+  );
+</script>
+ 
