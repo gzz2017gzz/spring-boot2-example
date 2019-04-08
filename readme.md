@@ -68,3 +68,24 @@
 #### 52-spring-boot-multi-mongodb//多数据源
 #### 57-spring-boot-mongodb-first//第一个例子
 #### 58-spring-boot-MongoTemplate//使用MongoTemplate
+#### 59-spring-boot-axios-excel//axios导出excel
+#### 60-spring-boot-TestRestTemplate//RestTemplate使用
+#### 61-spring-boot-mybatis-page//mybatis分页工具
+#### 62-spring-boot-jdk8-date//新的日历处理类
+#### 63-spring-boot-mybatis-mini//mybatis最小实例
+#### 64-spring-boot-aop-token//aop-token//AOP实现令牌
+#### 65-spring-boot-task//
+#### 66-spring-boot-aop-annotation//
+#### 67-spring-boot-jpa-cache//
+#### 68-spring-boot-data-rest//
+#### 69-spring-boot-security//
+#### 70-spring-boot-localdate//
+#### 71-spring-boot-response-xml//
+#### 72-spring-boot-flyway//
+#### 73-spring-boot-websocket-vue-stomp//
+#### 74-spring-boot-webwocket-vue//
+#### 75-spring-boot-kafka//
+#### 76-spring-boot-kafka//
+ 
+
+

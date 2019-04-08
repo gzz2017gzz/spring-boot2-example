@@ -14,7 +14,7 @@ public class AsyncService {
 	@Async
 	public void update(int num) {
 		try {
-			 TimeUnit.SECONDS.sleep(1);//秒
+			 TimeUnit.SECONDS.sleep(20);//秒
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
