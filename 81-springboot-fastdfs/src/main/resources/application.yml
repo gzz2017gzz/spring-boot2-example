@@ -1,0 +1,9 @@
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  pool: 
+    max-total: 200
+    max-total-per-key: 50
+    max-wait-millis: 5000
+  tracker-list: 
+    - 192.168.20.37:22122

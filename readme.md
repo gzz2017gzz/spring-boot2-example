@@ -86,6 +86,11 @@
 #### 74-spring-boot-webwocket-vue//
 #### 75-spring-boot-kafka//
 #### 76-spring-boot-kafka//
- 
+#### 77-vue-echarts-map//vue-echarts显示地图
+#### 78-springboot-muti-datasource//多数据源事务失效
+#### 79-springboot-atomikos-jta//jta-atomikos分布式事物
+#### 80-springboot-restdocs//生成文档
+#### 81-springboot-fastdfs//整合fastdfs
+#### 82-spring-boot-docker//生成docker镜像
 
 
