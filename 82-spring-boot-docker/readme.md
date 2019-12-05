@@ -17,3 +17,18 @@
 	mvn install dockerfile:build #把spring应用打成docker镜像
 	docker images #查看镜像
 	docker run -d -p 8080:8080 <id>#运行镜像
+----------------------
+
+https://registry.docker-cn.com
+http://hub-mirror.c.163.com
+https://3laho3y3.mirror.aliyuncs.com
+http://f1361db2.m.daocloud.io
+https://mirror.ccs.tencentyun.com
+
+```
+mkdir -p /etc/docker
+vim /etc/docker/daemon.json
+```
+{
+  "registry-mirrors": ["https://registry.docker-cn.com"]
+}
