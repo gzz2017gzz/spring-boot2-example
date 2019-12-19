@@ -26,11 +26,12 @@ public class Application {
 
 	@PostConstruct
 	private void run() {
+//		for (int i = 0; i < 10000; i++)
 		dao.save(User.builder().name("张三丰").build());
 		dao.save(User.builder().name("张三").build());
-		
+
 		log.info(JSON.toJSONString(dao.queryList(UserCond.builder().build())));
 		log.info(JSON.toJSONString(dao.queryPage(UserCond.builder().build())));
-		
+
 	}
 }

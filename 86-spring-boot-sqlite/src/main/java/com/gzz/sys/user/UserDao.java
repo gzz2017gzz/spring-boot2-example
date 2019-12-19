@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @类说明:用户数据访问层
  * @author http://www.gaozz.club
- * @date:2018-07-13 10:17:27
+ * @date:2019-07-13 10:17:27
  **/
 @Repository
 @Slf4j
@@ -45,7 +45,6 @@ public class UserDao extends BaseDao {
 	public List<User> queryList(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
 		sb.append(cond.getCondition());
-		// sb.append(" ORDER BY operate_time DESC");
 		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(User.class));
 	}
@@ -56,7 +55,6 @@ public class UserDao extends BaseDao {
 	public Page<User> queryPage(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
 		sb.append(cond.getCondition());
-		// sb.append(cond.getOrderSql());//增加排序子句;
 		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return queryPage(sb.toString(), cond, User.class);
 	}
