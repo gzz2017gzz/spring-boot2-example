@@ -1,0 +1,9 @@
+spring:
+   datasource:
+      driverClassName: org.sqlite.JDBC
+      #url: jdbc:sqlite:D:/aaa/bbb.db #方式一：  引用外部文件
+      url: jdbc:sqlite::resource:sqlite/gzz.db #方式二： 引用项目中的文件
+      username: root
+      password: root
+   application:
+      name: spring-boot-sqlite    
