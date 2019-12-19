@@ -22,10 +22,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gzz.sys.user.User;
 import com.gzz.sys.user.UserCond;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class UserTests {
-	private static final Log logger = LogFactory.getLog(UserTests.class);
 	private ObjectMapper mapper = new ObjectMapper();
 	private MockMvc mockMvc; // 模拟MVC对象，通过MockMvcBuilders.webAppContextSetup(this.wac).build()初始化。
 
@@ -45,7 +47,7 @@ public class UserTests {
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))// 预期返回值的媒体类型text/plain;charset=UTF-8
 				.andReturn();// 返回执行请求的结果
 
-		logger.info(result.getResponse().getContentAsString());
+		log.info(result.getResponse().getContentAsString());
 	}
 
 	@Test
@@ -56,7 +58,7 @@ public class UserTests {
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))// 预期返回值的媒体类型text/plain;charset=UTF-8
 				.andReturn();// 返回执行请求的结果
 
-		logger.info(result.getResponse().getContentAsString());
+		log.info(result.getResponse().getContentAsString());
 	}
 
 	@Test
@@ -66,6 +68,6 @@ public class UserTests {
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))// 预期返回值的媒体类型text/plain;charset=UTF-8
 				.andReturn();// 返回执行请求的结果
 
-		logger.info(result.getResponse().getContentAsString());
+		log.info(result.getResponse().getContentAsString());
 	}
 }

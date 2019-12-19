@@ -1,16 +1,14 @@
 package com.gzz.common.base;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -21,7 +19,7 @@ import org.springframework.jdbc.support.KeyHolder;
  */
 @Scope("prototype")
 public class BaseDao {
-	protected final Log logger = LogFactory.getLog(BaseDao.class);
+
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
 	@Autowired
@@ -45,20 +43,16 @@ public class BaseDao {
 	 * @功能描述:批操作
 	 */
 	protected <T> int[] batchOperate(List<T> list, String sql) {
-		SqlParameterSource[] params = new SqlParameterSource[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			params[i] = new BeanPropertySqlParameterSource(list.get(i));
-		}
-		return nameJdbcTemplate.batchUpdate(sql, params);
+		return nameJdbcTemplate.batchUpdate(sql, list.stream().map(i -> new BeanPropertySqlParameterSource(i))
+				.collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
 	}
 
 	/**
-	 * @功能描述:插入记录反加主键
+	 * @功能描述:插入记录反回主键
 	 */
 	protected <T> long saveKey(T t, String sql, String id) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
-		SqlParameterSource params = new BeanPropertySqlParameterSource(t);
-		nameJdbcTemplate.update(sql, params, keyHolder, new String[] { id });
+		nameJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(t), keyHolder, new String[] { id });
 		return keyHolder.getKey().longValue();
 	}
 

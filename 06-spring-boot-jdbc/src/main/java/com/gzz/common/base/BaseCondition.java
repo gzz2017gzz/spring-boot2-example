@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 public abstract class BaseCondition {
-	private List<Object> paramList = new ArrayList<Object>();// 参数值
+	private List<Object> paramList = new ArrayList<>();// 参数值
 	private StringBuffer condition = new StringBuffer();// 条件语句
 	private Integer size = 10;// 页大小(每页记录条)
 	private Integer page = 0;// 当前页码

@@ -1,65 +1,22 @@
 package com.gzz.common.base;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 /**
  * @功能描述:分页工具
  * @author http://www.gaozz.club
  * @date 2018-07-13
  */
+@Setter
+@Getter
+@AllArgsConstructor
 public class Page<T> {
-	private List<T> dataList = new ArrayList<>();// 数据列表
-	private int pageSize = 10;// 页大小
-	private long rowCount;// 记录数
-	private int curpage = 0;// 当前页
-	private int pageCount;// 总页数
-
-	public Page(List<T> dataList, int curpage, long rowCount, int pagesize, int pageCount) {
-		this.dataList.addAll(dataList);
-		this.pageSize = pagesize;
-		this.rowCount = rowCount;
-		this.curpage = curpage;
-		this.pageCount = pageCount;
-	}
-
-	public List<T> getDataList() {
-		return dataList;
-	}
-
-	public void setDataList(List<T> dataList) {
-		this.dataList = dataList;
-	}
-
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	public long getRowCount() {
-		return rowCount;
-	}
-
-	public void setRowCount(long rowCount) {
-		this.rowCount = rowCount;
-	}
-
-	public int getCurpage() {
-		return curpage;
-	}
-
-	public void setCurpage(int curpage) {
-		this.curpage = curpage;
-	}
-
-	public int getPageCount() {
-		return pageCount;
-	}
-
-	public void setPageCount(int pageCount) {
-		this.pageCount = pageCount;
-	}
-
+	private List<T> dataList;// 数据列表
+	private int pageSize = 10;// 页大小(每页记录条)
+	private long rowCount;// 记录总数
+	private int curpage = 0;// 当前页码
+	private int pageCount;// 当前页码
 }
