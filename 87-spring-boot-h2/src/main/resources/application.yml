@@ -15,6 +15,3 @@ spring:
 #     data: classpath:db/data.sql  #进行该配置后，每次启动程序，程序都会运行resources/db/data.sql文件，对数据库的数据操作。
    application:
       name: spring-boot-h2
- 
-
-      

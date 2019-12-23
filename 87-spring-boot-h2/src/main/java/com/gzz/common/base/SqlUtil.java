@@ -14,7 +14,7 @@ public class SqlUtil {
 	/**
 	 * @方法说明:数据库中执行的SQL语句
 	 */
-	public static String showSql(String sql,  Object... obj) {
+	public static String showSql(String sql, Object... obj) {
 		String param;
 		for (int j = 0; null != obj && j < obj.length; j++) {
 			param = "null";
