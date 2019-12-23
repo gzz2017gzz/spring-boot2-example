@@ -25,16 +25,14 @@ public class Application {
 
 	@PostConstruct
 	private void run() {
+		int count = 2000;
 		List<User> list = new ArrayList<>();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < count; i++) {
 			list.add(User.builder().name("李四" + i).create_time(new Date()).age(i).phone(13580805392L + i + "").sex("1").build());
 		}
 		long start = System.currentTimeMillis();
 		dao.insertBatch(list);
-		log.info("插入1000条记录使用{}毫秒！", System.currentTimeMillis() - start);
-		//dao.save(User.builder().name("李四光").create_time(new Date()).age(20).phone("13588887777").sex("0").build());
- 		//log.info(JSON.toJSONString(dao.queryList(UserCond.builder().build())));
+		log.info("插入{}条记录使用{}毫秒！", count, System.currentTimeMillis() - start);
 		log.info(JSON.toJSONString(dao.queryPage(UserCond.builder().build())));
-
 	}
 }

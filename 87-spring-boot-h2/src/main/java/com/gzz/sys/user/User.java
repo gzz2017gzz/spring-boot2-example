@@ -1,11 +1,12 @@
 package com.gzz.sys.user;
 
 import java.util.Date;
-import lombok.Getter;
-import lombok.Setter;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * @类说明 [user]实体类

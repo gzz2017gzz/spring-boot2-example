@@ -16,8 +16,6 @@ public abstract class BaseCondition {
 	private StringBuffer condition = new StringBuffer();// 条件语句
 	private Integer size = 10;// 页大小(每页记录条)
 	private Integer page = 0;// 当前页码
- 
- 
 
 	/**
 	 * @功能: 拼加条件使用等于大于小于....运算符(String类型)
@@ -119,19 +117,16 @@ public abstract class BaseCondition {
 	/**
 	 * @功能: 拼加条件
 	 */
-//	protected void add(List<?> ids, String strSQL) {
-//		if (null != strSQL && !"".equals(strSQL) && ids != null && ids.size() > 0) {
-//			condition.append(" " + strSQL + SqlUtil.ArrayToIn(ids));
-//		}
-//	}
+	protected void add(List<?> ids, String strSQL) {
+		if (null != strSQL && !"".equals(strSQL) && ids != null && ids.size() > 0) {
+			condition.append(" " + strSQL + SqlUtil.ArrayToIn(ids));
+		}
+	}
 
 	/**
-	 * @param value
-	 *            :属性名称
-	 * @param strSQL
-	 *            :参数SQL字符
-	 * @param posLike
-	 *            :字句中百分号出现位置
+	 * @param value   :属性名称
+	 * @param strSQL  :参数SQL字符
+	 * @param posLike :字句中百分号出现位置
 	 * @return strSQL:拼加后SQL字符包括占位符
 	 * @功能: 拼加条件使用like关键字模糊查询时
 	 */
@@ -186,5 +181,5 @@ public abstract class BaseCondition {
 	public void setPage(Integer page) {
 		this.page = page;
 	}
- 
+
 }
