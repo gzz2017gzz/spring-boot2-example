@@ -4,5 +4,5 @@ create table if not exists user (
 	sex varchar(1),
 	age integer ,
 	phone varchar(11),
-	create_time date
+	create_time timestamp
 );

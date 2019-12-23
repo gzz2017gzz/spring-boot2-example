@@ -43,8 +43,7 @@ public class BaseDao {
 	 * @功能描述:批操作
 	 */
 	protected <T> int[] batchOperate(List<T> list, String sql) {
-		return nameJdbcTemplate.batchUpdate(sql,
-				list.stream().map(i -> new BeanPropertySqlParameterSource(i)).collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
+		return nameJdbcTemplate.batchUpdate(sql,list.stream().map(i -> new BeanPropertySqlParameterSource(i)).collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
 	}
 
 	/**

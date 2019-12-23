@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 @Slf4j
 public class Application {
-
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
 	}
@@ -28,13 +27,13 @@ public class Application {
 	private void run() {
 		List<User> list = new ArrayList<>();
 		for (int i = 0; i < 1000; i++) {
-			list.add(User.builder().name("李四" + i).create_time(new Date()).age(i).phone(i + "").sex("1").build());
+			list.add(User.builder().name("李四" + i).create_time(new Date()).age(i).phone(13580805392L + i + "").sex("1").build());
 		}
 		long start = System.currentTimeMillis();
 		dao.insertBatch(list);
 		log.info("插入1000条记录使用{}毫秒！", System.currentTimeMillis() - start);
-		dao.save(User.builder().name("李四光").create_time(new Date()).age(20).phone("13588887777").sex("0").build());
-//		log.info(JSON.toJSONString(dao.queryList(UserCond.builder().build())));
+		//dao.save(User.builder().name("李四光").create_time(new Date()).age(20).phone("13588887777").sex("0").build());
+ 		//log.info(JSON.toJSONString(dao.queryList(UserCond.builder().build())));
 		log.info(JSON.toJSONString(dao.queryPage(UserCond.builder().build())));
 
 	}
