@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 @Entity
 @Table(name = "jpa_user")
 public class User {

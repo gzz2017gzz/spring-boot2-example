@@ -10,7 +10,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.gzz.Application;
 import com.gzz.user.model.UserCond;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class TestSource {

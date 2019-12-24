@@ -9,7 +9,11 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
 @Configuration
-
+/**
+ * @功能描述 aop解析注解
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 public class RedisConfig {
 	@Bean
 	@ConfigurationProperties(prefix = "spring.redis")

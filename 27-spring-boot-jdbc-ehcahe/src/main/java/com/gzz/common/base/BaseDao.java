@@ -1,27 +1,25 @@
 package com.gzz.common.base;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 /**
  * @功能描述:dao类公共类
- * @author http://www.gaozz.club
- * @date 2018-07-13
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  */
 @Scope("prototype")
 public class BaseDao {
-	protected final Log logger = LogFactory.getLog(BaseDao.class);
+
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
 	@Autowired
@@ -30,7 +28,7 @@ public class BaseDao {
 	/**
 	 * @功能描述:分页
 	 */
-	protected <T> Page<T> queryPage(String sql, BaseCondition cond, Class<T> clazz) {
+	protected <T, C extends BaseCondition> Page<T> queryPage(String sql, C cond, Class<T> clazz) {
 		String countSQL = "SELECT count(1) FROM (" + sql + ") t";
 		int rowCount = jdbcTemplate.queryForObject(countSQL, cond.getArray(), Integer.class);
 		int pageSize = cond.getSize();
@@ -38,27 +36,23 @@ public class BaseDao {
 		int pageCount = rowCount % pageSize == 0 ? rowCount / pageSize : rowCount / pageSize + 1;
 		String listSql = sql + " LIMIT " + curPage * pageSize + "," + pageSize;
 		List<T> dataList = jdbcTemplate.query(listSql.toString(), cond.getArray(), new BeanPropertyRowMapper<T>(clazz));
-		return new Page<T>(dataList, cond.getPage(), rowCount, cond.getSize(), pageCount);
+		return new Page<T>(dataList, cond.getSize(), rowCount, cond.getPage(), pageCount);
 	}
 
 	/**
 	 * @功能描述:批操作
 	 */
 	protected <T> int[] batchOperate(List<T> list, String sql) {
-		SqlParameterSource[] params = new SqlParameterSource[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			params[i] = new BeanPropertySqlParameterSource(list.get(i));
-		}
-		return nameJdbcTemplate.batchUpdate(sql, params);
+		return nameJdbcTemplate.batchUpdate(sql,
+				list.stream().map(i -> new BeanPropertySqlParameterSource(i)).collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
 	}
 
 	/**
-	 * @功能描述:插入记录反加主键
+	 * @功能描述:插入记录反回主键
 	 */
 	protected <T> long saveKey(T t, String sql, String id) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
-		SqlParameterSource params = new BeanPropertySqlParameterSource(t);
-		nameJdbcTemplate.update(sql, params, keyHolder, new String[] { id });
+		nameJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(t), keyHolder, new String[] { id });
 		return keyHolder.getKey().longValue();
 	}
 

@@ -9,12 +9,15 @@ import com.gzz.base.BaseDao;
 import com.gzz.base.Page;
 import com.gzz.base.SqlUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @类说明 [用户]数据访问层
- * @author 高振中
- * @date 2018-12-24 21:36:34
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @Repository
+@Slf4j
 public class UserDao extends BaseDao {
 
 	private StringBuilder insert = new StringBuilder();
@@ -93,7 +96,7 @@ public class UserDao extends BaseDao {
 	public List<User> queryList(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
 		sb.append(cond.getCondition());
-		logger.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
+		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(User.class));
 	}
 

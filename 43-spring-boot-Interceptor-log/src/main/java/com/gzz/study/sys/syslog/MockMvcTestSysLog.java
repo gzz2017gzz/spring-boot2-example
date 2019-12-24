@@ -19,8 +19,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * @类说明 [请求日志]测试工具，请本类移到maven测试目录中或测试完成之后删除
- * @author 高振中
- * @date 2019-01-12 22:40:08
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,7 +1,10 @@
 package com.gzz;
 
 import java.util.Random;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 public class GenerateSql {
 	public static void main(String[] args) {
 		String[] addrss = new String[] { "西安", "北京", "郑州", "上海", "武汉", "长沙", "广州", "贵阳", "柳州", "咸阳", "蓝田", "渭南" };

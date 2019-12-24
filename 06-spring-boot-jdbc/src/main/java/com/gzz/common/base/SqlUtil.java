@@ -7,14 +7,14 @@ import com.google.common.base.Joiner;
 
 /**
  * @功能描述:代码工具
- * @author http://www.gaozz.club
- * @date 2018-07-13
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  */
 public class SqlUtil {
 	/**
 	 * @方法说明:数据库中执行的SQL语句
 	 */
-	public static String showSql(String sql,  Object... obj) {
+	public static String showSql(String sql, Object... obj) {
 		String param;
 		for (int j = 0; null != obj && j < obj.length; j++) {
 			param = "null";

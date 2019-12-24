@@ -11,8 +11,8 @@ import com.gzz.base.SqlUtil;
 
 /**
  * @类说明 [功能]数据访问层
- * @author 高振中
- * @date 2018-12-24 21:36:34
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @Repository
 public class FunctionDao extends BaseDao {

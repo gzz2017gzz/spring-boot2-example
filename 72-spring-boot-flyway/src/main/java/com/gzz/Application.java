@@ -18,7 +18,10 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.gzz.config.DataSourceVo;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 @ConfigurationProperties

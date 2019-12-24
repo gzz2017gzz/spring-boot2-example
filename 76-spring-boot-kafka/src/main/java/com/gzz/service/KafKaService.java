@@ -8,7 +8,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 @Service
 public class KafKaService {
 

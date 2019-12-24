@@ -7,17 +7,14 @@ import java.util.List;
 
 /**
  * @功能说明:拼加页面查询条件的基础类
- * @author http://www.gaozz.club
- * @date 2018-02-15
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  */
-
 public abstract class BaseCondition {
-	private List<Object> paramList = new ArrayList<Object>();// 参数值
+	private List<Object> paramList = new ArrayList<>();// 参数值
 	private StringBuffer condition = new StringBuffer();// 条件语句
 	private Integer size = 10;// 页大小(每页记录条)
 	private Integer page = 0;// 当前页码
- 
- 
 
 	/**
 	 * @功能: 拼加条件使用等于大于小于....运算符(String类型)
@@ -126,12 +123,9 @@ public abstract class BaseCondition {
 	}
 
 	/**
-	 * @param value
-	 *            :属性名称
-	 * @param strSQL
-	 *            :参数SQL字符
-	 * @param posLike
-	 *            :字句中百分号出现位置
+	 * @param value   :属性名称
+	 * @param strSQL  :参数SQL字符
+	 * @param posLike :字句中百分号出现位置
 	 * @return strSQL:拼加后SQL字符包括占位符
 	 * @功能: 拼加条件使用like关键字模糊查询时
 	 */
@@ -186,5 +180,5 @@ public abstract class BaseCondition {
 	public void setPage(Integer page) {
 		this.page = page;
 	}
- 
+
 }

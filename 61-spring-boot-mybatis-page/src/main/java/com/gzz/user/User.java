@@ -5,7 +5,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 @Table(name = "t_user")
 public class User implements Serializable {
 

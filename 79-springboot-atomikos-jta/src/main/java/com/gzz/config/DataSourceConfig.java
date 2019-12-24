@@ -1,20 +1,27 @@
 package com.gzz.config;
 
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import com.atomikos.jdbc.AtomikosDataSourceBean;
-import com.mysql.jdbc.jdbc2.optional.MysqlXADataSource;
-import lombok.extern.slf4j.Slf4j;
 
-@ConfigurationProperties("mysql")
-@Component
+import com.atomikos.jdbc.AtomikosDataSourceBean;
+import com.mysql.cj.jdbc.MysqlXADataSource;
+
+import lombok.extern.slf4j.Slf4j;
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 @Slf4j
+@Component
+@ConfigurationProperties("mysql")
 public class DataSourceConfig {
 	private List<DBmodel> dataSource;// 注入List
 

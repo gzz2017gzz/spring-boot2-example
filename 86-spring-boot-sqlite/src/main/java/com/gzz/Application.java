@@ -12,7 +12,11 @@ import com.gzz.sys.user.UserCond;
 import com.gzz.sys.user.UserDao;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * @类说明:用户数据访问层
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ **/
 @SpringBootApplication
 @Slf4j
 public class Application {

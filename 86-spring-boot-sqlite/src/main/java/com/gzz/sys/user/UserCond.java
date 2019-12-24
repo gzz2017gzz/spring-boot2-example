@@ -8,8 +8,8 @@ import lombok.Setter;
 
 /**
  * @类说明:用户查询条件实体类
- * @author http://www.gaozz.club
- * @date:2018-07-13 10:17:27
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @Setter
 @Getter

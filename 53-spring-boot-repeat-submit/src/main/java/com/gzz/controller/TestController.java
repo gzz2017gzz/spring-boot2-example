@@ -7,8 +7,8 @@ import com.gzz.config.NoRepeatSubmit;
 
 /**
  * @功能描述 测试Controller
- * @author www.gaozz.club
- * @date 2018-08-26
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
  */
 @RestController
 public class TestController {

@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * @功能描述 Hessian实例之服务器
- * @author www.gaozz.club
- * @date 2018-08-26
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
  */
 public interface IHelloService {
 	String sayHello(String name);

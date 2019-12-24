@@ -14,6 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserControllerTest {
@@ -23,7 +27,7 @@ public class UserControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();  
+		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
 	}
 
 	@Test

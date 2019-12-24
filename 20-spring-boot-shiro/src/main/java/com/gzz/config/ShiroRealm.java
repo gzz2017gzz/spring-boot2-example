@@ -25,6 +25,10 @@ import com.gzz.sys.user.UserCond;
 import com.gzz.sys.user.UserDao;
 import com.gzz.sys.userrole.UserRoleDao;
 
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 @Component
 public class ShiroRealm extends AuthorizingRealm {
 	private final Log logger = LogFactory.getLog(ShiroRealm.class);

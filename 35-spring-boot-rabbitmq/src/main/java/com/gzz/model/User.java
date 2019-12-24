@@ -1,7 +1,10 @@
 package com.gzz.model;
 
 import java.io.Serializable;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ **/
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;

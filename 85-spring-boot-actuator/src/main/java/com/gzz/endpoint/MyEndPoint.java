@@ -13,8 +13,8 @@ import java.util.Map;
  * <P>@WriteOperation = POST 响应状态为 200 如果没有返回值响应 204（无响应内容） </P>
  * <P>@DeleteOperation = DELETE 响应状态为 200 如果没有返回值响应 204（无响应内容） </P>
  *
- * @author Levin
- * @since 2018/5/24 0024
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
  */
 @Endpoint(id = "battcn")
 public class MyEndPoint {

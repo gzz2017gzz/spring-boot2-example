@@ -12,7 +12,10 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 @ServerEndpoint(value = "/gzz/websocket")
 @Component
 public class CustomWebSocket {

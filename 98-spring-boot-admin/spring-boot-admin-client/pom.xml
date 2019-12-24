@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.gzz</groupId>
-		<artifactId>32-spring-boot-admin</artifactId>
+		<artifactId>98-spring-boot-admin</artifactId>
 		<version>1.0</version>
 	</parent>
 	<artifactId>spring-boot-admin-client</artifactId>

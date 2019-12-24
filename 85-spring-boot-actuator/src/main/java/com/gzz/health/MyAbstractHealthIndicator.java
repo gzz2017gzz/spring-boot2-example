@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
  * </p>
  * <p>
  * 功能更加强大一点，DataSourceHealthIndicator / RedisHealthIndicator 都是这种写法
- * </p>
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
  */
 @Component("my2")
 public class MyAbstractHealthIndicator extends AbstractHealthIndicator {

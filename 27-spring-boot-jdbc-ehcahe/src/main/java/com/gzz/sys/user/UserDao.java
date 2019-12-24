@@ -13,13 +13,16 @@ import com.gzz.common.base.BaseDao;
 import com.gzz.common.base.Page;
 import com.gzz.common.base.SqlUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @类说明:用户数据访问层
- * @author http://www.gaozz.club
- * @date:2018-07-13 10:17:27
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @Repository
 @CacheConfig(cacheNames = { "gzz_Cache" })
+@Slf4j
 public class UserDao extends BaseDao {
 	private StringBuilder select = new StringBuilder();
 	private StringBuilder insert = new StringBuilder();
@@ -45,7 +48,7 @@ public class UserDao extends BaseDao {
 		sql.append("INSERT INTO sys_user (id,name,birthday,gender)");
 		sql.append(" VALUES (?,?,?,?) ");
 		Object[] params = { vo.getId(), vo.getName(), vo.getBirthday(), vo.getGender() };
-		logger.info(SqlUtil.showSql(sql.toString(), params));// 显示SQL语句
+		log.info(SqlUtil.showSql(sql.toString(), params));// 显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}
 
@@ -91,7 +94,7 @@ public class UserDao extends BaseDao {
 		StringBuilder sb = new StringBuilder(select);
 		sb.append(cond.getCondition());
 		// sb.append(cond.getOrderSql());//增加排序子句;
-		logger.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
+		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return queryPage(sb.toString(), cond, User.class);
 	}
 
@@ -102,7 +105,7 @@ public class UserDao extends BaseDao {
 		StringBuilder sb = new StringBuilder(select);
 		sb.append(cond.getCondition());
 		// sb.append(" ORDER BY operate_time DESC");
-		logger.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
+		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(User.class));
 	}
 
@@ -113,7 +116,7 @@ public class UserDao extends BaseDao {
 	public User findById(Long id) {
 		StringBuilder sb = new StringBuilder(select);
 		sb.append(" AND t.id=?");
-		logger.info(SqlUtil.showSql(sb.toString(), new Object[] { id }));// 显示SQL语句
+		log.info(SqlUtil.showSql(sb.toString(), new Object[] { id }));// 显示SQL语句
 		return jdbcTemplate.queryForObject(sb.toString(), new Object[] { id }, new BeanPropertyRowMapper<>(User.class));
 	}
 

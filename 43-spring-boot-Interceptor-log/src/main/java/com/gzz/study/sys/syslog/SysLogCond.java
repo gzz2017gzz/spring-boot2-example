@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 import com.gzz.common.base.BaseCondition;
 /**
  * @类说明 [请求日志]查询条件实体
- * @author 高振中
- * @date 2019-01-12 23:40:32
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @Setter
 @Getter

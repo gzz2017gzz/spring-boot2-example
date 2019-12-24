@@ -8,7 +8,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 @Configuration
 public class LocalDateTimeSerializerConfig {// 自定义转换器
 

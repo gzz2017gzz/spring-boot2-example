@@ -1,7 +1,8 @@
 package com.gzz.exception;
 
 /**
- * Created by zggdczfr on 2017/1/26.
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
  */
 public class RequestLimitException extends Exception {
     private static final long serialVersionUID = 1364225358754654702L;

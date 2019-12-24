@@ -11,7 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.gzz.sys.user.UserEntity;
 import com.gzz.sys.user.UserMapper;
 import com.gzz.sys.user.UserSexEnum;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserMapperTest {

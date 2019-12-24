@@ -7,8 +7,8 @@ import com.google.common.base.Joiner;
 
 /**
  * @功能描述:代码工具
- * @author http://www.gaozz.club
- * @date 2018-07-13
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  */
 public class SqlUtil {
 	/**

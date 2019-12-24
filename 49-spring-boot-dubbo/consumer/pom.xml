@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.gzz</groupId>
-		<artifactId>springboot-dubbo</artifactId>
+		<artifactId>49-spring-boot-dubbo</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>consumer</artifactId>

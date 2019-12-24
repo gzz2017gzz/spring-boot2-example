@@ -11,12 +11,15 @@ import com.gzz.base.BaseDao;
 import com.gzz.base.Page;
 import com.gzz.base.SqlUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @类说明 [用户角色关系]数据访问层
- * @author 高振中
- * @date 2018-12-24 21:36:34
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @Repository
+@Slf4j
 public class UserRoleDao extends BaseDao {
 
 	private StringBuilder insert = new StringBuilder();
@@ -129,7 +132,7 @@ public class UserRoleDao extends BaseDao {
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT r.role FROM user_role t JOIN role r ON t.role_id=r.id");
 		sb.append("  WHERE t.user_id=?");
-		logger.info(SqlUtil.showSql(sb.toString(), new Object[] { user_id }));// 显示SQL语句
+		log.info(SqlUtil.showSql(sb.toString(), new Object[] { user_id }));// 显示SQL语句
 		return new HashSet<>(jdbcTemplate.queryForList(sb.toString(), String.class, user_id));
 	}
 }

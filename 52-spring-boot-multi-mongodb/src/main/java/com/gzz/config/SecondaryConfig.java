@@ -10,7 +10,10 @@ import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.mongodb.MongoClientURI;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
+ */
 @Configuration
 @EnableMongoRepositories(basePackages = "com.gzz.dao.secondary", mongoTemplateRef = "secondaryTemplate")
 public class SecondaryConfig {

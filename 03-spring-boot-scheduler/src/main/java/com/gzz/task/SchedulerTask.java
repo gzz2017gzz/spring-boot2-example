@@ -6,6 +6,10 @@ import java.util.Date;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 @Component
 public class SchedulerTask {
 	private int count = 0;

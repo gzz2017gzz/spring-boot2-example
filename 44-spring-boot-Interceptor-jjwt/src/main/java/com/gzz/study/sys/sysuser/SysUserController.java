@@ -20,8 +20,8 @@ import com.gzz.common.config.UserLoginToken;
 
 /**
  * @类说明 [用户]控制器
- * @author 高振中
- * @date 2019-01-13 00:00:31
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @RestController
 @RequestMapping("sysUser")

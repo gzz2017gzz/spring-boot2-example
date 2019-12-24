@@ -3,7 +3,7 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+#    driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root

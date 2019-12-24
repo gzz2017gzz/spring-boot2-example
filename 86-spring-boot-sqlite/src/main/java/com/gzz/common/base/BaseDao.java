@@ -14,8 +14,8 @@ import org.springframework.jdbc.support.KeyHolder;
 
 /**
  * @功能描述:dao类公共类
- * @author http://www.gaozz.club
- * @date 2018-07-13
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  */
 @Scope("prototype")
 public class BaseDao {
@@ -43,8 +43,8 @@ public class BaseDao {
 	 * @功能描述:批操作
 	 */
 	protected <T> int[] batchOperate(List<T> list, String sql) {
-		return nameJdbcTemplate.batchUpdate(sql, list.stream().map(i -> new BeanPropertySqlParameterSource(i))
-				.collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
+		return nameJdbcTemplate.batchUpdate(sql,
+				list.stream().map(i -> new BeanPropertySqlParameterSource(i)).collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
 	}
 
 	/**

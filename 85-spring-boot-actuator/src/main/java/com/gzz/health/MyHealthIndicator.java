@@ -5,9 +5,9 @@ import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 /**
- * <p>
  * 自定义健康端点
- * </p>
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
  */
 @Component("my1")
 public class MyHealthIndicator implements HealthIndicator {

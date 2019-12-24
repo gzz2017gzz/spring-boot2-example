@@ -16,7 +16,10 @@ import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.Claim;
 import com.gzz.study.sys.sysuser.SysUser;
 import com.gzz.study.sys.sysuser.SysUserService;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 public class AuthInterceptor implements HandlerInterceptor {
 	@Autowired
 	SysUserService userService;

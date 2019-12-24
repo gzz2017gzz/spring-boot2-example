@@ -13,8 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @类说明:用户数据访问层
- * @author http://www.gaozz.club
- * @date:2019-07-13 10:17:27
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  **/
 @Repository
 @Slf4j

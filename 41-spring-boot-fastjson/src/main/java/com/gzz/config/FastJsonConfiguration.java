@@ -9,7 +9,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ */
 @Configuration
 public class FastJsonConfiguration implements WebMvcConfigurer {
 

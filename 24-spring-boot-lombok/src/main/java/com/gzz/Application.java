@@ -11,7 +11,10 @@ import com.gzz.model.Employee;
 import com.gzz.model.Person;
 import com.gzz.model.Role;
 import com.gzz.model.User;
-
+/**
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
+ **/
 @SpringBootApplication
 public class Application {
 

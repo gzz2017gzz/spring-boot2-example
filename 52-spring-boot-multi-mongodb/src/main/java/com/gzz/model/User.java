@@ -5,7 +5,8 @@ import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 
 /**
- * Created by nbfujx on 2017-12-07.
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 14:50:00
  */
 public class User implements Serializable {
 

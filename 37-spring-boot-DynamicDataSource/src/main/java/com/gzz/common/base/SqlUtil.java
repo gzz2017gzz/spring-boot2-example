@@ -1,19 +1,20 @@
 package com.gzz.common.base;
- 
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.google.common.base.Joiner;
+
 /**
  * @功能描述:代码工具
- * @author gzz_gzz@163.com
- * @date 2018-02-15
+ * @author https://www.jianshu.com/u/3bd57d5f1074
+ * @date 2019-12-24 10:50:00
  */
 public class SqlUtil {
 	/**
 	 * @方法说明:数据库中执行的SQL语句
 	 */
-	public static String showSql(String sql, Object[] obj) {
+	public static String showSql(String sql, Object... obj) {
 		String param;
 		for (int j = 0; null != obj && j < obj.length; j++) {
 			param = "null";
@@ -31,7 +32,6 @@ public class SqlUtil {
 		}
 		return sql;
 	}
- 
 
 	/**
 	 * @方法说明:把组数拼接成IN语句
@@ -39,18 +39,21 @@ public class SqlUtil {
 	public static String ArrayToIn(Long ids[]) {
 		return new StringBuffer(" IN (").append(Joiner.on(",").join(ids)).append(")").toString();
 	}
+
 	/**
 	 * @方法说明:把组数拼接成IN语句
 	 */
 	public static String ArrayToIn(Integer ids[]) {
 		return new StringBuffer(" IN (").append(Joiner.on(",").join(ids)).append(")").toString();
 	}
+
 	/**
 	 * @方法说明:把组数拼接成IN语句
 	 */
 	public static String ArrayToIn(String ids[]) {
-		return new StringBuffer(" IN (").append(Joiner.on("','").join(ids)).append(")").toString();
+		return new StringBuffer(" IN ('").append(Joiner.on("','").join(ids)).append("')").toString();
 	}
+
 	/**
 	 * @方法说明:把List拼接成IN语句(数值型)
 	 */
