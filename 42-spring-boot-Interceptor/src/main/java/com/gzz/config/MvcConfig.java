@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @date 2019-12-24 10:50:00
  */
 @Configuration
-public class SessionConfiguration implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**");
