@@ -2,7 +2,6 @@ package com.gzz.common.base;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -115,13 +114,13 @@ public abstract class BaseCondition {
 	}
 
 	/**
-	 * @功能: 拼加条件
+	 * @功能: 拼加条件in子句
 	 */
-	protected void add(Object ids[], String strSQL) {
-		if (null != strSQL && !"".equals(strSQL) && ids != null && ids.length > 0) {
+	protected void add(List<Object> ids, String strSQL) {
+		if (null != strSQL && !"".equals(strSQL) && ids != null && ids.size() > 0) {
 			condition.append(" " + strSQL);
-			condition.append(SqlUtil.ArrayToIn(ids));
-			paramList.addAll(Arrays.asList(ids));
+			condition.append(SqlUtil.ArrayToIn(ids.toArray()));
+			paramList.addAll(ids);
 		}
 	}
 
@@ -129,7 +128,7 @@ public abstract class BaseCondition {
 	 * @param value   :属性名称
 	 * @param strSQL  :参数SQL字符
 	 * @param posLike :字句中百分号出现位置
-	 * @return strSQL:拼加后SQL字符包括占位符
+	 * @return strSQL 拼加后SQL字符包括占位符
 	 * @功能: 拼加条件使用like关键字模糊查询时
 	 */
 	protected void add(String value, String strSQL, int pos) {

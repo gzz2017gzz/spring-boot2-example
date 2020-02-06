@@ -121,7 +121,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明:逻辑删除用户记录(多条)
 	 **/
 	public int deleteLogic(Long ids[]) {
-		String sql = "UPDATE sys_user SET delete_remark=1 WHERE id" + SqlUtil.ArrayToIn(ids);
+		String sql = "UPDATE sys_user SET delete_remark=1 WHERE id IN " + SqlUtil.ArrayToIn(ids);
 		return jdbcTemplate.update(sql);
 	}
 }

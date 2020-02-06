@@ -57,7 +57,7 @@ public class Application {
 			});
 			row++;
 		});
-		workbook.write(new File("d:/数据库.xls"));
+		workbook.write(new File("d:/数据库结构.xls"));
 		workbook.close();
 	}
 }

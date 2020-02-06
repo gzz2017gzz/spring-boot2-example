@@ -5,14 +5,14 @@ import java.text.SimpleDateFormat;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @功能描述:代码工具
+ * @功能描述 代码工具
  * @author https://www.jianshu.com/u/3bd57d5f1074
  * @date 2019-12-24 10:50:00
  */
 @Slf4j
 public class SqlUtil {
 	/**
-	 * @方法说明:数据库中执行的SQL语句
+	 * @方法说明 数据库中执行的SQL语句
 	 */
 	public static String showSql(String sql, Object... obj) {
 		String param;

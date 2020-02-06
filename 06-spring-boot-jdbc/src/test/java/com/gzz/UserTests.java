@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.assertj.core.util.Arrays;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class UserTests {
 	public void queryList() throws Exception {
 		UserCond cond = UserCond.builder()//
 				.gender((byte) 1)//
-				.ids(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8 })//
+				.ids(Arrays.asList(new Integer[] { 1, 2, 3 }))//
 				.build();
 
 		MvcResult result = mockMvc.perform(post("/user/queryList").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(cond))).andExpect(status().isOk())// 模拟向testRest发送post请求

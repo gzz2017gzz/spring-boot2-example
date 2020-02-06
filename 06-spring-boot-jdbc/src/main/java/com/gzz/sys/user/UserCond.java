@@ -1,6 +1,7 @@
 package com.gzz.sys.user;
 
 import java.util.Date;
+import java.util.List;
 
 import com.gzz.common.base.BaseCondition;
 
@@ -36,6 +37,6 @@ public class UserCond extends BaseCondition {
 	private String name;// 姓名
 	private Date birthday;// 生日
 	private Byte gender;// 性别
-	private Object ids[];// 主键列表
+	private List<Object> ids ;// 主键列表
 
 }

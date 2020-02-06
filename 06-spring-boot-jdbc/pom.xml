@@ -31,12 +31,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<!-- <scope>test</scope> -->
 		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>24.0-jre</version>
-		</dependency>
-		<dependency>
+ 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
