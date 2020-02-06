@@ -2,6 +2,7 @@ package com.gzz.common.base;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -116,9 +117,11 @@ public abstract class BaseCondition {
 	/**
 	 * @功能: 拼加条件
 	 */
-	protected void add(List<?> ids, String strSQL) {
-		if (null != strSQL && !"".equals(strSQL) && ids != null && ids.size() > 0) {
-			condition.append(" " + strSQL + SqlUtil.ArrayToIn(ids));
+	protected void add(Object ids[], String strSQL) {
+		if (null != strSQL && !"".equals(strSQL) && ids != null && ids.length > 0) {
+			condition.append(" " + strSQL);
+			condition.append(SqlUtil.ArrayToIn(ids));
+			paramList.addAll(Arrays.asList(ids));
 		}
 	}
 

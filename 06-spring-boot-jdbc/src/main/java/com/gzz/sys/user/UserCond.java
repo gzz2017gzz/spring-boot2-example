@@ -1,7 +1,6 @@
 package com.gzz.sys.user;
 
 import java.util.Date;
-import java.util.List;
 
 import com.gzz.common.base.BaseCondition;
 
@@ -33,10 +32,10 @@ public class UserCond extends BaseCondition {
 	}
 
 	// 查询条件,把不用的条件清理掉
-	private Long id;// 主键
+	private Integer id;// 主键
 	private String name;// 姓名
 	private Date birthday;// 生日
 	private Byte gender;// 性别
-	private List<Long> ids;// 主键列表
+	private Object ids[];// 主键列表
 
 }
