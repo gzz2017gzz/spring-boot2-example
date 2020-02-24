@@ -62,9 +62,9 @@ public class UserDao extends BaseDao {
 	/**
 	 * @方法说明:物理删除用户记录(多条)
 	 **/
-	public int delete(Long ids[]) {
-		String sql = "DELETE FROM sys_user WHERE id" + SqlUtil.ArrayToIn(ids);
-		return jdbcTemplate.update(sql);
+	public int delete(Object ids[]) {
+		String sql = "DELETE FROM sys_user WHERE id IN " + SqlUtil.ArrayToIn(ids);
+		return jdbcTemplate.update(sql, ids);
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明:逻辑删除用户记录(多条)
 	 **/
 	public int deleteLogic(Long ids[]) {
-		String sql = "UPDATE sys_user SET delete_remark=1 WHERE id" + SqlUtil.ArrayToIn(ids);
+		String sql = "UPDATE sys_user SET delete_remark=1 WHERE id IN " + SqlUtil.ArrayToIn(ids);
 		return jdbcTemplate.update(sql);
 	}
 }
