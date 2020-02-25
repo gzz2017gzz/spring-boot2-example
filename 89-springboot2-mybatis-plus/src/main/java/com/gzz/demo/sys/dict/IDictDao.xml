@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzz.demo.sys.dict.IDictDao">
+    <!-- 基本resultMap -->
+    <resultMap type="com.gzz.demo.sys.dict.Dict" id="Dict">
+        <id property="id" column="id"/>
+        <result property="typeName" column="typeName"/>
+        <result property="typeCode" column="typeCode"/>
+        <result property="dataKey" column="dataKey"/>
+        <result property="dataValue" column="dataValue"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+		<!--查询全部数据-->
+	<select id="querylist" resultMap="Dict">
+		SELECT
+			t.id,t.typeName,t.typeCode,t.dataKey,t.dataValue,t.status,t.remark
+		FROM
+			sys_dict t
+		<where>
+			<if test=" id != null "> AND t.id = #{ id }, </if>
+			<if test=" typeName != null "> AND t.typeName = #{ typeName }, </if>
+			<if test=" typeCode != null "> AND t.typeCode = #{ typeCode }, </if>
+			<if test=" dataKey != null "> AND t.dataKey = #{ dataKey }, </if>
+			<if test=" dataValue != null "> AND t.dataValue = #{ dataValue }, </if>
+			<if test=" status != null "> AND t.status = #{ status }, </if>
+			<if test=" remark != null "> AND t.remark = #{ remark }, </if>
+		</where>
+    </select>
+
+	<!--生成insert语句并返回主键ID-->
+	<insert id="insertDict" parameterType="com.gzz.demo.sys.dict.Dict"  useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+		INSERT INTO sys_dict
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test=" id != null ">id,</if>
+			<if test=" typeName != null ">typeName,</if>
+			<if test=" typeCode != null ">typeCode,</if>
+			<if test=" dataKey != null ">dataKey,</if>
+			<if test=" dataValue != null ">dataValue,</if>
+			<if test=" status != null ">status,</if>
+			<if test=" remark != null ">remark,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test=" id != null ">#{id},</if>
+			<if test=" typeName != null ">#{typeName},</if>
+			<if test=" typeCode != null ">#{typeCode},</if>
+			<if test=" dataKey != null ">#{dataKey},</if>
+			<if test=" dataValue != null ">#{dataValue},</if>
+			<if test=" status != null ">#{status},</if>
+			<if test=" remark != null ">#{remark},</if>
+		</trim>
+	</insert>
+
+	<update id="updateDictById" parameterType="com.gzz.demo.sys.dict.Dict">
+		UPDATE sys_dict
+		<set>
+			 <if test=" typeName != null ">typeName = #{ typeName }, </if>
+			 <if test=" typeCode != null ">typeCode = #{ typeCode }, </if>
+			 <if test=" dataKey != null ">dataKey = #{ dataKey }, </if>
+			 <if test=" dataValue != null ">dataValue = #{ dataValue }, </if>
+			 <if test=" status != null ">status = #{ status }, </if>
+			 <if test=" remark != null ">remark = #{ remark }, </if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<sql    id="whereIn">
+	<where>
+		id IN
+		<foreach collection="array" item="id" separator="," open="(" close=")">
+			 #{id}
+		</foreach>
+	</where>
+	</sql>
+</mapper>

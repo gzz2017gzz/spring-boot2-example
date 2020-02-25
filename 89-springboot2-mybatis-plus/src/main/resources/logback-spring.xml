@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="default-pattern" value="%d[%p][%F:%L]:%m%n" />
+	<springProperty name="app-name" source="spring.application.name" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${default-pattern}</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${app.home:-.}/logs/${app-name}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${app.home:-.}/logs/${app-name}.%i.log.zip</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>100</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>80MB</maxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>${default-pattern}</pattern>
+		</encoder>
+	</appender>
+	<logger name="com.gzz" level="debug" />
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

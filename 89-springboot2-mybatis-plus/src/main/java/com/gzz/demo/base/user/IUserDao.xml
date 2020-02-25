@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzz.demo.base.user.IUserDao">
+    <!-- 基本resultMap -->
+    <resultMap type="com.gzz.demo.base.user.User" id="User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="birthday" column="birthday"/>
+        <result property="gender" column="gender"/>
+    </resultMap>
+		<!--查询全部数据-->
+	<select id="querylist" resultMap="User">
+		SELECT
+			t.id,t.name,t.birthday,t.gender
+		FROM
+			sys_user t
+		<where>
+			<if test=" id != null "> AND t.id = #{ id }, </if>
+			<if test=" name != null "> AND t.name = #{ name }, </if>
+			<if test=" birthday != null "> AND t.birthday = #{ birthday }, </if>
+			<if test=" gender != null "> AND t.gender = #{ gender }, </if>
+		</where>
+    </select>
+
+	<!--生成insert语句并返回主键ID-->
+	<insert id="insertUser" parameterType="com.gzz.demo.base.user.User"  useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+		INSERT INTO sys_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test=" id != null ">id,</if>
+			<if test=" name != null ">name,</if>
+			<if test=" birthday != null ">birthday,</if>
+			<if test=" gender != null ">gender,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test=" id != null ">#{id},</if>
+			<if test=" name != null ">#{name},</if>
+			<if test=" birthday != null ">#{birthday},</if>
+			<if test=" gender != null ">#{gender},</if>
+		</trim>
+	</insert>
+
+	<update id="updateUserById" parameterType="com.gzz.demo.base.user.User">
+		UPDATE sys_user
+		<set>
+			 <if test=" name != null ">name = #{ name }, </if>
+			 <if test=" birthday != null ">birthday = #{ birthday }, </if>
+			 <if test=" gender != null ">gender = #{ gender }, </if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<sql    id="whereIn">
+	<where>
+		id IN
+		<foreach collection="array" item="id" separator="," open="(" close=")">
+			 #{id}
+		</foreach>
+	</where>
+	</sql>
+</mapper>
