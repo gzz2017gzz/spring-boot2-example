@@ -13,7 +13,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 /**
- * @功能描述:dao类公共类
+ * @功能描述 dao类公共类
  * @author https://www.jianshu.com/u/3bd57d5f1074
  * @date 2019-12-24 10:50:00
  */
@@ -26,9 +26,9 @@ public class BaseDao {
 	protected NamedParameterJdbcTemplate nameJdbcTemplate;
 
 	/**
-	 * @功能描述:分页
+	 * @功能描述 分类查询
 	 */
-	protected <T, C extends BaseCondition> Page<T> queryPage(String sql, C cond, Class<T> clazz) {
+	final protected <T, C extends BaseCondition> Page<T> queryPage(final String sql, C cond, final Class<T> clazz) {
 		String countSQL = "SELECT count(1) FROM (" + sql + ") t";
 		int rowCount = jdbcTemplate.queryForObject(countSQL, cond.getArray(), Integer.class);
 		int pageSize = cond.getSize();
@@ -36,24 +36,22 @@ public class BaseDao {
 		int pageCount = rowCount % pageSize == 0 ? rowCount / pageSize : rowCount / pageSize + 1;
 		String listSql = sql + " LIMIT " + curPage * pageSize + "," + pageSize;
 		List<T> dataList = jdbcTemplate.query(listSql.toString(), cond.getArray(), new BeanPropertyRowMapper<T>(clazz));
-		return new Page<T>(dataList, cond.getSize(), rowCount, cond.getPage(), pageCount);
+		return new Page<T>(dataList, pageSize, rowCount, curPage, pageCount);
 	}
 
 	/**
-	 * @功能描述:批操作
+	 * @功能描述 批操作
 	 */
-	protected <T> int[] batchOperate(List<T> list, String sql) {
-		return nameJdbcTemplate.batchUpdate(sql,
-				list.stream().map(i -> new BeanPropertySqlParameterSource(i)).collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
+	final protected <T> int[] batchOperate(final List<T> list, final String sql) {
+		return nameJdbcTemplate.batchUpdate(sql, list.stream().map(i -> new BeanPropertySqlParameterSource(i)).collect(Collectors.toList()).toArray(new BeanPropertySqlParameterSource[] {}));
 	}
 
 	/**
-	 * @功能描述:插入记录反回主键
+	 * @功能描述 保存数据返回主键
 	 */
-	protected <T> long saveKey(T t, String sql, String id) {
+	final protected <T> long saveKey(final T t, String sql, final String id) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		nameJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(t), keyHolder, new String[] { id });
 		return keyHolder.getKey().longValue();
 	}
-
 }

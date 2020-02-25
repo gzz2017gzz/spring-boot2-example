@@ -113,7 +113,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明:按条件查询用户记录个数
 	 **/
 	public long queryCount(UserCond cond) {
-		String countSql = "SELECT COUNT(1) FROM sys_user t WHERE 1=1" + cond.getCondition();
+		String countSql = "SELECT COUNT(1) FROM sys_user t WHERE 1=1 " + cond.getCondition();
 		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
 	}
 
