@@ -21,9 +21,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gzz.common.util.Result;
 
 /**
- * @类说明 [客户]控制器
+ * @类说明 【客户】控制器
  * @author 高振中
- * @date 2020-02-25 23:45:20
+ * @date 2020-02-26 00:57:08
  **/
 @RestController
 @RequestMapping("customer")
@@ -33,7 +33,7 @@ public class CustomerController {
 	private CustomerService service;// 注入[客户]业务逻辑接口
 
 	/**
-	 * @方法说明 新增[客户]记录
+	 * @方法说明 新增【客户】记录
 	 */
 	@PostMapping
 	public Result add(@RequestBody @Valid Customer customer, BindingResult result) {
@@ -44,7 +44,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * @方法说明 按主键删除客户记录
+	 * @方法说明 按主键删除【客户】记录
 	 */
 	@DeleteMapping("/{id}")
 	public Result delete(@PathVariable Integer id) {
@@ -52,7 +52,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * @方法说明 修改客户记录
+	 * @方法说明 修改【客户】记录
 	 */
 	@PutMapping
 	public Result edit(@RequestBody @Valid Customer customer, BindingResult result) {
@@ -63,7 +63,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * @方法说明 按条件查询分页客户列表
+	 * @方法说明 按条件查询分页【客户】列表
 	 */
 	@PostMapping("/page/{current}/{size}")
 	public Result page(@RequestBody Customer customer, @PathVariable long current, @PathVariable long size) {
@@ -71,7 +71,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * @方法说明 按主键查单个客户记录
+	 * @方法说明 按主键查单个【客户】记录
 	 */
 	@GetMapping("/{id}")
 	public Result get(@PathVariable Integer id) {

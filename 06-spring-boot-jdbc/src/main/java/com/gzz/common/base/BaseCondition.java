@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import com.gzz.common.utils.SqlUtil;
+
 import lombok.Data;
 
 /**
@@ -151,6 +153,14 @@ public abstract class BaseCondition {
 	 */
 	final public Object[] getArray() {
 		return paramList.toArray();
+	}
+
+	/**
+	 * @功能说明 把一个and换成where
+	 */
+
+	final public String getWhere() {
+		return getCondition().replaceFirst("(?i)(AND)", "WHERE");
 	}
 
 	/**

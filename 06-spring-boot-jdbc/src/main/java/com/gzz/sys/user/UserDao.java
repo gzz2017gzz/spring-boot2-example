@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gzz.common.base.BaseDao;
 import com.gzz.common.base.Page;
-import com.gzz.common.base.SqlUtil;
+import com.gzz.common.utils.SqlUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +27,7 @@ public class UserDao extends BaseDao {
 	 **/
 	public UserDao() {
 		select.append("SELECT t.id,t.name,t.birthday,t.gender");
-		select.append(" FROM sys_user t WHERE 1=1");
+		select.append(" FROM sys_user t ");
 
 		insert.append("INSERT INTO sys_user (name,birthday,gender)");
 		insert.append(" VALUES (:name,:birthday,:gender)");
@@ -113,7 +113,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明:按条件查询用户记录个数
 	 **/
 	public long queryCount(UserCond cond) {
-		String countSql = "SELECT COUNT(1) FROM sys_user t WHERE 1=1 " + cond.getCondition();
+		String countSql = "SELECT COUNT(1) FROM sys_user t " + cond.getCondition();
 		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
 	}
 

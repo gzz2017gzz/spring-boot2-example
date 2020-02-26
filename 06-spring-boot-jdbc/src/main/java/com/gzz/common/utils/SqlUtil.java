@@ -1,4 +1,4 @@
-package com.gzz.common.base;
+package com.gzz.common.utils;
 
 import java.text.SimpleDateFormat;
 
