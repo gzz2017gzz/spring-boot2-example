@@ -13,7 +13,7 @@ import lombok.Data;
 /**
  * @功能说明 拼加页面查询条件的基础类
  * @author https://www.jianshu.com/u/3bd57d5f1074
- * @date 2019-12-24 10:50:00
+ * @date 2020-02-02 02:20:20
  */
 @Data
 public abstract class BaseCondition {
