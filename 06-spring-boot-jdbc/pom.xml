@@ -31,7 +31,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<!-- <scope>test</scope> -->
 		</dependency>
- 		<dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
@@ -39,7 +39,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<!-- 连接低版本mysql5.1.X时驱动也要低版本 -->
-			<version>5.1.34</version>
+			<!-- <version>5.1.34</version> -->
 		</dependency>
 	</dependencies>
 	<build>

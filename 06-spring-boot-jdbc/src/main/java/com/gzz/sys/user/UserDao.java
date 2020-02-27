@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gzz.common.base.BaseDao;
 import com.gzz.common.base.Page;
-import com.gzz.common.utils.SqlUtil;
+import com.gzz.common.base.SqlUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -83,7 +83,7 @@ public class UserDao extends BaseDao {
 	 **/
 	public Page<User> queryPage(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getCondition());
+		sb.append(cond.getWhere());
 		// sb.append(cond.getOrderSql());//增加排序子句;
 		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return queryPage(sb.toString(), cond, User.class);
@@ -94,7 +94,7 @@ public class UserDao extends BaseDao {
 	 **/
 	public List<User> queryList(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getCondition());
+		sb.append(cond.getWhere());
 		// sb.append(" ORDER BY operate_time DESC");
 		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(User.class));
@@ -113,7 +113,8 @@ public class UserDao extends BaseDao {
 	 * @方法说明:按条件查询用户记录个数
 	 **/
 	public long queryCount(UserCond cond) {
-		String countSql = "SELECT COUNT(1) FROM sys_user t " + cond.getCondition();
+		String countSql = "SELECT COUNT(1) FROM sys_user t " + cond.getWhere();
+		log.info(SqlUtil.showSql(countSql, cond.getArray()));// 显示SQL语句
 		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
 	}
 

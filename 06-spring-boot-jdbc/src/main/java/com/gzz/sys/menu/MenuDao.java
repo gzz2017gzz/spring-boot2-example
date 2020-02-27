@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.gzz.common.base.BaseDao;
 import com.gzz.common.base.Page;
-import com.gzz.common.utils.SqlUtil;
+import com.gzz.common.base.SqlUtil;
 
 import lombok.extern.slf4j.Slf4j;
 

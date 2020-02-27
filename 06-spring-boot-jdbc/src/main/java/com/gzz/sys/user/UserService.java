@@ -2,8 +2,6 @@ package com.gzz.sys.user;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +15,7 @@ import com.gzz.common.base.Page;
  **/
 @Service
 public class UserService {
-	@SuppressWarnings("unused")
-	private Log logger = LogFactory.getLog(getClass());
+
 	@Autowired
 	private UserDao dao; // 注入用户数据访问层
 
@@ -34,7 +31,6 @@ public class UserService {
 	 * @方法说明:删除用户记录(多条)
 	 **/
 	public int delete(Long ids[]) {
-		// return dao.deleteLogic(ids);//逻辑删除
 		return dao.delete(ids);// 物理删除
 	}
 

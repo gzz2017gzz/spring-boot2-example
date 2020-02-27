@@ -8,8 +8,6 @@ import java.util.List;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import com.gzz.common.utils.SqlUtil;
-
 import lombok.Data;
 
 /**
@@ -126,7 +124,7 @@ public abstract class BaseCondition {
 	 * @功能 拼加条件in子句
 	 */
 	final protected void add(final List<Object> ids, final String sql) {
-		if (CollectionUtils.isEmpty(ids) && !StringUtils.isEmpty(sql)) {
+		if (!CollectionUtils.isEmpty(ids) && !StringUtils.isEmpty(sql)) {
 			condition.append(" " + sql + SqlUtil.ArrayToIn(ids.toArray()));
 			paramList.addAll(ids);
 		}

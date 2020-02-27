@@ -2,8 +2,6 @@ package com.gzz.sys.user;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +19,7 @@ import com.gzz.common.base.Page;
 @RestController
 @RequestMapping("user")
 public class UserController {
-	@SuppressWarnings("unused")
-	private final Log logger = LogFactory.getLog(getClass());
+
 	@Autowired
 	private UserService service; // 注入用户数据逻辑层
 

@@ -1,4 +1,4 @@
-package com.gzz.sys.menu;
+package com.gzz;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gzz.sys.menu.Menu;
+import com.gzz.sys.menu.MenuCond;
 
 import lombok.extern.slf4j.Slf4j;
 /**
@@ -21,10 +23,10 @@ import lombok.extern.slf4j.Slf4j;
  * @author 高振中
  * @date 2019-01-12 22:40:08
  **/
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@Slf4j
 public class MockMvcTestMenu {
  
 	@Autowired
