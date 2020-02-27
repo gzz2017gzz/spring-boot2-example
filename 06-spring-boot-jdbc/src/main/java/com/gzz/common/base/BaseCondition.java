@@ -27,7 +27,7 @@ public abstract class BaseCondition {
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(String类型)
 	 */
 	final protected void add(final String value, final String sql) {
-		if (!StringUtils.isEmpty(sql) && !StringUtils.isEmpty(value)) {
+		if (!StringUtils.isEmpty(value)) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -37,14 +37,14 @@ public abstract class BaseCondition {
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Short类型)
 	 */
 	final protected void add(final Short value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
 	}
 
 	final protected void add(final Byte value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -54,7 +54,7 @@ public abstract class BaseCondition {
 	 * @功能说明 拼加条件使用等于大于小于....运算符(String类型)
 	 */
 	final protected void add(final Float value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -65,7 +65,7 @@ public abstract class BaseCondition {
 	 */
 
 	final protected void add(final Long value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -75,7 +75,7 @@ public abstract class BaseCondition {
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Boolean类型)
 	 */
 	final protected void add(final Boolean value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -85,7 +85,7 @@ public abstract class BaseCondition {
 	 * @功能说明 拼加条件使用等于大于小于....运算符(BigDecimal类型)
 	 */
 	final protected void add(final BigDecimal value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -95,7 +95,7 @@ public abstract class BaseCondition {
 	 * @功能说明 拼加条件使用等于大于小于....运算符(Integer类型)
 	 */
 	final protected void add(final Integer value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -105,7 +105,7 @@ public abstract class BaseCondition {
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Date类型)
 	 */
 	final protected void add(final Date value, final String sql) {
-		if (value != null && !StringUtils.isEmpty(sql)) {
+		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
@@ -124,7 +124,7 @@ public abstract class BaseCondition {
 	 * @功能 拼加条件in子句
 	 */
 	final protected void add(final List<Object> ids, final String sql) {
-		if (!CollectionUtils.isEmpty(ids) && !StringUtils.isEmpty(sql)) {
+		if (!CollectionUtils.isEmpty(ids)) {
 			condition.append(" " + sql + SqlUtil.ArrayToIn(ids.toArray()));
 			paramList.addAll(ids);
 		}
@@ -134,7 +134,7 @@ public abstract class BaseCondition {
 	 * @功能说明 拼加条件使用like关键字模糊查询时
 	 */
 	final protected void add(final String value, final String sql, final int pos) {
-		if (!StringUtils.isEmpty(sql) && !StringUtils.isEmpty(value)) {
+		if (!StringUtils.isEmpty(value)) {
 			condition.append(" " + sql);
 			if (pos == 1) {
 				paramList.add("%" + value);
