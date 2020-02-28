@@ -1,12 +1,16 @@
 package com.gzz.sys.customer;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import java.util.List;
+
 //import lombok.experimental.Accessors;
 import com.gzz.common.base.BaseCondition;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * @类说明 【客户】查询条件实体
  * @author 高振中
@@ -20,11 +24,11 @@ import com.gzz.common.base.BaseCondition;
 @NoArgsConstructor
 public class CustomerCond extends BaseCondition {
 
-    /**
-     * @方法说明: 拼加自定义条件
-     **/
-    @Override
-    public void addCondition() {
+	/**
+	 * @方法说明: 拼加自定义条件
+	 **/
+	@Override
+	public void addCondition() {
 		add(id, "AND t.id = ?");
 		add(name, "AND t.name LIKE ?", 3);
 		add(tradeType, "AND t.tradeType = ?");
@@ -38,8 +42,9 @@ public class CustomerCond extends BaseCondition {
 		add(contactsOther, "AND t.contactsOther LIKE ?", 3);
 		add(phoneNo, "AND t.phoneNo LIKE ?", 3);
 		add(remark, "AND t.remark LIKE ?", 3);
-//		add(ids, "AND t.id IN ");
-    }
+		add(ids, "AND t.id IN ");
+	}
+
 //	以下为查询条件
 	private Integer id; // 主键
 	private String name; // 客户名称
@@ -54,6 +59,6 @@ public class CustomerCond extends BaseCondition {
 	private String contactsOther; // 联系人邮件
 	private String phoneNo; // 联系方式
 	private String remark; // 备注
-//	private List<Object> ids;// 主键列表
+	private List<Object> ids;// 主键列表
 //	以下为自定义查询条件
 }

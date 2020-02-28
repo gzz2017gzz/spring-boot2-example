@@ -1,13 +1,16 @@
 package com.gzz.sys.user;
 
 import java.util.Date;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import java.util.List;
+
 //import lombok.experimental.Accessors;
 import com.gzz.common.base.BaseCondition;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 /**
  * @类说明 【用户】查询条件实体
  * @author 高振中
@@ -38,7 +41,7 @@ public class UserCond extends BaseCondition {
 		add(type, "AND t.type = ?");
 		add(updateTime, "AND t.updateTime = ?");
 		add(remark, "AND t.remark LIKE ?", 3);
-//		add(ids, "AND t.id IN ");
+		add(ids, "AND t.id IN ");
     }
 //	以下为查询条件
 	private Integer id; // 主键
@@ -53,6 +56,6 @@ public class UserCond extends BaseCondition {
 	private Byte type; // 1内置2普通
 	private Date updateTime; // 修改时间
 	private String remark; // 备注
-//	private List<Object> ids;// 主键列表
+	private List<Object> ids;// 主键列表
 //	以下为自定义查询条件
 }

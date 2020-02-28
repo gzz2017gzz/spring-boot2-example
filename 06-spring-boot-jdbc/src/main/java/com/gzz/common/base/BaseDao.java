@@ -65,7 +65,7 @@ public class BaseDao {
 	/**
 	 * @方法说明:数据库中执行的SQL语句
 	 */
-	final public static String sql(String sql, final Object... obj) {
+	final protected static String sql(String sql, final Object... obj) {
 		String param;
 		for (int j = 0; null != obj && j < obj.length; j++) {
 			param = "null";
