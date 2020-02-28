@@ -112,8 +112,9 @@ public abstract class BaseCondition {
 	}
 
 	/**
-	 * @功能说明 拼加条件
+	 * @功能说明 不使用占位符直接拼SQL(不建议使用)
 	 */
+	@Deprecated
 	final protected void add(final String sql) {
 		if (null != sql && !"".equals(sql)) {
 			condition.append(" " + sql);
@@ -125,7 +126,7 @@ public abstract class BaseCondition {
 	 */
 	final protected void add(final List<Object> ids, final String sql) {
 		if (!CollectionUtils.isEmpty(ids)) {
-			condition.append(" " + sql + SqlUtil.ArrayToIn(ids.toArray()));
+			condition.append(" " + sql + SqlUtil.in(ids.toArray()));
 			paramList.addAll(ids);
 		}
 	}
@@ -157,15 +158,15 @@ public abstract class BaseCondition {
 	 * @功能说明 把一个and换成where
 	 */
 
-	final public String getWhere() {
-		return getCondition().replaceFirst("(?i)(AND)", "WHERE");
+	final public String where() {
+		return and().replaceFirst("(?i)(AND)", "WHERE");
 	}
 
 	/**
 	 * @功能说明 取条件字符串
 	 */
 
-	final public String getCondition() {
+	final public String and() {
 		condition.setLength(0); // 清除查询条件
 		paramList.clear();
 		addCondition();

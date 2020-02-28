@@ -47,7 +47,7 @@ public class MenuDao extends BaseDao {
 	 * @方法说明 物理删除菜单记录(多条)
 	 */
 	public int delete(Object ids[]) {
-		String sql = "DELETE FROM sys_menu WHERE id IN " + SqlUtil.ArrayToIn(ids);
+		String sql = "DELETE FROM sys_menu WHERE id IN " + SqlUtil.in(ids);
 		return jdbcTemplate.update(sql, ids);
 	}
 
@@ -67,7 +67,7 @@ public class MenuDao extends BaseDao {
 	 */
 	public Page<Menu> queryPage(MenuCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getWhere());
+		sb.append(cond.where());
 		// sb.append(cond.getOrderSql());//增加排序子句;
 		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return queryPage(sb.toString(), cond, Menu.class);
@@ -78,7 +78,7 @@ public class MenuDao extends BaseDao {
 	 */
 	public List<Menu> queryList(MenuCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getWhere());
+		sb.append(cond.where());
 		// sb.append(" ORDER BY operate_time DESC");
 		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(Menu.class));
 	}
@@ -88,7 +88,7 @@ public class MenuDao extends BaseDao {
 	 */
 	public Menu findById(Integer id) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(" AND t.id=?");
+		sb.append(" WHERE t.id=?");
 		return jdbcTemplate.queryForObject(sb.toString(), new Object[] { id }, new BeanPropertyRowMapper<>(Menu.class));
 	}
 
@@ -96,7 +96,7 @@ public class MenuDao extends BaseDao {
 	 * @方法说明 按条件查询菜单记录个数
 	 */
 	public long queryCount(MenuCond cond) {
-		String countSql = "SELECT COUNT(1) FROM sys_menu t " + cond.getWhere();
+		String countSql = "SELECT COUNT(1) FROM sys_menu t " + cond.where();
 		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
 	}
 
@@ -104,7 +104,7 @@ public class MenuDao extends BaseDao {
 	 * @方法说明 逻辑删除菜单记录
 	 */
 	public int deleteLogic(Object ids[]) {
-		String sql = "UPDATE sys_menu SET delete_remark=1 WHERE id IN " + SqlUtil.ArrayToIn(ids);
+		String sql = "UPDATE sys_menu SET delete_remark=1 WHERE id IN " + SqlUtil.in(ids);
 		return jdbcTemplate.update(sql, ids);
 	}
 

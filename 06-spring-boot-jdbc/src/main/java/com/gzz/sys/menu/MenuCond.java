@@ -1,12 +1,13 @@
 package com.gzz.sys.menu;
+import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.gzz.common.base.BaseCondition;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-//import lombok.experimental.Accessors;
-import com.gzz.common.base.BaseCondition;
+import lombok.Setter;
 /**
  * @类说明 [菜单]查询条件实体
  * @author 高振中
@@ -14,7 +15,6 @@ import com.gzz.common.base.BaseCondition;
  **/
 @Setter
 @Getter
-//@Accessors(chain = true)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,7 +34,7 @@ public class MenuCond extends BaseCondition {
 		add(path, "AND t.path LIKE ?", 3);
 		add(orderNum, "AND t.orderNum = ?");
 		add(remark, "AND t.remark LIKE ?", 3);
-//		add(ids, "AND t.id IN ");
+ 		add(ids, "AND t.id IN ");
     }
 //	以下为查询条件
 	private Integer id; // 主键
@@ -46,6 +46,6 @@ public class MenuCond extends BaseCondition {
 	private String path; // 路径
 	private Integer orderNum; // 排序编号
 	private String remark; // 备注
-//	private List<Object> ids;// 主键列表
+	private List<Object> ids;// 主键列表
 //	以下为自定义查询条件
 }

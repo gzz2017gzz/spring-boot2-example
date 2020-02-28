@@ -33,7 +33,7 @@ public final class SqlUtil {
 	/**
 	 * @方法说明 把组数拼接成(?,?,?,?,?,?,?,?)的形式
 	 */
-	public static final String ArrayToIn(final Object ids[]) {
+	public static final String in(final Object ids[]) {
 //		if (ids == null || ids.length < 1) {
 //			log.error("》》》数组条件的长度为0,拼加条件失败");
 //			throw new RuntimeException("数组条件的长度为0,拼加条件失败");

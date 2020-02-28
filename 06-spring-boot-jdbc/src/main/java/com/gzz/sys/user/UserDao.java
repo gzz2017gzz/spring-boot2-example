@@ -63,7 +63,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明:物理删除用户记录(多条)
 	 **/
 	public int delete(Object ids[]) {
-		String sql = "DELETE FROM sys_user WHERE id IN " + SqlUtil.ArrayToIn(ids);
+		String sql = "DELETE FROM sys_user WHERE id IN " + SqlUtil.in(ids);
 		return jdbcTemplate.update(sql, ids);
 	}
 
@@ -83,7 +83,7 @@ public class UserDao extends BaseDao {
 	 **/
 	public Page<User> queryPage(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getWhere());
+		sb.append(cond.where());
 		// sb.append(cond.getOrderSql());//增加排序子句;
 		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return queryPage(sb.toString(), cond, User.class);
@@ -94,7 +94,7 @@ public class UserDao extends BaseDao {
 	 **/
 	public List<User> queryList(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getWhere());
+		sb.append(cond.where());
 		// sb.append(" ORDER BY operate_time DESC");
 		log.info(SqlUtil.showSql(sb.toString(), cond.getArray()));// 显示SQL语句
 		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(User.class));
@@ -105,7 +105,7 @@ public class UserDao extends BaseDao {
 	 **/
 	public User findById(Long id) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(" AND t.id=?");
+		sb.append(" WHERE t.id=?");
 		return jdbcTemplate.queryForObject(sb.toString(), new Object[] { id }, new BeanPropertyRowMapper<>(User.class));
 	}
 
@@ -113,7 +113,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明:按条件查询用户记录个数
 	 **/
 	public long queryCount(UserCond cond) {
-		String countSql = "SELECT COUNT(1) FROM sys_user t " + cond.getWhere();
+		String countSql = "SELECT COUNT(1) FROM sys_user t " + cond.where();
 		log.info(SqlUtil.showSql(countSql, cond.getArray()));// 显示SQL语句
 		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
 	}
@@ -122,7 +122,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明:逻辑删除用户记录(多条)
 	 **/
 	public int deleteLogic(Long ids[]) {
-		String sql = "UPDATE sys_user SET delete_remark=1 WHERE id IN " + SqlUtil.ArrayToIn(ids);
+		String sql = "UPDATE sys_user SET delete_remark=1 WHERE id IN " + SqlUtil.in(ids);
 		return jdbcTemplate.update(sql);
 	}
 }

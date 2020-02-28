@@ -35,8 +35,13 @@ public class BaseDao {
 		int pageSize = cond.getSize();
 		int curPage = cond.getPage();
 		int pageCount = rowCount % pageSize == 0 ? rowCount / pageSize : rowCount / pageSize + 1;
-		String listSql = sql + " LIMIT " + curPage * pageSize + "," + pageSize;
-		List<T> dataList = jdbcTemplate.query(listSql.toString(), cond.getArray(), new BeanPropertyRowMapper<T>(clazz));
+		StringBuffer listSQL = new StringBuffer();
+		listSQL.append(sql);
+		listSQL.append(" LIMIT ");
+		listSQL.append(curPage * pageSize);
+		listSQL.append(",");
+		listSQL.append(pageSize);
+		List<T> dataList = jdbcTemplate.query(listSQL.toString(), cond.getArray(), new BeanPropertyRowMapper<T>(clazz));
 		return new Page<T>(dataList, pageSize, rowCount, curPage, pageCount);
 	}
 
