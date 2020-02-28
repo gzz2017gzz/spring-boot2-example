@@ -1,4 +1,4 @@
-package com.gzz.sys.customer;
+package com.gzz;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -13,6 +13,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 //import org.springframework.test.web.servlet.MvcResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gzz.sys.customer.Customer;
+import com.gzz.sys.customer.CustomerCond;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**

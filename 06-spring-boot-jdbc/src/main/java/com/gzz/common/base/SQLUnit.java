@@ -10,10 +10,8 @@ public final class SQLUnit {
 	 * @方法说明 把组数拼接成(?,?,?)的形式
 	 */
 	final public static String toIn(final Object ids[]) {
-//		if (ids == null || ids.length < 1) {
+//		if (ids == null || ids.length < 1) 
 //			log.error("》》》数组条件的长度为0,拼加条件失败");
-//			throw new RuntimeException("数组条件的长度为0,拼加条件失败");
-//		}
 		StringBuffer sb = new StringBuffer(" (?");
 		for (int i = 1; i < ids.length; i++) {
 			sb.append(",?");

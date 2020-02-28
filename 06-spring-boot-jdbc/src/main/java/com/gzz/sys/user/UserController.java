@@ -1,81 +1,91 @@
 package com.gzz.sys.user;
+import java.util.stream.Collectors;
 
-import java.util.List;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gzz.common.base.Page;
+import com.gzz.common.config.Result;
 
 /**
- * @类说明:用户数据控制器层
- * @author https://www.jianshu.com/u/3bd57d5f1074
- * @date 2019-12-24 10:50:00
+ * @类说明 【用户】控制器
+ * @author 高振中
+ * @date 2020-02-28 15:14:25
  **/
+//@Slf4j
 @RestController
 @RequestMapping("user")
 public class UserController {
-
+ 
 	@Autowired
-	private UserService service; // 注入用户数据逻辑层
+	private UserService service; //注入用户业务逻辑层
 
-	/**
-	 * @方法说明:新增用户记录
-	 **/
+    /**
+     * @方法说明  新增【用户】记录
+     */
 	@PostMapping("save")
-	public int save(@RequestBody User user) {
-		return service.save(user);
+	public Result save(@RequestBody @Valid User user, BindingResult result) {
+		if (result.hasErrors()) {
+			return Result.error(1, "验证失败！", result.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
+		}
+		return Result.success(service.save(user));
 	}
 
-	/**
-	 * @方法说明:删除用户记录(多条)
-	 **/
+    /**
+     * @方法说明 删除【用户】记录
+     */
 	@PostMapping("delete")
-	public int delete(@RequestParam("ids[]") Long ids[]) {
-		return service.delete(ids);
+	public Result delete(Integer ids[]) {
+		return Result.success(service.delete(ids));
 	}
 
-	/**
-	 * @方法说明:修改用户记录
-	 **/
+    /**
+     * @方法说明 修改【用户】记录
+     */
 	@PostMapping("update")
-	public int update(@RequestBody User user) {
-		return service.update(user);
+	public Result update(@RequestBody @Valid User user, BindingResult result) {
+		if (result.hasErrors()) {
+			return Result.error(1, "验证失败！", result.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
+		}
+		return Result.success(service.update(user));
 	}
 
-	/**
-	 * @方法说明:按条件查询分页用户列表
-	 **/
+    /**
+     * @方法说明 按条件查询分页【用户】列表
+     */
 	@PostMapping("queryPage")
-	public Page<User> queryPage(@RequestBody UserCond cond) {
-		return service.queryPage(cond);
+	public Result queryPage(@RequestBody UserCond cond ){
+		return Result.success(service.queryPage(cond));
 	}
 
-	/**
-	 * @方法说明:按条件查询不分页用户列表
-	 **/
+    /**
+     * @方法说明 按条件查询不分页【用户】列表
+     */
 	@PostMapping("queryList")
-	public List<User> queryList(@RequestBody UserCond cond) {
-		return service.queryList(cond);
+	public Result queryList(@RequestBody UserCond cond ){
+		return Result.success(service.queryList(cond));
 	}
 
-	/**
-	 * @方法说明:按主键查单个用户记录
-	 **/
+    /**
+     * @方法说明 按主键查单个【用户】记录
+     */
 	@PostMapping("findById")
-	public User findById(@RequestParam("id") Long id) {
-		return service.findById(id);
+	public Result findById(@RequestParam("id") Integer id) {
+		return Result.success(service.findById(id));
 	}
 
-	/**
-	 * @方法说明:按条件查询用户记录个数
-	 **/
+    /**
+     * @方法说明 按条件查询【用户】记录个数
+     */
 	@PostMapping("queryCount")
-	public long queryCount(@RequestBody UserCond cond) {
-		return service.queryCount(cond);
+	public Result queryCount(@RequestBody UserCond cond ){
+		return Result.success(service.queryCount(cond));
 	}
 }

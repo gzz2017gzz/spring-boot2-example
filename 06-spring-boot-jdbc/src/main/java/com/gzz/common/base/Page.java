@@ -3,14 +3,16 @@ package com.gzz.common.base;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @功能描述 分页数据
  * @author https://www.jianshu.com/u/3bd57d5f1074
  * @date 2020-02-02 02:20:20
  */
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 public class Page<T> {
 	private List<T> dataList; /* 数据列表 */
