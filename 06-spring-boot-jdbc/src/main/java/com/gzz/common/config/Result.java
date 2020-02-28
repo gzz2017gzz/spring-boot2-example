@@ -1,4 +1,4 @@
-package com.gzz.common.utils;
+package com.gzz.common.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

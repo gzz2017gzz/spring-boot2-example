@@ -1,5 +1,6 @@
 package com.gzz.common.base;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,5 +60,27 @@ public class BaseDao {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		nameJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(t), keyHolder, new String[] { id });
 		return keyHolder.getKey().longValue();
+	}
+
+	/**
+	 * @方法说明:数据库中执行的SQL语句
+	 */
+	final public static String sql(String sql, final Object... obj) {
+		String param;
+		for (int j = 0; null != obj && j < obj.length; j++) {
+			param = "null";
+			if (null != obj[j]) {
+				String cname = obj[j].getClass().getName();
+				if (cname.contains("Date") || cname.contains("Timestamp")) {
+					param = "'" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(obj[j]) + "'";
+				} else if (cname.contains("String")) {
+					param = "'" + (String) obj[j] + "'";
+				} else {
+					param = obj[j].toString();
+				}
+			}
+			sql = sql.replaceFirst("[?]", param);
+		}
+		return sql;
 	}
 }

@@ -126,7 +126,7 @@ public abstract class BaseCondition {
 	 */
 	final protected void add(final List<Object> ids, final String sql) {
 		if (!CollectionUtils.isEmpty(ids)) {
-			condition.append(" " + sql + SqlUtil.in(ids.toArray()));
+			condition.append(" " + sql + SQLUnit.toIn(ids.toArray()));
 			paramList.addAll(ids);
 		}
 	}
