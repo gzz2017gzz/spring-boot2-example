@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @类说明 【用户】数据访问层
  * @author 高振中
- * @date 2020-02-28 15:14:25
+ * @date 2020-03-02 23:40:53
  **/
 @Slf4j
 @Repository
@@ -23,13 +23,10 @@ public class UserDao extends BaseDao{
      * @方法说明 构造方法-拼加SQL
      */
     public UserDao() {
-    	select.append("SELECT t.id,t.customerId,t.name,t.loginName,t.password,t.email,t.phoneNo,t.status,t.createTime,t.type,"); 
-		select.append("t.updateTime,t.remark");
+    	select.append("SELECT t.id,t.name,t.birthday,t.gender");
     	select.append(" FROM sys_user t ");
-    	//insert.append("INSERT INTO sys_user (id,customerId,name,loginName,password,email,phoneNo,status,createTime,type,"); 
-		//insert.append("updateTime,remark) ");
-    	//insert.append(" VALUES (:id,:customerId,:name,:loginName,:password,:email,:phoneNo,:status,:createTime,:type,"); 
-		//insert.append(":updateTime,:remark)");
+    	//insert.append("INSERT INTO sys_user (id,name,birthday,gender) ");
+    	//insert.append(" VALUES (:id,:name,:birthday,:gender)");
     }
 
     /**
@@ -37,11 +34,9 @@ public class UserDao extends BaseDao{
      */
     public int save(User vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO sys_user (id,customerId,name,loginName,password,email,phoneNo,status,createTime,type,"); 
-		sql.append("updateTime,remark)");
-        sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-        Object[] params ={ vo.getId(),vo.getCustomerId(),vo.getName(),vo.getLoginName(),vo.getPassword(),vo.getEmail(),vo.getPhoneNo(),vo.getStatus(),vo.getCreateTime(),vo.getType(),//太长换行 
-		vo.getUpdateTime(),vo.getRemark() };
+        sql.append("INSERT INTO sys_user (id,name,birthday,gender)");
+        sql.append(" VALUES (?,?,?,?)");
+        Object[] params ={ vo.getId(),vo.getName(),vo.getBirthday(),vo.getGender() };
         //log.info(super.sql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
     }
@@ -51,6 +46,7 @@ public class UserDao extends BaseDao{
      */
     public int delete(Object ids[]) {
         String sql = "DELETE FROM sys_user WHERE id IN" + SQLUnit.toIn(ids);
+        //log.info(super.sql(sql, ids));//显示SQL语句
         return jdbcTemplate.update(sql,ids);
     }
     
@@ -59,49 +55,51 @@ public class UserDao extends BaseDao{
      */
     public int update(User vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE sys_user SET customerId=?,name=?,loginName=?,password=?,email=?,phoneNo=?,status=?,createTime=?,type=?,updateTime=?,"); 
-		sql.append("remark=?");
+        sql.append("UPDATE sys_user SET name=?,birthday=?,gender=?");
         sql.append(" WHERE id=? ");
-        Object[] params = {vo.getCustomerId(),vo.getName(),vo.getLoginName(),vo.getPassword(),vo.getEmail(),vo.getPhoneNo(),vo.getStatus(),vo.getCreateTime(),vo.getType(),vo.getUpdateTime(),//太长换行 
-		vo.getRemark(),vo.getId()};
+        Object[] params = {vo.getName(),vo.getBirthday(),vo.getGender(),vo.getId()};
+        //log.info(super.sql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
       }
 
     /**
      * @方法说明 按条件查询分页【用户】列表
      */
-    public Page<User> queryPage(UserCond cond) {
-        StringBuilder sb = new StringBuilder(select);
-        sb.append(cond.where());
-        log.info(super.sql(sb.toString(),cond.getArray()));//显示SQL语句
-        return queryPage(sb.toString(), cond, User.class);
+    public Page<User> page(UserCond cond) {
+        StringBuilder sql = new StringBuilder(select);
+        sql.append(cond.where());
+        log.info(super.sql(sql.toString(),cond.array()));//显示SQL语句
+        return queryPage(sql.toString(), cond, User.class);
     }
     
     /**
      * @方法说明 按条件查询不分页【用户】列表
      */
-    public List<User> queryList(UserCond cond) {
-    	StringBuilder sb = new StringBuilder(select);
-    	sb.append(cond.where());
-    	//sb.append(" ORDER BY id DESC");
-    	return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(User.class));
+    public List<User> list(UserCond cond) {
+    	StringBuilder sql = new StringBuilder(select);
+    	sql.append(cond.where());
+    	sql.append(" ORDER BY id DESC");
+    	//log.info(super.sql(sql.toString(),cond.array()));//显示SQL语句
+    	return jdbcTemplate.query(sql.toString(), cond.array(), new BeanPropertyRowMapper<>(User.class));
     }
     
     /**
      * @方法说明 按ID查找单个【用户】实体
      */
-	public User findById(Integer id) {
-		StringBuilder sb = new StringBuilder(select);
-		sb.append(" WHERE t.id=?");
-		return jdbcTemplate.queryForObject(sb.toString(), new BeanPropertyRowMapper<>(User.class),id);
+	public User findById(Long id) {
+		StringBuilder sql = new StringBuilder(select);
+		sql.append(" WHERE t.id=?");
+		//log.info(super.sql(sql.toString(),id));//显示SQL语句
+		return jdbcTemplate.queryForObject(sql.toString(), new BeanPropertyRowMapper<>(User.class), id);
 	}
     
     /**
      * @方法说明 按条件查询【用户】记录个数
      */
-	public long queryCount(UserCond cond) {
-		String countSql = "SELECT COUNT(1) FROM sys_user t " + cond.where();
-		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
+	public int count(UserCond cond) {
+		String sql = "SELECT COUNT(1) FROM sys_user t " + cond.where();
+		//log.info(super.sql(sql,cond.array()));//显示SQL语句
+		return jdbcTemplate.queryForObject(sql, cond.array(), Integer.class);
 	}
     
     /**

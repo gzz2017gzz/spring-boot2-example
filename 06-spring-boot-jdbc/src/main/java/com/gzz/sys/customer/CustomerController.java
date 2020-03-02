@@ -17,7 +17,7 @@ import com.gzz.common.config.Result;
 /**
  * @类说明 【客户】控制器
  * @author 高振中
- * @date 2020-02-28 14:34:06
+ * @date 2020-03-02 23:38:39
  **/
 //@Slf4j
 @RestController
@@ -25,7 +25,7 @@ import com.gzz.common.config.Result;
 public class CustomerController {
  
 	@Autowired
-	private CustomerService service; //注入客户业务逻辑层
+	private CustomerService customerService; //注入【客户】业务逻辑层
 
     /**
      * @方法说明  新增【客户】记录
@@ -35,7 +35,7 @@ public class CustomerController {
 		if (result.hasErrors()) {
 			return Result.error(1, "验证失败！", result.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
 		}
-		return Result.success(service.save(customer));
+		return Result.success(customerService.save(customer));
 	}
 
     /**
@@ -43,7 +43,7 @@ public class CustomerController {
      */
 	@PostMapping("delete")
 	public Result delete(Integer ids[]) {
-		return Result.success(service.delete(ids));
+		return Result.success(customerService.delete(ids));
 	}
 
     /**
@@ -54,23 +54,23 @@ public class CustomerController {
 		if (result.hasErrors()) {
 			return Result.error(1, "验证失败！", result.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
 		}
-		return Result.success(service.update(customer));
+		return Result.success(customerService.update(customer));
 	}
 
     /**
      * @方法说明 按条件查询分页【客户】列表
      */
-	@PostMapping("queryPage")
-	public Result queryPage(@RequestBody CustomerCond cond ){
-		return Result.success(service.queryPage(cond));
+	@PostMapping("page")
+	public Result page(@RequestBody CustomerCond cond ){
+		return Result.success(customerService.page(cond));
 	}
 
     /**
      * @方法说明 按条件查询不分页【客户】列表
      */
-	@PostMapping("queryList")
-	public Result queryList(@RequestBody CustomerCond cond ){
-		return Result.success(service.queryList(cond));
+	@PostMapping("list")
+	public Result list(@RequestBody CustomerCond cond ){
+		return Result.success(customerService.list(cond));
 	}
 
     /**
@@ -78,14 +78,14 @@ public class CustomerController {
      */
 	@PostMapping("findById")
 	public Result findById(@RequestParam("id") Integer id) {
-		return Result.success(service.findById(id));
+		return Result.success(customerService.findById(id));
 	}
 
     /**
      * @方法说明 按条件查询【客户】记录个数
      */
-	@PostMapping("queryCount")
-	public Result queryCount(@RequestBody CustomerCond cond ){
-		return Result.success(service.queryCount(cond));
+	@PostMapping("count")
+	public Result count(@RequestBody CustomerCond cond ){
+		return Result.success(customerService.count(cond));
 	}
 }

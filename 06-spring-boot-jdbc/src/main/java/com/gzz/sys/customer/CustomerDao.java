@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @类说明 【客户】数据访问层
  * @author 高振中
- * @date 2020-02-28 14:34:06
+ * @date 2020-03-02 23:38:39
  **/
 @Slf4j
 @Repository
@@ -51,6 +51,7 @@ public class CustomerDao extends BaseDao{
      */
     public int delete(Object ids[]) {
         String sql = "DELETE FROM sys_customer WHERE id IN" + SQLUnit.toIn(ids);
+        //log.info(super.sql(sql, ids));//显示SQL语句
         return jdbcTemplate.update(sql,ids);
     }
     
@@ -64,44 +65,48 @@ public class CustomerDao extends BaseDao{
         sql.append(" WHERE id=? ");
         Object[] params = {vo.getName(),vo.getTradeType(),vo.getTitle(),vo.getAddress(),vo.getUrl(),vo.getContacts(),vo.getContactsJob(),vo.getContactsTel(),vo.getContactsMail(),vo.getContactsOther(),//太长换行 
 		vo.getPhoneNo(),vo.getRemark(),vo.getId()};
+        //log.info(super.sql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
       }
 
     /**
      * @方法说明 按条件查询分页【客户】列表
      */
-    public Page<Customer> queryPage(CustomerCond cond) {
-        StringBuilder sb = new StringBuilder(select);
-        sb.append(cond.where());
-        log.info(super.sql(sb.toString(),cond.getArray()));//显示SQL语句
-        return queryPage(sb.toString(), cond, Customer.class);
+    public Page<Customer> page(CustomerCond cond) {
+        StringBuilder sql = new StringBuilder(select);
+        sql.append(cond.where());
+        log.info(super.sql(sql.toString(),cond.array()));//显示SQL语句
+        return queryPage(sql.toString(), cond, Customer.class);
     }
     
     /**
      * @方法说明 按条件查询不分页【客户】列表
      */
-    public List<Customer> queryList(CustomerCond cond) {
-    	StringBuilder sb = new StringBuilder(select);
-    	sb.append(cond.where());
-    	//sb.append(" ORDER BY id DESC");
-    	return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(Customer.class));
+    public List<Customer> list(CustomerCond cond) {
+    	StringBuilder sql = new StringBuilder(select);
+    	sql.append(cond.where());
+    	sql.append(" ORDER BY id DESC");
+    	//log.info(super.sql(sql.toString(),cond.array()));//显示SQL语句
+    	return jdbcTemplate.query(sql.toString(), cond.array(), new BeanPropertyRowMapper<>(Customer.class));
     }
     
     /**
      * @方法说明 按ID查找单个【客户】实体
      */
 	public Customer findById(Integer id) {
-		StringBuilder sb = new StringBuilder(select);
-		sb.append(" WHERE t.id=?");
-		return jdbcTemplate.queryForObject(sb.toString(), new BeanPropertyRowMapper<>(Customer.class),id);
+		StringBuilder sql = new StringBuilder(select);
+		sql.append(" WHERE t.id=?");
+		//log.info(super.sql(sql.toString(),id));//显示SQL语句
+		return jdbcTemplate.queryForObject(sql.toString(), new BeanPropertyRowMapper<>(Customer.class), id);
 	}
     
     /**
      * @方法说明 按条件查询【客户】记录个数
      */
-	public long queryCount(CustomerCond cond) {
-		String countSql = "SELECT COUNT(1) FROM sys_customer t " + cond.where();
-		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
+	public int count(CustomerCond cond) {
+		String sql = "SELECT COUNT(1) FROM sys_customer t " + cond.where();
+		//log.info(super.sql(sql,cond.array()));//显示SQL语句
+		return jdbcTemplate.queryForObject(sql, cond.array(), Integer.class);
 	}
     
     /**

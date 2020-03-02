@@ -3,7 +3,6 @@ package com.gzz;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 //import org.springframework.test.web.servlet.MvcResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gzz.sys.user.User;
@@ -40,17 +38,9 @@ public class MockMvcTestUser {
 	public void save() throws Exception {
  		User user = User.builder()
  		//.id("gaozz") // 设置【主键】的值
- 		//.customerId("gaozz") // 设置【客户主键】的值
- 		//.name("gaozz") // 设置【用户名】的值
- 		//.loginName("gaozz") // 设置【登录名】的值
- 		//.password("gaozz") // 设置【密码】的值
- 		//.email("gaozz") // 设置【邮箱】的值
- 		//.phoneNo("gaozz") // 设置【手机号】的值
- 		//.status("gaozz") // 设置【1启用0禁用】的值
- 		//.createTime("gaozz") // 设置【创建时间】的值
- 		//.type("gaozz") // 设置【1内置2普通】的值
- 		//.updateTime("gaozz") // 设置【修改时间】的值
- 		//.remark("gaozz") // 设置【备注】的值
+ 		//.name("gaozz") // 设置【姓名】的值
+ 		//.birthday("gaozz") // 设置【生日】的值
+ 		//.gender("gaozz") // 设置【性别】的值
  		.build();
 		log.info(doRequest("/user/save", user));
 	}
@@ -61,17 +51,9 @@ public class MockMvcTestUser {
 	public void queryList() throws Exception {
 		UserCond cond = UserCond.builder()
  		//.id("gaozz")  // 设置查询条件【主键】的值
- 		//.customerId("gaozz")  // 设置查询条件【客户主键】的值
- 		//.name("gaozz")  // 设置查询条件【用户名】的值
- 		//.loginName("gaozz")  // 设置查询条件【登录名】的值
- 		//.password("gaozz")  // 设置查询条件【密码】的值
- 		//.email("gaozz")  // 设置查询条件【邮箱】的值
- 		//.phoneNo("gaozz")  // 设置查询条件【手机号】的值
- 		//.status("gaozz")  // 设置查询条件【1启用0禁用】的值
- 		//.createTime("gaozz")  // 设置查询条件【创建时间】的值
- 		//.type("gaozz")  // 设置查询条件【1内置2普通】的值
- 		//.updateTime("gaozz")  // 设置查询条件【修改时间】的值
- 		//.remark("gaozz")  // 设置查询条件【备注】的值
+ 		//.name("gaozz")  // 设置查询条件【姓名】的值
+ 		//.birthday("gaozz")  // 设置查询条件【生日】的值
+ 		//.gender("gaozz")  // 设置查询条件【性别】的值
 		.build();
 		log.info(doRequest("/user/queryList", cond));
 	}
@@ -82,17 +64,9 @@ public class MockMvcTestUser {
 	public void queryPage() throws Exception {
 		UserCond cond = UserCond.builder()
  		//.id("gaozz")  // 设置查询条件【主键】的值
- 		//.customerId("gaozz")  // 设置查询条件【客户主键】的值
- 		//.name("gaozz")  // 设置查询条件【用户名】的值
- 		//.loginName("gaozz")  // 设置查询条件【登录名】的值
- 		//.password("gaozz")  // 设置查询条件【密码】的值
- 		//.email("gaozz")  // 设置查询条件【邮箱】的值
- 		//.phoneNo("gaozz")  // 设置查询条件【手机号】的值
- 		//.status("gaozz")  // 设置查询条件【1启用0禁用】的值
- 		//.createTime("gaozz")  // 设置查询条件【创建时间】的值
- 		//.type("gaozz")  // 设置查询条件【1内置2普通】的值
- 		//.updateTime("gaozz")  // 设置查询条件【修改时间】的值
- 		//.remark("gaozz")  // 设置查询条件【备注】的值
+ 		//.name("gaozz")  // 设置查询条件【姓名】的值
+ 		//.birthday("gaozz")  // 设置查询条件【生日】的值
+ 		//.gender("gaozz")  // 设置查询条件【性别】的值
 		.build();
 		cond.setPage(0); //当前页
 		cond.setSize(10); //页大小

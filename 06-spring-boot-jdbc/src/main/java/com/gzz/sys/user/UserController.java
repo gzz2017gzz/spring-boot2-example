@@ -17,7 +17,7 @@ import com.gzz.common.config.Result;
 /**
  * @类说明 【用户】控制器
  * @author 高振中
- * @date 2020-02-28 15:14:25
+ * @date 2020-03-02 23:40:53
  **/
 //@Slf4j
 @RestController
@@ -25,7 +25,7 @@ import com.gzz.common.config.Result;
 public class UserController {
  
 	@Autowired
-	private UserService service; //注入用户业务逻辑层
+	private UserService userService; //注入【用户】业务逻辑层
 
     /**
      * @方法说明  新增【用户】记录
@@ -35,15 +35,15 @@ public class UserController {
 		if (result.hasErrors()) {
 			return Result.error(1, "验证失败！", result.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
 		}
-		return Result.success(service.save(user));
+		return Result.success(userService.save(user));
 	}
 
     /**
      * @方法说明 删除【用户】记录
      */
 	@PostMapping("delete")
-	public Result delete(Integer ids[]) {
-		return Result.success(service.delete(ids));
+	public Result delete(Long ids[]) {
+		return Result.success(userService.delete(ids));
 	}
 
     /**
@@ -54,38 +54,38 @@ public class UserController {
 		if (result.hasErrors()) {
 			return Result.error(1, "验证失败！", result.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
 		}
-		return Result.success(service.update(user));
+		return Result.success(userService.update(user));
 	}
 
     /**
      * @方法说明 按条件查询分页【用户】列表
      */
-	@PostMapping("queryPage")
-	public Result queryPage(@RequestBody UserCond cond ){
-		return Result.success(service.queryPage(cond));
+	@PostMapping("page")
+	public Result page(@RequestBody UserCond cond ){
+		return Result.success(userService.page(cond));
 	}
 
     /**
      * @方法说明 按条件查询不分页【用户】列表
      */
-	@PostMapping("queryList")
-	public Result queryList(@RequestBody UserCond cond ){
-		return Result.success(service.queryList(cond));
+	@PostMapping("list")
+	public Result list(@RequestBody UserCond cond ){
+		return Result.success(userService.list(cond));
 	}
 
     /**
      * @方法说明 按主键查单个【用户】记录
      */
 	@PostMapping("findById")
-	public Result findById(@RequestParam("id") Integer id) {
-		return Result.success(service.findById(id));
+	public Result findById(@RequestParam("id") Long id) {
+		return Result.success(userService.findById(id));
 	}
 
     /**
      * @方法说明 按条件查询【用户】记录个数
      */
-	@PostMapping("queryCount")
-	public Result queryCount(@RequestBody UserCond cond ){
-		return Result.success(service.queryCount(cond));
+	@PostMapping("count")
+	public Result count(@RequestBody UserCond cond ){
+		return Result.success(userService.count(cond));
 	}
 }

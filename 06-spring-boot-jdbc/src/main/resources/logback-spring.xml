@@ -21,6 +21,7 @@
 			<pattern>${default-pattern}</pattern>
 		</encoder>
 	</appender>
+	<logger name="springfox.documentation" level="OFF" />
 	<root level="info">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />

@@ -1,6 +1,7 @@
 package com.gzz.common.base;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class BaseDao {
 	final protected <T, C extends BaseCondition> Page<T> queryPage(final String sql, C cond, final Class<T> clazz) {
 //		String countSQL = "SELECT count(1) FROM (" + sql + ") t";
 		String countSQL = sql.replaceAll("(?i)(SELECT)(.*)(?i)(FROM)", "$1 count(1) $3");// 高效不支持嵌套
-		int rowCount = jdbcTemplate.queryForObject(countSQL, cond.getArray(), Integer.class);
+		int rowCount = jdbcTemplate.queryForObject(countSQL, cond.array(), Integer.class);
 		int pageSize = cond.getSize();
 		int curPage = cond.getPage();
 		int pageCount = rowCount % pageSize == 0 ? rowCount / pageSize : rowCount / pageSize + 1;
@@ -42,7 +43,7 @@ public class BaseDao {
 		listSQL.append(curPage * pageSize);
 		listSQL.append(",");
 		listSQL.append(pageSize);
-		List<T> dataList = jdbcTemplate.query(listSQL.toString(), cond.getArray(), new BeanPropertyRowMapper<T>(clazz));
+		List<T> dataList = jdbcTemplate.query(listSQL.toString(), cond.array(), new BeanPropertyRowMapper<T>(clazz));
 		return new Page<T>(dataList, pageSize, rowCount, curPage, pageCount);
 	}
 
@@ -70,10 +71,10 @@ public class BaseDao {
 		for (int j = 0; null != obj && j < obj.length; j++) {
 			param = "null";
 			if (null != obj[j]) {
-				String cname = obj[j].getClass().getName();
-				if (cname.contains("Date") || cname.contains("Timestamp")) {
+
+				if (obj[j] instanceof Date) {
 					param = "'" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(obj[j]) + "'";
-				} else if (cname.contains("String")) {
+				} else if (obj[j] instanceof String) {
 					param = "'" + (String) obj[j] + "'";
 				} else {
 					param = obj[j].toString();

@@ -8,14 +8,11 @@ import java.util.List;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import lombok.Data;
-
 /**
  * @功能说明 拼加页面查询条件的基础类
  * @author https://www.jianshu.com/u/3bd57d5f1074
  * @date 2020-02-02 02:20:20
  */
-@Data
 public abstract class BaseCondition {
 
 	private static final List<Object> paramList = new ArrayList<>();// 参数值
@@ -26,7 +23,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(String类型)
 	 */
-	final protected void add(final String value, final String sql) {
+	final protected void add(final String sql, final String value) {
 		if (!StringUtils.isEmpty(value)) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -36,14 +33,14 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Short类型)
 	 */
-	final protected void add(final Short value, final String sql) {
+	final protected void add(final String sql, final Short value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
 		}
 	}
 
-	final protected void add(final Byte value, final String sql) {
+	final protected void add(final String sql, final Byte value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -53,7 +50,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明 拼加条件使用等于大于小于....运算符(String类型)
 	 */
-	final protected void add(final Float value, final String sql) {
+	final protected void add(final String sql, final Float value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -64,7 +61,7 @@ public abstract class BaseCondition {
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Long类型)
 	 */
 
-	final protected void add(final Long value, final String sql) {
+	final protected void add(final String sql, final Long value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -74,7 +71,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Boolean类型)
 	 */
-	final protected void add(final Boolean value, final String sql) {
+	final protected void add(final String sql, final Boolean value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -84,7 +81,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明 拼加条件使用等于大于小于....运算符(BigDecimal类型)
 	 */
-	final protected void add(final BigDecimal value, final String sql) {
+	final protected void add(final String sql, final BigDecimal value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -94,7 +91,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明 拼加条件使用等于大于小于....运算符(Integer类型)
 	 */
-	final protected void add(final Integer value, final String sql) {
+	final protected void add(final String sql, final Integer value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -104,7 +101,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Date类型)
 	 */
-	final protected void add(final Date value, final String sql) {
+	final protected void add(final String sql, final Date value) {
 		if (value != null) {
 			condition.append(" " + sql);
 			paramList.add(value);
@@ -114,7 +111,6 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明 不使用占位符直接拼SQL(不建议使用)
 	 */
-	@Deprecated
 	final protected void add(final String sql) {
 		if (null != sql && !"".equals(sql)) {
 			condition.append(" " + sql);
@@ -124,7 +120,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能 拼加条件in子句
 	 */
-	final protected void add(final List<Object> ids, final String sql) {
+	final protected void add(final String sql, final List<Object> ids) {
 		if (!CollectionUtils.isEmpty(ids)) {
 			condition.append(" " + sql + SQLUnit.toIn(ids.toArray()));
 			paramList.addAll(ids);
@@ -134,7 +130,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明 拼加条件使用like关键字模糊查询时
 	 */
-	final protected void add(final String value, final String sql, final int pos) {
+	final protected void add(final String sql, final String value, final int pos) {
 		if (!StringUtils.isEmpty(value)) {
 			condition.append(" " + sql);
 			if (pos == 1) {
@@ -150,7 +146,7 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明 将List转为数组
 	 */
-	final public Object[] getArray() {
+	final public Object[] array() {
 		return paramList.toArray();
 	}
 
@@ -177,5 +173,21 @@ public abstract class BaseCondition {
 	 * @功能说明 拼加条件方法
 	 */
 	public abstract void addCondition();
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
 
 }

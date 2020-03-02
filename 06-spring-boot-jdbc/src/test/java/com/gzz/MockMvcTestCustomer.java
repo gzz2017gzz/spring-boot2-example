@@ -3,6 +3,8 @@ package com.gzz;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.assertj.core.util.Arrays;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +31,9 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 public class MockMvcTestCustomer {
 	@Autowired
-	private ObjectMapper mapper;
-	@Autowired
 	private MockMvc mvc;
+	@Autowired
+	private ObjectMapper mapper;
 
 	/**
 	 * @方法说明 测试 新增【客户】记录,根据数据类型修改每个字段的值
@@ -76,7 +78,7 @@ public class MockMvcTestCustomer {
 				// .phoneNo("gaozz") // 设置查询条件【联系方式】的值
 				// .remark("gaozz") // 设置查询条件【备注】的值
 				.build();
-		log.info(doRequest("/customer/queryList", cond));
+		log.info(doRequest("/customer/list", cond));
 	}
 
 	/**
@@ -85,23 +87,24 @@ public class MockMvcTestCustomer {
 	@Test
 	public void queryPage() throws Exception {
 		CustomerCond cond = CustomerCond.builder()
-				// .id("gaozz") // 设置查询条件【主键】的值
-				// .name("gaozz") // 设置查询条件【客户名称】的值
-				// .tradeType("gaozz") // 设置查询条件【行业类型 化工0配电1变电 2】的值
-				// .title("gaozz") // 设置查询条件【系统标题】的值
-				// .address("gaozz") // 设置查询条件【地址】的值
-				// .url("gaozz") // 设置查询条件【公司网址】的值
-				// .contacts("gaozz") // 设置查询条件【联系人】的值
-				// .contactsJob("gaozz") // 设置查询条件【联系人职位】的值
-				// .contactsTel("gaozz") // 设置查询条件【联系人电话】的值
-				// .contactsMail("gaozz") // 设置查询条件【联系人邮件】的值
-				// .contactsOther("gaozz") // 设置查询条件【联系人邮件】的值
-				// .phoneNo("gaozz") // 设置查询条件【联系方式】的值
-				// .remark("gaozz") // 设置查询条件【备注】的值
+				.id(1) // 设置查询条件【主键】的值
+				.name("gaozz") // 设置查询条件【客户名称】的值
+				.tradeType((byte) 1) // 设置查询条件【行业类型 化工0配电1变电 2】的值
+				.title("gaozz") // 设置查询条件【系统标题】的值
+				.address("gaozz") // 设置查询条件【地址】的值
+				.url("gaozz") // 设置查询条件【公司网址】的值
+				.contacts("gaozz") // 设置查询条件【联系人】的值
+				.contactsJob("gaozz") // 设置查询条件【联系人职位】的值
+				.contactsTel("gaozz") // 设置查询条件【联系人电话】的值
+				.contactsMail("gaozz") // 设置查询条件【联系人邮件】的值
+				.contactsOther("gaozz") // 设置查询条件【联系人邮件】的值
+				.phoneNo("gaozz") // 设置查询条件【联系方式】的值
+				.remark("gaozz") // 设置查询条件【备注】的值
+				.ids(Arrays.asList(new Object[]{1,2,3,4}))
 				.build();
 		cond.setPage(0); // 当前页
 		cond.setSize(10); // 页大小
-		log.info(doRequest("/customer/queryPage", cond));
+		log.info(doRequest("/customer/page", cond));
 	}
 
 	private <T> String doRequest(String url, T t) throws Exception {// restController专用测试方法
