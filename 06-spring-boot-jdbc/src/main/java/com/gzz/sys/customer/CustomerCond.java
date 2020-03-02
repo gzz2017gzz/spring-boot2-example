@@ -29,6 +29,7 @@ public class CustomerCond extends BaseCondition {
     @Override
     public void addCondition() {
 		add("AND t.id = ?", id);
+		add("AND t.id IN", ids);
 		add("AND t.name LIKE ?", name, 3);
 		add("AND t.tradeType = ?", tradeType);
 		add("AND t.title LIKE ?", title, 3);
@@ -41,7 +42,6 @@ public class CustomerCond extends BaseCondition {
 		add("AND t.contactsOther LIKE ?", contactsOther, 3);
 		add("AND t.phoneNo = ?", phoneNo);
 		add("AND t.remark LIKE ?", remark, 3);
- 		add("AND t.id IN ", ids);
     }
 //	以下为查询条件
 	private Integer id; // 主键

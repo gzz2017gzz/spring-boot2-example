@@ -1,4 +1,5 @@
 package com.gzz.sys.user;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,14 @@ import com.gzz.common.base.Page;
 //@Slf4j
 @Service
 public class UserService {
- 
+
 	@Autowired
-	private UserDao userDao; //注入【用户】数据访问层
+	private UserDao userDao; // 注入【用户】数据访问层
 
 	/**
 	 * @方法说明 新增【用户】记录
 	 */
-	//@Transactional
+	// @Transactional
 	public int save(User user) {
 		return userDao.save(user);
 	}
@@ -30,14 +31,14 @@ public class UserService {
 	 * @方法说明 删除【用户】记录(多条)
 	 */
 	public int delete(Long ids[]) {
-		return userDao.delete(ids);//物理删除
+		return userDao.delete(ids);// 物理删除
 	}
 
 	/**
 	 * @方法说明 更新【用户】记录
 	 */
 	public int update(User user) {
-		return userDao.update(user); 
+		return userDao.update(user);
 	}
 
 	/**
@@ -48,7 +49,7 @@ public class UserService {
 	}
 
 	/**
-	 * @方法说明  按条件查询不分页【用户】列表 
+	 * @方法说明 按条件查询不分页【用户】列表
 	 */
 	public List<User> list(UserCond cond) {
 		return userDao.list(cond);

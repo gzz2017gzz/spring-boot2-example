@@ -9,7 +9,7 @@ import com.gzz.common.base.Page;
 /**
  * @类说明 【客户】业务逻辑层
  * @author 高振中
- * @date 2020-03-02 23:38:39
+ * @date 2020-03-03 01:53:58
  **/
 //@Slf4j
 @Service
@@ -29,7 +29,7 @@ public class CustomerService {
 	/**
 	 * @方法说明 删除【客户】记录(多条)
 	 */
-	public int delete(Integer ids[]) {
+	public int delete(Integer[] ids) {
 		return customerDao.delete(ids);//物理删除
 	}
 

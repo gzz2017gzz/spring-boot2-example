@@ -1,4 +1,5 @@
 package com.gzz.sys.user;
+
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -23,13 +24,13 @@ import com.gzz.common.config.Result;
 @RestController
 @RequestMapping("user")
 public class UserController {
- 
-	@Autowired
-	private UserService userService; //注入【用户】业务逻辑层
 
-    /**
-     * @方法说明  新增【用户】记录
-     */
+	@Autowired
+	private UserService userService; // 注入【用户】业务逻辑层
+
+	/**
+	 * @方法说明 新增【用户】记录
+	 */
 	@PostMapping("save")
 	public Result save(@RequestBody @Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
@@ -38,17 +39,17 @@ public class UserController {
 		return Result.success(userService.save(user));
 	}
 
-    /**
-     * @方法说明 删除【用户】记录
-     */
+	/**
+	 * @方法说明 删除【用户】记录
+	 */
 	@PostMapping("delete")
 	public Result delete(Long ids[]) {
 		return Result.success(userService.delete(ids));
 	}
 
-    /**
-     * @方法说明 修改【用户】记录
-     */
+	/**
+	 * @方法说明 修改【用户】记录
+	 */
 	@PostMapping("update")
 	public Result update(@RequestBody @Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
@@ -57,35 +58,35 @@ public class UserController {
 		return Result.success(userService.update(user));
 	}
 
-    /**
-     * @方法说明 按条件查询分页【用户】列表
-     */
+	/**
+	 * @方法说明 按条件查询分页【用户】列表
+	 */
 	@PostMapping("page")
-	public Result page(@RequestBody UserCond cond ){
+	public Result page(@RequestBody UserCond cond) {
 		return Result.success(userService.page(cond));
 	}
 
-    /**
-     * @方法说明 按条件查询不分页【用户】列表
-     */
+	/**
+	 * @方法说明 按条件查询不分页【用户】列表
+	 */
 	@PostMapping("list")
-	public Result list(@RequestBody UserCond cond ){
+	public Result list(@RequestBody UserCond cond) {
 		return Result.success(userService.list(cond));
 	}
 
-    /**
-     * @方法说明 按主键查单个【用户】记录
-     */
+	/**
+	 * @方法说明 按主键查单个【用户】记录
+	 */
 	@PostMapping("findById")
 	public Result findById(@RequestParam("id") Long id) {
 		return Result.success(userService.findById(id));
 	}
 
-    /**
-     * @方法说明 按条件查询【用户】记录个数
-     */
+	/**
+	 * @方法说明 按条件查询【用户】记录个数
+	 */
 	@PostMapping("count")
-	public Result count(@RequestBody UserCond cond ){
+	public Result count(@RequestBody UserCond cond) {
 		return Result.success(userService.count(cond));
 	}
 }

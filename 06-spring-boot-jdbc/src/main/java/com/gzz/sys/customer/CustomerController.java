@@ -17,7 +17,7 @@ import com.gzz.common.config.Result;
 /**
  * @类说明 【客户】控制器
  * @author 高振中
- * @date 2020-03-02 23:38:39
+ * @date 2020-03-03 01:53:58
  **/
 //@Slf4j
 @RestController
@@ -42,7 +42,7 @@ public class CustomerController {
      * @方法说明 删除【客户】记录
      */
 	@PostMapping("delete")
-	public Result delete(Integer ids[]) {
+	public Result delete(Integer[] ids) {
 		return Result.success(customerService.delete(ids));
 	}
 

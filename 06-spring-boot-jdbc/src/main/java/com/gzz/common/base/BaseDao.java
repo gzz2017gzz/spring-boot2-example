@@ -1,5 +1,6 @@
 package com.gzz.common.base;
 
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -66,22 +67,48 @@ public class BaseDao {
 	/**
 	 * @方法说明:数据库中执行的SQL语句
 	 */
-	final protected static String sql(String sql, final Object... obj) {
-		String param;
-		for (int j = 0; null != obj && j < obj.length; j++) {
-			param = "null";
-			if (null != obj[j]) {
-
-				if (obj[j] instanceof Date) {
-					param = "'" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(obj[j]) + "'";
-				} else if (obj[j] instanceof String) {
-					param = "'" + (String) obj[j] + "'";
+	final protected static String sql(String sql, final Object... object) {
+		for (Object obj : object) {
+			String param = "NOT FOND PARAM!!";
+			if (null != obj) {
+				if (obj instanceof Date) {
+					param = "'" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(obj) + "'";
+				} else if (obj instanceof String) {
+					param = "'" + (String) obj + "'";
 				} else {
-					param = obj[j].toString();
+					param = obj.toString();
 				}
 			}
 			sql = sql.replaceFirst("[?]", param);
 		}
 		return sql;
+	}
+
+	/**
+	 * @方法说明 用于保存记录返回主键显示SQL
+	 */
+	public static <T> String sql(String sql, T t) {
+		Field[] fields = t.getClass().getDeclaredFields();
+		for (Field field : fields) {
+			try {
+				field.setAccessible(true);
+				Object value = field.get(t);
+				sql = sql.replaceFirst(":" + field.getName(), value == null ? "null" : value.toString());
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+		return sql;
+	}
+
+	/**
+	 * @方法说明 用于批操作显示SQL
+	 */
+	public static <T> String sql(String sql, List<T> list) {
+		StringBuffer sb = new StringBuffer();
+		for (T t : list) {
+			sb.append(sql(sql, t) + "/r/n");
+		}
+		return sb.toString();
 	}
 }

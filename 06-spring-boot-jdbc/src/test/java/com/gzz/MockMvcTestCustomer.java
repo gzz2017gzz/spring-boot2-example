@@ -91,6 +91,7 @@ public class MockMvcTestCustomer {
 				.name("gaozz") // 设置查询条件【客户名称】的值
 				.tradeType((byte) 1) // 设置查询条件【行业类型 化工0配电1变电 2】的值
 				.title("gaozz") // 设置查询条件【系统标题】的值
+				.ids(Arrays.asList(new Object[]{1,2,3,4}))
 				.address("gaozz") // 设置查询条件【地址】的值
 				.url("gaozz") // 设置查询条件【公司网址】的值
 				.contacts("gaozz") // 设置查询条件【联系人】的值
@@ -100,7 +101,6 @@ public class MockMvcTestCustomer {
 				.contactsOther("gaozz") // 设置查询条件【联系人邮件】的值
 				.phoneNo("gaozz") // 设置查询条件【联系方式】的值
 				.remark("gaozz") // 设置查询条件【备注】的值
-				.ids(Arrays.asList(new Object[]{1,2,3,4}))
 				.build();
 		cond.setPage(0); // 当前页
 		cond.setSize(10); // 页大小
