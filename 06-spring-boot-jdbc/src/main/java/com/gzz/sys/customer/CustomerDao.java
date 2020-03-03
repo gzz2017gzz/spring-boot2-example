@@ -26,7 +26,7 @@ public class CustomerDao extends BaseDao{
         sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
         Object[] params ={ vo.getId(),vo.getName(),vo.getTradeType(),vo.getTitle(),vo.getAddress(),vo.getUrl(),vo.getContacts(),vo.getContactsJob(),//太长换行 
 		vo.getContactsTel(),vo.getContactsMail(),vo.getContactsOther(),vo.getPhoneNo(),vo.getRemark() };
-        //log.info(super.sql(sql.toString(), params));//显示SQL语句
+        log.info(super.sql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
     }
     
@@ -35,7 +35,7 @@ public class CustomerDao extends BaseDao{
      */
     public int delete(Object[] ids) {
         String sql = "DELETE FROM sys_customer WHERE id IN" + SQLUnit.toIn(ids);
-        //log.info(super.sql(sql, ids));//显示SQL语句
+        log.info(super.sql(sql, ids));//显示SQL语句
         return jdbcTemplate.update(sql,ids);
     }
     
@@ -49,7 +49,7 @@ public class CustomerDao extends BaseDao{
         sql.append(" WHERE id=? ");
         Object[] params = {vo.getName(),vo.getTradeType(),vo.getTitle(),vo.getAddress(),vo.getUrl(),vo.getContacts(),vo.getContactsJob(),vo.getContactsTel(),//太长换行 
 		vo.getContactsMail(),vo.getContactsOther(),vo.getPhoneNo(),vo.getRemark(),vo.getId()};
-        //log.info(super.sql(sql.toString(), params));//显示SQL语句
+        log.info(super.sql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
       }
 
@@ -76,7 +76,7 @@ public class CustomerDao extends BaseDao{
     	sql.append(" FROM sys_customer t");
     	sql.append(cond.where());
     	sql.append(" ORDER BY id DESC");
-    	//log.info(super.sql(sql.toString(),cond.array()));//显示SQL语句
+    	log.info(super.sql(sql.toString(),cond.array()));//显示SQL语句
     	return jdbcTemplate.query(sql.toString(), cond.array(), new BeanPropertyRowMapper<>(Customer.class));
     }
     
@@ -88,7 +88,7 @@ public class CustomerDao extends BaseDao{
     	sql.append("SELECT t.id,t.name,t.tradeType,t.title,t.address,t.url,t.contacts,t.contactsJob,"); 
 		sql.append("t.contactsTel,t.contactsMail,t.contactsOther,t.phoneNo,t.remark");
     	sql.append(" FROM sys_customer t WHERE t.id=?");
-		//log.info(super.sql(sql.toString(),id));//显示SQL语句
+		log.info(super.sql(sql.toString(),id));//显示SQL语句
 		return jdbcTemplate.queryForObject(sql.toString(), new BeanPropertyRowMapper<>(Customer.class), id);
 	}
     
@@ -97,7 +97,7 @@ public class CustomerDao extends BaseDao{
      */
 	public int count(CustomerCond cond) {
 		String sql = "SELECT COUNT(1) FROM sys_customer t " + cond.where();
-		//log.info(super.sql(sql,cond.array()));//显示SQL语句
+		log.info(super.sql(sql,cond.array()));//显示SQL语句
 		return jdbcTemplate.queryForObject(sql, cond.array(), Integer.class);
 	}
     

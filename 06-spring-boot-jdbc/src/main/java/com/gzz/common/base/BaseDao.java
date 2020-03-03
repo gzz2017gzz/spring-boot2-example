@@ -87,7 +87,7 @@ public class BaseDao {
 	/**
 	 * @方法说明 用于保存记录返回主键显示SQL
 	 */
-	public static <T> String sql(String sql, T t) {
+	final protected static <T> String sql(String sql, T t) {
 		Field[] fields = t.getClass().getDeclaredFields();
 		for (Field field : fields) {
 			try {
@@ -104,7 +104,7 @@ public class BaseDao {
 	/**
 	 * @方法说明 用于批操作显示SQL
 	 */
-	public static <T> String sql(String sql, List<T> list) {
+	final protected static <T> String sql(String sql, List<T> list) {
 		StringBuffer sb = new StringBuffer();
 		for (T t : list) {
 			sb.append(sql(sql, t) + "/r/n");
