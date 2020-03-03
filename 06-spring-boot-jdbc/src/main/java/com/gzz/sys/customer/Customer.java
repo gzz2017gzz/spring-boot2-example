@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 /**
  * @类说明 【客户】实体类
  * @author 高振中
- * @date 2020-03-02 23:38:39
+ * @date 2020-03-03 17:26:27
  **/
 @Setter
 @Getter

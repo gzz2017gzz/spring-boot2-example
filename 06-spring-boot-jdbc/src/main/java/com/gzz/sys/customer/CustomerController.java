@@ -1,4 +1,5 @@
 package com.gzz.sys.customer;
+
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -17,19 +18,19 @@ import com.gzz.common.config.Result;
 /**
  * @类说明 【客户】控制器
  * @author 高振中
- * @date 2020-03-03 01:53:58
+ * @date 2020-03-03 18:28:09
  **/
 //@Slf4j
 @RestController
 @RequestMapping("customer")
 public class CustomerController {
- 
-	@Autowired
-	private CustomerService customerService; //注入【客户】业务逻辑层
 
-    /**
-     * @方法说明  新增【客户】记录
-     */
+	@Autowired
+	private CustomerService customerService; // 注入【客户】业务逻辑层
+
+	/**
+	 * @方法说明 新增【客户】记录
+	 */
 	@PostMapping("save")
 	public Result save(@RequestBody @Valid Customer customer, BindingResult result) {
 		if (result.hasErrors()) {
@@ -38,17 +39,17 @@ public class CustomerController {
 		return Result.success(customerService.save(customer));
 	}
 
-    /**
-     * @方法说明 删除【客户】记录
-     */
+	/**
+	 * @方法说明 删除【客户】记录
+	 */
 	@PostMapping("delete")
 	public Result delete(Integer[] ids) {
 		return Result.success(customerService.delete(ids));
 	}
 
-    /**
-     * @方法说明 修改【客户】记录
-     */
+	/**
+	 * @方法说明 修改【客户】记录
+	 */
 	@PostMapping("update")
 	public Result update(@RequestBody @Valid Customer customer, BindingResult result) {
 		if (result.hasErrors()) {
@@ -57,35 +58,35 @@ public class CustomerController {
 		return Result.success(customerService.update(customer));
 	}
 
-    /**
-     * @方法说明 按条件查询分页【客户】列表
-     */
+	/**
+	 * @方法说明 按条件查询分页【客户】列表
+	 */
 	@PostMapping("page")
-	public Result page(@RequestBody CustomerCond cond ){
+	public Result page(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.page(cond));
 	}
 
-    /**
-     * @方法说明 按条件查询不分页【客户】列表
-     */
+	/**
+	 * @方法说明 按条件查询不分页【客户】列表
+	 */
 	@PostMapping("list")
-	public Result list(@RequestBody CustomerCond cond ){
+	public Result list(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.list(cond));
 	}
 
-    /**
-     * @方法说明 按主键查单个【客户】记录
-     */
+	/**
+	 * @方法说明 按主键查单个【客户】记录
+	 */
 	@PostMapping("findById")
 	public Result findById(@RequestParam("id") Integer id) {
 		return Result.success(customerService.findById(id));
 	}
 
-    /**
-     * @方法说明 按条件查询【客户】记录个数
-     */
+	/**
+	 * @方法说明 按条件查询【客户】记录个数
+	 */
 	@PostMapping("count")
-	public Result count(@RequestBody CustomerCond cond ){
+	public Result count(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.count(cond));
 	}
 }

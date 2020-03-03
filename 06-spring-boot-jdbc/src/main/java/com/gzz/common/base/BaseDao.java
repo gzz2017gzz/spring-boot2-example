@@ -15,12 +15,15 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @功能描述 dao类公共类
  * @author https://www.jianshu.com/u/3bd57d5f1074
  * @date 2020-02-02 02:20:20
  */
 @Scope("prototype")
+@Slf4j
 public class BaseDao {
 
 	@Autowired
@@ -34,6 +37,7 @@ public class BaseDao {
 	final protected <T, C extends BaseCondition> Page<T> queryPage(final String sql, C cond, final Class<T> clazz) {
 //		String countSQL = "SELECT count(1) FROM (" + sql + ") t";
 		String countSQL = sql.replaceAll("(?i)(SELECT)(.*)(?i)(FROM)", "$1 count(1) $3");// 高效不支持嵌套
+		log.debug(sql(countSQL, cond.array()));
 		int rowCount = jdbcTemplate.queryForObject(countSQL, cond.array(), Integer.class);
 		int pageSize = cond.getSize();
 		int curPage = cond.getPage();
@@ -44,6 +48,7 @@ public class BaseDao {
 		listSQL.append(curPage * pageSize);
 		listSQL.append(",");
 		listSQL.append(pageSize);
+		log.debug(sql(listSQL.toString(), cond.array()));
 		List<T> dataList = jdbcTemplate.query(listSQL.toString(), cond.array(), new BeanPropertyRowMapper<T>(clazz));
 		return new Page<T>(dataList, pageSize, rowCount, curPage, pageCount);
 	}
@@ -58,10 +63,10 @@ public class BaseDao {
 	/**
 	 * @功能描述 保存数据返回主键
 	 */
-	final protected <T> long saveKey(final T t, String sql, final String id) {
+	final protected <T> int saveKey(final T t, String sql, final String id) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		nameJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(t), keyHolder, new String[] { id });
-		return keyHolder.getKey().longValue();
+		return keyHolder.getKey().intValue();
 	}
 
 	/**
@@ -69,7 +74,7 @@ public class BaseDao {
 	 */
 	final protected static String sql(String sql, final Object... object) {
 		for (Object obj : object) {
-			String param = "NOT FOND PARAM!!";
+			String param = "NOT FOUND PARAM!!";
 			if (null != obj) {
 				if (obj instanceof Date) {
 					param = "'" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(obj) + "'";
@@ -85,9 +90,9 @@ public class BaseDao {
 	}
 
 	/**
-	 * @方法说明 用于保存记录返回主键显示SQL
+	 * @方法说明 用于保存记录返回主键显示SQL(效率低用完关掉)
 	 */
-	final protected static <T> String sql(String sql, T t) {
+	final protected static <T> String sqlp(String sql, T t) {
 		Field[] fields = t.getClass().getDeclaredFields();
 		for (Field field : fields) {
 			try {
@@ -102,12 +107,12 @@ public class BaseDao {
 	}
 
 	/**
-	 * @方法说明 用于批操作显示SQL
+	 * @方法说明 用于批操作显示SQL(效率极低用完关掉)
 	 */
-	final protected static <T> String sql(String sql, List<T> list) {
+	final protected static <T> String sqlp(String sql, List<T> list) {
 		StringBuffer sb = new StringBuffer();
 		for (T t : list) {
-			sb.append(sql(sql, t) + "/r/n");
+			sb.append(sqlp(sql, t) + "/r/n");
 		}
 		return sb.toString();
 	}
