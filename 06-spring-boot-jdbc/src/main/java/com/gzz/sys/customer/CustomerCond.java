@@ -10,11 +10,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 /**
  * @类说明 【客户】查询条件实体
  * @author 高振中
- * @date 2020-03-03 17:34:06
+ * @date 2020-03-03 21:08:20
  **/
 @Setter
 @Getter
