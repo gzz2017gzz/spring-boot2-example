@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzz.demo.base.customer.ICustomerMapper">
+    <!-- 基本resultMap -->
+    <resultMap type="com.gzz.demo.base.customer.Customer" id="Customer">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="tradeType" column="tradeType"/>
+        <result property="title" column="title"/>
+        <result property="address" column="address"/>
+        <result property="url" column="url"/>
+        <result property="contacts" column="contacts"/>
+        <result property="contactsJob" column="contactsJob"/>
+        <result property="contactsTel" column="contactsTel"/>
+        <result property="contactsMail" column="contactsMail"/>
+        <result property="contactsOther" column="contactsOther"/>
+        <result property="phoneNo" column="phoneNo"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+		<!--查询全部数据-->
+	<select id="queryList" resultMap="Customer">
+		SELECT
+			t.id,t.name,t.tradeType,t.title,t.address,t.url,t.contacts,t.contactsJob,t.contactsTel,t.contactsMail, 
+		t.contactsOther,t.phoneNo,t.remark
+		FROM
+			sys_customer t
+		<where>
+			<if test="param.id!=null and param.id!=''">AND t.id=#{param.id}</if>
+			<if test="param.name!=null and param.name!=''">AND t.name=#{param.name}</if>
+			<if test="param.tradeType!=null and param.tradeType!=''">AND t.tradeType=#{param.tradeType}</if>
+			<if test="param.title!=null and param.title!=''">AND t.title=#{param.title}</if>
+			<if test="param.address!=null and param.address!=''">AND t.address=#{param.address}</if>
+			<if test="param.url!=null and param.url!=''">AND t.url=#{param.url}</if>
+			<if test="param.contacts!=null and param.contacts!=''">AND t.contacts=#{param.contacts}</if>
+			<if test="param.contactsJob!=null and param.contactsJob!=''">AND t.contactsJob=#{param.contactsJob}</if>
+			<if test="param.contactsTel!=null and param.contactsTel!=''">AND t.contactsTel=#{param.contactsTel}</if>
+			<if test="param.contactsMail!=null and param.contactsMail!=''">AND t.contactsMail=#{param.contactsMail}</if>
+			<if test="param.contactsOther!=null and param.contactsOther!=''">AND t.contactsOther=#{param.contactsOther}</if>
+			<if test="param.phoneNo!=null and param.phoneNo!=''">AND t.phoneNo=#{param.phoneNo}</if>
+			<if test="param.remark!=null and param.remark!=''">AND t.remark=#{param.remark}</if>
+		</where>
+    </select>
+
+	<!--insert【客户】并返回主键-->
+	<insert id="insertCustomer" parameterType="com.gzz.demo.base.customer.Customer"  useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+		INSERT INTO sys_customer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test=" id != null and id != '' ">id,</if>
+			<if test=" name != null and name != '' ">name,</if>
+			<if test=" tradeType != null and tradeType != '' ">tradeType,</if>
+			<if test=" title != null and title != '' ">title,</if>
+			<if test=" address != null and address != '' ">address,</if>
+			<if test=" url != null and url != '' ">url,</if>
+			<if test=" contacts != null and contacts != '' ">contacts,</if>
+			<if test=" contactsJob != null and contactsJob != '' ">contactsJob,</if>
+			<if test=" contactsTel != null and contactsTel != '' ">contactsTel,</if>
+			<if test=" contactsMail != null and contactsMail != '' ">contactsMail,</if>
+			<if test=" contactsOther != null and contactsOther != '' ">contactsOther,</if>
+			<if test=" phoneNo != null and phoneNo != '' ">phoneNo,</if>
+			<if test=" remark != null and remark != '' ">remark,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test=" id != null and id != '' ">#{id},</if>
+			<if test=" name != null and name != '' ">#{name},</if>
+			<if test=" tradeType != null and tradeType != '' ">#{tradeType},</if>
+			<if test=" title != null and title != '' ">#{title},</if>
+			<if test=" address != null and address != '' ">#{address},</if>
+			<if test=" url != null and url != '' ">#{url},</if>
+			<if test=" contacts != null and contacts != '' ">#{contacts},</if>
+			<if test=" contactsJob != null and contactsJob != '' ">#{contactsJob},</if>
+			<if test=" contactsTel != null and contactsTel != '' ">#{contactsTel},</if>
+			<if test=" contactsMail != null and contactsMail != '' ">#{contactsMail},</if>
+			<if test=" contactsOther != null and contactsOther != '' ">#{contactsOther},</if>
+			<if test=" phoneNo != null and phoneNo != '' ">#{phoneNo},</if>
+			<if test=" remark != null and remark != '' ">#{remark},</if>
+		</trim>
+	</insert>
+	<sql id="whereIn">
+		<where>
+			id IN
+			<foreach collection="array" item="id" separator="," open="(" close=")">
+				#{id}
+			</foreach>
+		</where>
+	</sql>
+</mapper>
