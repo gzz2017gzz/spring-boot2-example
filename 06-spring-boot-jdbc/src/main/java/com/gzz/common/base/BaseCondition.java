@@ -122,7 +122,7 @@ public abstract class BaseCondition {
 	 */
 	final protected void add(final String sql, final List<Object> ids) {
 		if (!CollectionUtils.isEmpty(ids)) {
-			condition.append(" " + sql + SQLUnit.toIn(ids.toArray()));
+			condition.append(" " + sql + toIn(ids.toArray()));
 			paramList.addAll(ids);
 		}
 	}
@@ -167,6 +167,18 @@ public abstract class BaseCondition {
 		paramList.clear();
 		addCondition();
 		return condition.toString();
+	}
+
+	/**
+	 * @方法说明 把组数拼接成(?,?,?)的形式
+	 */
+	final public static String toIn(final Object ids[]) {
+		StringBuffer sb = new StringBuffer(" (?");
+		for (int i = 1; i < ids.length; i++) {
+			sb.append(",?");
+		}
+		sb.append(")");
+		return sb.toString();
 	}
 
 	/**

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.gzz.common.base.BaseDao;
 import com.gzz.common.base.Page;
-import com.gzz.common.base.SQLUnit;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -46,7 +45,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明 物理删除【用户】记录(多条)
 	 */
 	public int delete(Object ids[]) {
-		String sql = "DELETE FROM sys_user WHERE id IN" + SQLUnit.toIn(ids);
+		String sql = "DELETE FROM sys_user WHERE id IN" + toIn(ids);
 		// log.info(super.sql(sql, ids));//显示SQL语句
 		return jdbcTemplate.update(sql, ids);
 	}

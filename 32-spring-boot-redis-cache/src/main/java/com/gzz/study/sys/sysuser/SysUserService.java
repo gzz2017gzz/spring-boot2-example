@@ -1,80 +1,77 @@
 package com.gzz.study.sys.sysuser;
 
 import java.util.List;
-import com.gzz.common.base.Page;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import com.gzz.common.base.Page;
 
 /**
- * @类说明 [用户]业务逻辑层
- * @author https://www.jianshu.com/u/3bd57d5f1074
- * @date 2019-12-24 10:50:00
+ * @类说明 【用户】业务逻辑层
+ * @author 高振中
+ * @date 2020-03-12 12:11:06
  **/
+//@Slf4j
 @Service
 @CacheConfig(cacheNames = "user")
 public class SysUserService {
 
-	@SuppressWarnings("unused")
-	private Log logger = LogFactory.getLog(getClass());
 	@Autowired
-	private SysUserDao dao; // 注入用户数据访问层
+	private SysUserDao sysUserDao; // 注入【用户】数据访问层
 
 	/**
-	 * @方法说明 新增[用户]记录
+	 * @方法说明 新增【用户】记录
 	 */
-	@Transactional
+	// @Transactional
 	public int save(SysUser sysUser) {
-		return dao.save(sysUser);
+		return sysUserDao.save(sysUser);
 	}
 
 	/**
-	 * @方法说明 删除用户记录(多条)
+	 * @方法说明 删除【用户】记录
 	 */
-	public int delete(Long ids[]) {
-		// return dao.deleteLogic(ids);//逻辑删除
-		return dao.delete(ids);// 物理删除
+	public int delete(Long[] ids) {
+		return sysUserDao.delete(ids);
 	}
 
 	/**
-	 * @方法说明 更新用户记录
+	 * @方法说明 更新【用户】记录
 	 */
-	@Transactional
 	public int update(SysUser sysUser) {
-		return dao.update(sysUser);
+		return sysUserDao.update(sysUser);
 	}
 
 	/**
-	 * @方法说明 按条件查询分页用户列表
+	 * @方法说明 按条件查询分页【用户】列表
 	 */
-	public Page<SysUser> queryPage(SysUserCond cond) {
-		return dao.queryPage(cond);
+//	@Cacheable
+	public Page<SysUser> page(SysUserCond cond) {
+		return sysUserDao.page(cond);
 	}
 
 	/**
-	 * @方法说明 按条件查询不分页用户列表
+	 * @方法说明 按条件查询不分页【用户】列表
 	 */
-	@Cacheable 
-	public List<SysUser> queryList(SysUserCond cond) {
-		return dao.queryList(cond);
+	@Cacheable
+	public List<SysUser> list(SysUserCond cond) {
+		return sysUserDao.list(cond);
 	}
 
 	/**
-	 * @方法说明 按主键查找单个用户记录
+	 * @方法说明 按主键查找单个【用户】记录
 	 */
-	@Cacheable 
+	@Cacheable
 	public SysUser findById(Long id) {
-		return dao.findById(id);
+		return sysUserDao.findById(id);
 	}
 
 	/**
-	 * @方法说明 按条件查询用户记录个数
+	 * @方法说明 按条件查询【用户】记录个数
 	 */
-	public long queryCount(SysUserCond cond) {
-		return dao.queryCount(cond);
+	public int count(SysUserCond cond) {
+		return sysUserDao.count(cond);
 	}
 }

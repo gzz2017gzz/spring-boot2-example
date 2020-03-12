@@ -14,6 +14,7 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 
+import com.google.common.base.Joiner;
 import com.gzz.common.base.BaseCondition;
 /**
  * @author https://www.jianshu.com/u/3bd57d5f1074
@@ -41,10 +42,8 @@ public class RedisConfiguration extends CachingConfigurerSupport {
 					BaseCondition cond=	(BaseCondition)obj;
 					sb.append(cond.getPage());
 					sb.append(cond.getSize());
-					sb.append(cond.getCondition());
+					sb.append(Joiner.on("-").join(cond.keys()));
 				}
-				
-				
 				System.out.println("调用Redis缓存Key : " + sb.toString());
 				return sb.toString();
 			}

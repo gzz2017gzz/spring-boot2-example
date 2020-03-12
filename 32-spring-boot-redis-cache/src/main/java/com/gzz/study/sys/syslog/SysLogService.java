@@ -1,74 +1,70 @@
 package com.gzz.study.sys.syslog;
 import java.util.List;
-import com.gzz.common.base.Page;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import com.gzz.common.base.Page;
 
 /**
- * @类说明 [请求日志]业务逻辑层
- * @author https://www.jianshu.com/u/3bd57d5f1074
- * @date 2019-12-24 10:50:00
+ * @类说明 【请求日志】业务逻辑层
+ * @author 高振中
+ * @date 2020-03-12 12:11:06
  **/
+//@Slf4j
 @Service
 public class SysLogService {
 
-	@SuppressWarnings("unused")
-	private Log logger = LogFactory.getLog(getClass());
 	@Autowired
-	private SysLogDao dao; //注入请求日志数据访问层
+	private SysLogDao sysLogDao; // 注入【请求日志】数据访问层
 
 	/**
-	 * @方法说明 新增[请求日志]记录
+	 * @方法说明 新增【请求日志】记录
 	 */
-	@Transactional
+	// @Transactional
 	public int save(SysLog sysLog) {
-		return dao.save(sysLog);
+		return sysLogDao.save(sysLog);
 	}
 
 	/**
-	 * @方法说明 删除请求日志记录(多条)
+	 * @方法说明 删除【请求日志】记录
 	 */
-	public int delete(Integer ids[]) {
-		//return dao.deleteLogic(ids);//逻辑删除
-		return dao.delete(ids);//物理删除
+	public int delete(Integer[] ids) {
+		return sysLogDao.delete(ids);
 	}
 
 	/**
-	 * @方法说明 更新请求日志记录
+	 * @方法说明 更新【请求日志】记录
 	 */
-	@Transactional
 	public int update(SysLog sysLog) {
-		return dao.update(sysLog); 
+		return sysLogDao.update(sysLog);
 	}
 
 	/**
-	 * @方法说明 按条件查询分页请求日志列表
+	 * @方法说明 按条件查询分页【请求日志】列表
 	 */
-	public Page<SysLog> queryPage(SysLogCond cond) {
-		return dao.queryPage(cond);
+	public Page<SysLog> page(SysLogCond cond) {
+		return sysLogDao.page(cond);
 	}
 
 	/**
-	 * @方法说明  按条件查询不分页请求日志列表 
+	 * @方法说明 按条件查询不分页【请求日志】列表
 	 */
-	public List<SysLog> queryList(SysLogCond cond) {
-		return dao.queryList(cond);
+	public List<SysLog> list(SysLogCond cond) {
+		return sysLogDao.list(cond);
 	}
 
 	/**
-	 * @方法说明 按主键查找单个请求日志记录
+	 * @方法说明 按主键查找单个【请求日志】记录
 	 */
 	public SysLog findById(Integer id) {
-		return dao.findById(id);
+		return sysLogDao.findById(id);
 	}
 
 	/**
-	 * @方法说明 按条件查询请求日志记录个数
+	 * @方法说明 按条件查询【请求日志】记录个数
 	 */
-	public long queryCount(SysLogCond cond) {
-		return dao.queryCount(cond);
+	public int count(SysLogCond cond) {
+		return sysLogDao.count(cond);
 	}
 }

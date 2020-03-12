@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.gzz.common.base.BaseDao;
 import com.gzz.common.base.Page;
-import com.gzz.common.base.SQLUnit;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,7 +37,7 @@ public class CustomerDao extends BaseDao {
 	 * @方法说明 删除【客户】记录
 	 */
 	public int delete(Object[] ids) {
-		String sql = "DELETE FROM sys_customer WHERE id IN" + SQLUnit.toIn(ids);
+		String sql = "DELETE FROM sys_customer WHERE id IN" + toIn(ids);
 		// log.info(super.sql(sql, ids));// 显示SQL语句
 		return jdbcTemplate.update(sql, ids);
 	}
