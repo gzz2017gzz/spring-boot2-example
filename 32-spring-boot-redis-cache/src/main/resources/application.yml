@@ -4,7 +4,7 @@ spring:
     url: jdbc:mysql://192.168.20.19:3306/test?characterEncoding=utf8
     username: root
     password: root
-  redis: 
+  redis:
     port: 6379
     host: 192.168.218.139
 #    password: dl123456

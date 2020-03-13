@@ -25,11 +25,11 @@ public class Application {
 	@PostConstruct
 	public void test() {
 		ValueOperations<String, User> opsForValue = template.opsForValue();
-//		User user = new User();
-//		user.setAge(12);
-//		user.setMember_no("gzztest");
-//		user.setName("高振中");
-//		opsForValue.set(user.getMember_no(), user);
+		User user = new User();
+		user.setAge(12);
+		user.setMember_no("gzztest");
+		user.setName("高振中");
+		opsForValue.set(user.getMember_no(), user);
 		System.out.println(opsForValue.get("gzztest"));
 
 	}
