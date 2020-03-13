@@ -1,11 +1,11 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8
+#    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.19:3306/test?characterEncoding=utf8
     username: root
-    password: 123456
+    password: root
   redis: 
-    port: 7001
-    host: 192.168.1.91
-    password: dl123456
-    database: 1
+    port: 6379
+    host: 192.168.218.139
+#    password: dl123456
+#    database: 0

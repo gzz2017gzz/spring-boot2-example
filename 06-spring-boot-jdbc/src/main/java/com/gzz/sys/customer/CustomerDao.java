@@ -28,7 +28,7 @@ public class CustomerDao extends BaseDao {
 		sql.append("contactsTel,contactsMail,contactsOther,phoneNo,remark)");
 		sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		Object[] params = { vo.getId(), vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), //
-				vo.getContactsTel(), vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark(), };
+				vo.getContactsTel(), vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark() };
 		// log.info(super.sql(sql.toString(), params));// 显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}
@@ -37,7 +37,7 @@ public class CustomerDao extends BaseDao {
 	 * @方法说明 删除【客户】记录
 	 */
 	public int delete(Object[] ids) {
-		String sql = "DELETE FROM sys_customer WHERE id IN" + toIn(ids);
+		String sql = "DELETE FROM sys_customer WHERE id IN" + super.toIn(ids);
 		// log.info(super.sql(sql, ids));// 显示SQL语句
 		return jdbcTemplate.update(sql, ids);
 	}
@@ -51,7 +51,7 @@ public class CustomerDao extends BaseDao {
 		sql.append("contactsTel=?,contactsMail=?,contactsOther=?,phoneNo=?,remark=?");
 		sql.append(" WHERE id=? ");
 		Object[] params = { vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), vo.getContactsTel(), //
-				vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark(), vo.getId(), };
+				vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark(), vo.getId() };
 		// log.info(super.sql(sql.toString(), params));// 显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}
@@ -113,7 +113,7 @@ public class CustomerDao extends BaseDao {
 		sql.append("contactsTel,contactsMail,contactsOther,phoneNo,remark)");
 		sql.append(" VALUES (:id,:name,:tradeType,:title,:address,:url,:contacts,:contactsJob,");
 		sql.append(":contactsTel,:contactsMail,:contactsOther,:phoneNo,:remark)");
-		// log.info(super.sql(sql.toString(), vo));// 显示SQL语句
+		// log.info(super.sqlp(sql.toString(), vo));// 显示SQL语句
 		return saveKey(vo, sql.toString(), "id");
 	}
 
@@ -126,7 +126,7 @@ public class CustomerDao extends BaseDao {
 		sql.append("contactsTel,contactsMail,contactsOther,phoneNo,remark)");
 		sql.append(" VALUES (:id,:name,:tradeType,:title,:address,:url,:contacts,:contactsJob,");
 		sql.append(":contactsTel,:contactsMail,:contactsOther,:phoneNo,:remark)");
-		// log.info(super.sql(sql.toString(), list));// 显示SQL语句
+		// log.info(super.sqlp(sql.toString(), list));// 显示SQL语句
 		return batchOperate(list, sql.toString());
 	}
 
@@ -134,7 +134,7 @@ public class CustomerDao extends BaseDao {
 	 * @方法说明 逻辑删除【客户】记录
 	 */
 //	public int delete(Object... ids) {
-//		String sql = "UPDATE sys_customer SET dr=1 WHERE id IN " + toIn(ids);
+//		String sql = "UPDATE sys_customer SET dr=1 WHERE id IN " + super.toIn(ids);
 //		return jdbcTemplate.update(sql,ids);
 //	}	
 

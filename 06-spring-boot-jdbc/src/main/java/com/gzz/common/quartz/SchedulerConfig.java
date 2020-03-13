@@ -12,17 +12,12 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
  **/
 @Configuration
 public class SchedulerConfig {
-//	@Autowired
-//	@Qualifier("threadPoolTaskExecutor")
-//	private ThreadPoolTaskExecutor threadPoolTaskExecutor;
-
 	@Bean
 	public SchedulerFactoryBean schedulerFactoryBean(JobFactory jobFactory) {
 		// Spring提供SchedulerFactoryBean为Scheduler提供配置信息,并被Spring容器管理其生命周期
 		SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
 		// 设置自定义Job Factory，用于Spring管理Job bean
 		schedulerFactoryBean.setJobFactory(jobFactory);
-//		schedulerFactoryBean.setTaskExecutor(threadPoolTaskExecutor);
 		return schedulerFactoryBean;
 	}
 
