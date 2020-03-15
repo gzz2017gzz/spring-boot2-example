@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author https://www.jianshu.com/u/3bd57d5f1074
  * @date 2019-12-24 14:50:00
@@ -25,4 +26,8 @@ public class UserController {
 		return "index";
 	}
 
+	@GetMapping("test")
+	public String test() {
+		return "test";
+	}
 }
