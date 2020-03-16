@@ -1,0 +1,8 @@
+#spring:
+#  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.20.19:3306/cloud_plat?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    username: root
+#    password: root
+#  application:
+#    name: spring-boot-jdbc
