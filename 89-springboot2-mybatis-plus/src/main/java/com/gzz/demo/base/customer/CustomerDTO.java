@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 /**
  * @类说明 【客户】DTO对象
  * @author 高振中
- * @date 2020-03-11 17:57:13
+ * @date 2020-03-17 17:22:53
  **/
 @Setter
 @Getter

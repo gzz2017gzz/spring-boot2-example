@@ -1,15 +1,15 @@
 package com.gzz.demo.base.customer;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired; 
-
-import org.springframework.stereotype.Service;
 
 /**
  * @类说明 【客户】业务逻辑实现
  * @author 高振中
- * @date 2020-03-11 17:57:13
+ * @date 2020-03-17 17:22:53
  **/
 //@Slf4j
 @Service

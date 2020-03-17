@@ -1,10 +1,12 @@
 package com.gzz.demo.base.customer;
 
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import javax.validation.constraints.NotEmpty;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +16,7 @@ import lombok.Setter;
 /**
  * @类说明 【客户】实体类
  * @author 高振中
- * @date 2020-03-11 17:57:13
+ * @date 2020-03-17 17:22:53
  **/
 @Setter
 @Getter
@@ -38,6 +40,7 @@ public class Customer extends Model<Customer> {
 	/**
 	 * 客户名称
 	 */
+	@NotEmpty(message = "客户名称(name)不能为空(字符型)")
 	@TableField(value = "name", exist = true)
 	private String name;
 	/**
