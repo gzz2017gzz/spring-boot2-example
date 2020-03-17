@@ -28,7 +28,7 @@ import io.swagger.annotations.Api;
 public class UserController {
 
 	@Autowired
-	private IUserService service;// 注入【用户】业务逻辑接口
+	private UserService service;// 注入【用户】业务逻辑接口
 
 	/**
 	 * @方法说明 新增【用户】记录

@@ -1,5 +1,6 @@
 package com.gzz.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -12,7 +13,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 @Configuration
 public class RedisConfig {
 	@Bean
-	<K, V> RedisTemplate<K, V> getRedisTemplate(RedisConnectionFactory factory) {
+	public <K, V> RedisTemplate<K, V> template(@Autowired RedisConnectionFactory factory) {
 		RedisTemplate<K, V> redisTemplate = new RedisTemplate<K, V>();
 		redisTemplate.setConnectionFactory(factory);
 		return redisTemplate;

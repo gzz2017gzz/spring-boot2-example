@@ -2,18 +2,19 @@ package com.gzz.sys.user;
 
 import java.util.Date;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+
+import com.gzz.common.base.BaseCondition;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-//import lombok.experimental.Accessors;
-import com.gzz.common.base.BaseCondition;
+import lombok.Setter;
 
 /**
  * @类说明 【用户】查询条件实体
  * @author 高振中
- * @date 2020-03-02 23:40:53
+ * @date 2020-03-17 23:46:44
  **/
 @Setter
 @Getter
@@ -35,11 +36,11 @@ public class UserCond extends BaseCondition {
 		add("AND t.id IN", ids);
 	}
 
-//	以下为查询条件
+	// 以下为查询条件
 	private Long id; // 主键
 	private String name; // 姓名
 	private Date birthday; // 生日
 	private Byte gender; // 性别
 	private List<Object> ids;// 主键列表
-//	以下为自定义查询条件
+	// 以下为自定义查询条件
 }

@@ -6,11 +6,10 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
 /**
  * @类说明 【用户】实体类
  * @author 高振中
- * @date 2020-03-02 23:40:53
+ * @date 2020-03-17 23:46:44
  **/
 @Setter
 @Getter

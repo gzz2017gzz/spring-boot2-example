@@ -1,5 +1,4 @@
 package com.gzz.sys.user;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import com.gzz.common.base.Page;
 /**
  * @类说明 【用户】业务逻辑层
  * @author 高振中
- * @date 2020-03-02 23:40:53
+ * @date 2020-03-17 23:46:44
  **/
 //@Slf4j
 @Service
@@ -28,10 +27,10 @@ public class UserService {
 	}
 
 	/**
-	 * @方法说明 删除【用户】记录(多条)
+	 * @方法说明 删除【用户】记录
 	 */
-	public int delete(Long ids[]) {
-		return userDao.delete(ids);// 物理删除
+	public int delete(Long[] ids) {
+		return userDao.delete(ids);
 	}
 
 	/**

@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @类说明 【客户】数据访问层
  * @author 高振中
- * @date 2020-03-13 02:22:25
+ * @date 2020-03-17 23:44:31
  **/
 @Slf4j
 @Repository
@@ -37,7 +37,7 @@ public class CustomerDao extends BaseDao {
 	 * @方法说明 删除【客户】记录
 	 */
 	public int delete(Object[] ids) {
-		String sql = "DELETE FROM sys_customer WHERE id IN" + super.toIn(ids);
+		String sql = "DELETE FROM sys_customer WHERE id IN" + toIn(ids);
 		// log.info(super.sql(sql, ids));// 显示SQL语句
 		return jdbcTemplate.update(sql, ids);
 	}
@@ -134,7 +134,7 @@ public class CustomerDao extends BaseDao {
 	 * @方法说明 逻辑删除【客户】记录
 	 */
 //	public int delete(Object... ids) {
-//		String sql = "UPDATE sys_customer SET dr=1 WHERE id IN " + super.toIn(ids);
+//		String sql = "UPDATE sys_customer SET dr=1 WHERE id IN " + toIn(ids);
 //		return jdbcTemplate.update(sql,ids);
 //	}	
 

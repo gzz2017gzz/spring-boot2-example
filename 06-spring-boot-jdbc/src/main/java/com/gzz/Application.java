@@ -22,24 +22,24 @@ import com.gzz.common.quartz.TestJob;
  */
 @SpringBootApplication
 public class Application {
-
-	@Autowired
-	private Scheduler scheduler;
+//
+//	@Autowired
+//	private Scheduler scheduler;
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@PostConstruct
-	public void run() throws SchedulerException {
-		JobKey jobKey = new JobKey("availableTopic", "robot");
-		JobDetail job = JobBuilder.newJob(TestJob.class).withIdentity(jobKey).build();
-		SimpleTriggerImpl trigger = new SimpleTriggerImpl();
-		trigger.setName("SimpleTrigger+planName+planId");
-		trigger.setStartTime(new Date());// 开始运行时间
-		trigger.setRepeatInterval(1000);
-		trigger.setRepeatCount(Integer.MAX_VALUE); // 运行次数
-		trigger.setEndTime(new Date(new Date().getTime() + 3600));
-		scheduler.scheduleJob(job, trigger);
-	}
+//	@PostConstruct
+//	public void run() throws SchedulerException {
+//		JobKey jobKey = new JobKey("availableTopic", "robot");
+//		JobDetail job = JobBuilder.newJob(TestJob.class).withIdentity(jobKey).build();
+//		SimpleTriggerImpl trigger = new SimpleTriggerImpl();
+//		trigger.setName("SimpleTrigger+planName+planId");
+//		trigger.setStartTime(new Date());// 开始运行时间
+//		trigger.setRepeatInterval(1000);
+//		trigger.setRepeatCount(Integer.MAX_VALUE); // 运行次数
+//		trigger.setEndTime(new Date(new Date().getTime() + 3600));
+//		scheduler.scheduleJob(job, trigger);
+//	}
 }

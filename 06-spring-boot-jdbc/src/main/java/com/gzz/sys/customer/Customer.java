@@ -1,15 +1,17 @@
 package com.gzz.sys.customer;
 
-import lombok.Getter;
-import lombok.Setter;
+import javax.validation.constraints.NotEmpty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * @类说明 【客户】实体类
  * @author 高振中
- * @date 2020-03-07 16:51:20
+ * @date 2020-03-17 23:44:31
  **/
 @Setter
 @Getter
@@ -26,6 +28,7 @@ public class Customer {
 //	@Pattern(regexp = "^\\d{10}$", message = "必须为10位数字(字符型[正规判断])")
 	// 以下为数据库中 字段
 	private Integer id; // 主键
+	@NotEmpty(message = "客户名称(name)不能为空")
 	private String name; // 客户名称
 	private Byte tradeType; // 行业类型 化工0配电1变电 2
 	private String title; // 系统标题
