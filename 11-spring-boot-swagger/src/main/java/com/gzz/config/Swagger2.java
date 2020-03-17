@@ -2,6 +2,9 @@ package com.gzz.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -24,6 +27,8 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.gzz"))
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))//没有加注解的方法不显示
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))//没有加注解的方法不显示
                 .paths(PathSelectors.any())
                 .build();
     }
