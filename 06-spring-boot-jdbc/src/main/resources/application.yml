@@ -1,8 +1,8 @@
 spring:
-  datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    username: root
-    password: root
-  application:
-    name: spring-boot-jdbc
+   datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.1.98:4000/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 
+   application:
+      name: spring-boot-jdbc

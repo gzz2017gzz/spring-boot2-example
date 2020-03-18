@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
 /**
  * @类说明 【客户】控制器
  * @author 高振中
- * @date 2020-03-17 23:46:44
+ * @date 2020-03-18 14:31:03
  **/
 //@Slf4j
 @RestController
@@ -45,6 +44,7 @@ public class CustomerController {
 	 * @方法说明 删除【客户】记录
 	 */
 	@PostMapping("delete")
+	@ApiOperation(value = "删除【客户】记录")
 	public Result<Integer> delete(Integer[] ids) {
 		return Result.success(customerService.delete(ids));
 	}
@@ -53,6 +53,7 @@ public class CustomerController {
 	 * @方法说明 修改【客户】记录
 	 */
 	@PostMapping("update")
+	@ApiOperation(value = "修改【客户】记录")
 	public Result<Integer> update(@RequestBody @Valid Customer customer) {
 		return Result.success(customerService.update(customer));
 	}
@@ -61,14 +62,16 @@ public class CustomerController {
 	 * @方法说明 按条件查询分页【客户】列表
 	 */
 	@PostMapping("page")
+	@ApiOperation(value = "按条件查询分页【客户】列表")
 	public Result<Page<Customer>> page(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.page(cond));
 	}
 
 	/**
-	 * @方法说明 按条件查询不分页【客户】列表
+	 * @方法说明 按条件查询【客户】列表
 	 */
 	@PostMapping("list")
+	@ApiOperation(value = "按条件查询不分页【客户】列表")
 	public Result<List<Customer>> list(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.list(cond));
 	}
@@ -77,6 +80,7 @@ public class CustomerController {
 	 * @方法说明 按主键查单个【客户】记录
 	 */
 	@PostMapping("findById")
+	@ApiOperation(value = "按主键查单个【客户】记录")
 	public Result<Customer> findById(@RequestParam("id") Integer id) {
 		return Result.success(customerService.findById(id));
 	}
@@ -85,6 +89,7 @@ public class CustomerController {
 	 * @方法说明 按条件查询【客户】记录个数
 	 */
 	@PostMapping("count")
+	@ApiOperation(value = "【客户】记录个数")
 	public Result<Integer> count(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.count(cond));
 	}

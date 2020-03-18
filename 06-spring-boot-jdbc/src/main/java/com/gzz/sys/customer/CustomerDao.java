@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @类说明 【客户】数据访问层
  * @author 高振中
- * @date 2020-03-17 23:44:31
+ * @date 2020-03-18 14:31:03
  **/
 @Slf4j
 @Repository
@@ -27,8 +27,8 @@ public class CustomerDao extends BaseDao {
 		sql.append("INSERT INTO sys_customer (id,name,tradeType,title,address,url,contacts,contactsJob,");
 		sql.append("contactsTel,contactsMail,contactsOther,phoneNo,remark)");
 		sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		Object[] params = { vo.getId(), vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), //
-				vo.getContactsTel(), vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark() };
+		Object[] params = { vo.getId(), vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(),//
+				 vo.getContactsTel(), vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark() };
 		// log.info(super.sql(sql.toString(), params));// 显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}
@@ -50,8 +50,8 @@ public class CustomerDao extends BaseDao {
 		sql.append("UPDATE sys_customer SET id=?,name=?,tradeType=?,title=?,address=?,url=?,contacts=?,contactsJob=?,");
 		sql.append("contactsTel=?,contactsMail=?,contactsOther=?,phoneNo=?,remark=?");
 		sql.append(" WHERE id=? ");
-		Object[] params = { vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), vo.getContactsTel(), //
-				vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark(), vo.getId() };
+		Object[] params = { vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), vo.getContactsTel(),//
+				 vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark(), vo.getId() };
 		// log.info(super.sql(sql.toString(), params));// 显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}
@@ -70,7 +70,7 @@ public class CustomerDao extends BaseDao {
 	}
 
 	/**
-	 * @方法说明 按条件查询不分页【客户】列表
+	 * @方法说明 按条件查询【客户】列表
 	 */
 	public List<Customer> list(CustomerCond cond) {
 		StringBuilder sql = new StringBuilder();

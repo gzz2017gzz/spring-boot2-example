@@ -1,5 +1,7 @@
 package com.gzz.common.config;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(description = "【响应体】")
 public class Result<T> {
 
 	static final int OK = 200;
@@ -21,9 +24,13 @@ public class Result<T> {
 
 	static final String SUCCESS = "SUCCESS";
 	static final String FAILURE = "FAILURE";
-	Integer code;
-	String msg;
-	T data;
+
+	@ApiModelProperty("状态码")
+	private Integer code;
+	@ApiModelProperty("提示信息")
+	private String msg;
+	@ApiModelProperty("响应数据")
+	private T data;
 
 	public Result(Integer code, String msg) {
 		super();

@@ -9,7 +9,7 @@ import com.gzz.common.base.Page;
 /**
  * @类说明 【客户】业务逻辑层
  * @author 高振中
- * @date 2020-03-17 23:44:31
+ * @date 2020-03-18 14:31:03
  **/
 //@Slf4j
 @Service
@@ -48,7 +48,7 @@ public class CustomerService {
 	}
 
 	/**
-	 * @方法说明 按条件查询不分页【客户】列表
+	 * @方法说明 按条件查询【客户】列表
 	 */
 	public List<Customer> list(CustomerCond cond) {
 		return customerDao.list(cond);

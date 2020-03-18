@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @功能说明 拼加页面查询条件的基础类
  * @author https://www.jianshu.com/u/3bd57d5f1074
@@ -17,7 +19,9 @@ public abstract class BaseCondition {
 
 	private static final List<Object> paramList = new ArrayList<>();// 参数值
 	private static final StringBuffer condition = new StringBuffer();// 条件语句
+	@ApiModelProperty("页大小")
 	private int size = 10;// 页大小(每页记录条)
+	@ApiModelProperty("当前页")
 	private int page = 0;// 当前页码
 
 	/**

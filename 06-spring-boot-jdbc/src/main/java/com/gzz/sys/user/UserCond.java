@@ -10,11 +10,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @类说明 【用户】查询条件实体
+ * @类说明 【用户】查询条件
  * @author 高振中
- * @date 2020-03-17 23:46:44
+ * @date 2020-03-18 13:56:40
  **/
 @Setter
 @Getter
@@ -22,6 +24,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel(description = "用户查询条件")
 public class UserCond extends BaseCondition {
 
 	/**
@@ -37,10 +40,15 @@ public class UserCond extends BaseCondition {
 	}
 
 	// 以下为查询条件
+	@ApiModelProperty("主键")
 	private Long id; // 主键
+	@ApiModelProperty("姓名")
 	private String name; // 姓名
+	@ApiModelProperty("生日")
 	private Date birthday; // 生日
+	@ApiModelProperty("性别")
 	private Byte gender; // 性别
+	@ApiModelProperty("主键数组")
 	private List<Object> ids;// 主键列表
 	// 以下为自定义查询条件
 }
