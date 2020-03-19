@@ -27,8 +27,8 @@ public class Swagger2 {
 				.apiInfo(apiInfo())//
 				.select()//
 				.apis(RequestHandlerSelectors.basePackage("com.gzz"))//
-				.apis(RequestHandlerSelectors.withClassAnnotation(Api.class))// 没有加注解的方法不显示
-				.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))// 没有加注解的方法不显示
+				.apis(RequestHandlerSelectors.withClassAnnotation(Api.class))// 只显示加注解的方法 
+				.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))// 只显示加注解的方法
 				.paths(PathSelectors.any())//
 				.build();//
 	}

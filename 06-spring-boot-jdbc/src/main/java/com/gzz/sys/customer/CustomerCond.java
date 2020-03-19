@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * @类说明 【客户】查询条件
  * @author 高振中
- * @date 2020-03-18 14:31:03
+ * @date 2020-03-18 15:05:27
  **/
 @Setter
 @Getter
@@ -48,31 +48,31 @@ public class CustomerCond extends BaseCondition {
 	}
 
 	// 以下为查询条件
-	@ApiModelProperty("主键")
+	@ApiModelProperty(value="主键", required = true)
 	private Integer id; // 主键
-	@ApiModelProperty("客户名称")
+	@ApiModelProperty(value="客户名称", required = true)
 	private String name; // 客户名称
-	@ApiModelProperty("行业类型 化工0配电1变电 2")
+	@ApiModelProperty(value="行业类型 化工0配电1变电 2", required = true)
 	private Byte tradeType; // 行业类型 化工0配电1变电 2
-	@ApiModelProperty("系统标题")
+	@ApiModelProperty(value="系统标题", required = true)
 	private String title; // 系统标题
-	@ApiModelProperty("地址")
+	@ApiModelProperty(value="地址", required = true)
 	private String address; // 地址
-	@ApiModelProperty("公司网址")
+	@ApiModelProperty(value="公司网址", required = true)
 	private String url; // 公司网址
-	@ApiModelProperty("联系人")
+	@ApiModelProperty(value="联系人", required = true)
 	private String contacts; // 联系人
-	@ApiModelProperty("联系人职位")
+	@ApiModelProperty(value="联系人职位", required = true)
 	private String contactsJob; // 联系人职位
-	@ApiModelProperty("联系人电话")
+	@ApiModelProperty(value="联系人电话", required = true)
 	private String contactsTel; // 联系人电话
-	@ApiModelProperty("联系人邮件")
+	@ApiModelProperty(value="联系人邮件", required = true)
 	private String contactsMail; // 联系人邮件
-	@ApiModelProperty("联系人邮件")
+	@ApiModelProperty(value="联系人邮件", required = true)
 	private String contactsOther; // 联系人邮件
-	@ApiModelProperty("联系方式")
+	@ApiModelProperty(value="联系方式", required = true)
 	private String phoneNo; // 联系方式
-	@ApiModelProperty("备注")
+	@ApiModelProperty(value="备注", required = true)
 	private String remark; // 备注
 	@ApiModelProperty("主键数组")
 	private List<Object> ids;// 主键列表

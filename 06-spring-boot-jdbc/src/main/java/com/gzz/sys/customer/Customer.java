@@ -1,12 +1,13 @@
 package com.gzz.sys.customer;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * @类说明 【客户】实体
  * @author 高振中
@@ -27,7 +28,7 @@ public class Customer {
 //	@Min(value = 100, message = "客户年龄(age)最小值是100(数值型)")
 //	@Pattern(regexp = "^\\d{10}$", message = "必须为10位数字(字符型[正规判断])")
 	// 以下为数据库中 字段
-	@ApiModelProperty("主键")
+	@ApiModelProperty(value = "主键", required = false)
 	private Integer id; // 主键
 	@ApiModelProperty("客户名称")
 	private String name; // 客户名称

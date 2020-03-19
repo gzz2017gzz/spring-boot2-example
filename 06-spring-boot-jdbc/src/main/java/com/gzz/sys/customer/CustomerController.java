@@ -71,7 +71,7 @@ public class CustomerController {
 	 * @方法说明 按条件查询【客户】列表
 	 */
 	@PostMapping("list")
-	@ApiOperation(value = "按条件查询不分页【客户】列表")
+//	@ApiOperation(value = "按条件查询不分页【客户】列表")
 	public Result<List<Customer>> list(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.list(cond));
 	}
@@ -80,7 +80,7 @@ public class CustomerController {
 	 * @方法说明 按主键查单个【客户】记录
 	 */
 	@PostMapping("findById")
-	@ApiOperation(value = "按主键查单个【客户】记录")
+//	@ApiOperation(value = "按主键查单个【客户】记录")
 	public Result<Customer> findById(@RequestParam("id") Integer id) {
 		return Result.success(customerService.findById(id));
 	}
@@ -89,7 +89,7 @@ public class CustomerController {
 	 * @方法说明 按条件查询【客户】记录个数
 	 */
 	@PostMapping("count")
-	@ApiOperation(value = "【客户】记录个数")
+//	@ApiOperation(value = "【客户】记录个数")
 	public Result<Integer> count(@RequestBody CustomerCond cond) {
 		return Result.success(customerService.count(cond));
 	}
