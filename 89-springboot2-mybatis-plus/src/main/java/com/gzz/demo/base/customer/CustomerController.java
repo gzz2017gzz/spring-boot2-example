@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gzz.common.util.Response;
 
@@ -34,7 +33,7 @@ public class CustomerController {
 	 * @方法说明 新增【客户】记录
 	 */
 	@PostMapping
-	public Response<Boolean> add(@RequestBody @Valid Customer customer) {
+	public Response  add(@RequestBody @Valid Customer customer) {
 		return Response.success(service.save(customer));
 	}
 
@@ -42,7 +41,7 @@ public class CustomerController {
 	 * @方法说明 按主键删除【客户】记录
 	 */
 	@DeleteMapping
-	public Response<Boolean> delete(Integer id) {
+	public Response delete(Integer id) {
 		return Response.success(service.removeById(id));
 	}
 
@@ -50,7 +49,7 @@ public class CustomerController {
 	 * @方法说明 修改【客户】记录
 	 */
 	@PutMapping
-	public Response<Boolean> edit(@RequestBody @Valid Customer customer) {
+	public Response  edit(@RequestBody @Valid Customer customer) {
 		return Response.success(service.updateById(customer));
 	}
 
@@ -58,7 +57,7 @@ public class CustomerController {
 	 * @方法说明 按条件查询分页【客户】列表
 	 */
 	@PostMapping("page")
-	public Response<IPage<Customer>> page(@RequestBody Customer customer, long current, long size) {
+	public Response  page(@RequestBody Customer customer, long current, long size) {
 		return Response.success(service.queryList(new Page<Customer>(current, size), customer));
 	}
 
@@ -66,7 +65,7 @@ public class CustomerController {
 	 * @方法说明 按主键查单个【客户】记录
 	 */
 	@GetMapping
-	public Response<Customer> get(Integer id) {
+	public Response get(Integer id) {
 		return Response.success(service.getById(id));
 	}
 }
