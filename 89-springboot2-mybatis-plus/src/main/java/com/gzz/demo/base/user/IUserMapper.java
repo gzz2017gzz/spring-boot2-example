@@ -1,9 +1,8 @@
 package com.gzz.demo.base.user;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
- 
 import org.apache.ibatis.annotations.Mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 /**
  * @类说明 【用户】数据访问层
  * @author 高振中

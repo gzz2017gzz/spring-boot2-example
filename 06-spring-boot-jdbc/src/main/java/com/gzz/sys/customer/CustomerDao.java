@@ -114,7 +114,7 @@ public class CustomerDao extends BaseDao {
 		sql.append(" VALUES (:id,:name,:tradeType,:title,:address,:url,:contacts,:contactsJob,");
 		sql.append(":contactsTel,:contactsMail,:contactsOther,:phoneNo,:remark)");
 		// log.info(super.sqlp(sql.toString(), vo));// 显示SQL语句
-		return saveKey(vo, sql.toString(), "id");
+		return super.saveKey(vo, sql.toString(), "id");
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class CustomerDao extends BaseDao {
 		sql.append(" VALUES (:id,:name,:tradeType,:title,:address,:url,:contacts,:contactsJob,");
 		sql.append(":contactsTel,:contactsMail,:contactsOther,:phoneNo,:remark)");
 		// log.info(super.sqlp(sql.toString(), list));// 显示SQL语句
-		return batchOperate(list, sql.toString());
+		return super.batchOperate(list, sql.toString());
 	}
 
 	/**

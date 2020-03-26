@@ -16,6 +16,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gzz.common.util.Response;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @类说明 【用户】控制器
@@ -34,6 +35,7 @@ public class UserController {
 	 * @方法说明 新增【用户】记录
 	 */
 	@PostMapping
+	@ApiOperation(value = "新增【客户】记录")
 	public Response add(@RequestBody @Valid User user) {
 		return Response.success(service.save(user));
 	}

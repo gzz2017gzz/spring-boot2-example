@@ -1,7 +1,6 @@
 package com.gzz.demo.base.user;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 /**
  * @类说明 【用户】业务逻辑接口
  * @author 高振中
