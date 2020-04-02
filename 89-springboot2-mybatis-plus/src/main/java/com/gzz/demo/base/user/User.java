@@ -15,7 +15,7 @@ import lombok.Setter;
 /**
  * @类说明 【用户】实体类
  * @author 高振中
- * @date 2020-03-17 17:22:53
+ * @date 2020-04-02 20:37:42
  **/
 @Setter
 @Getter

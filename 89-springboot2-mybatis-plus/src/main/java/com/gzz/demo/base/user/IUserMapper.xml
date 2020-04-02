@@ -8,7 +8,7 @@
 		<result property="birthday" column="birthday"/>
 		<result property="gender" column="gender"/>
 	</resultMap>
-		<!--联表查询【用户】-->
+		<!--自定义联表查询【用户】-->
 	<select id="queryList" resultMap="User">
 		SELECT
 			t.id,t.name,t.birthday,t.gender

@@ -17,7 +17,7 @@
 		<result property="phoneNo" column="phoneNo"/>
 		<result property="remark" column="remark"/>
 	</resultMap>
-		<!--联表查询【客户】-->
+		<!--自定义联表查询【客户】-->
 	<select id="queryList" resultMap="Customer">
 		SELECT
 			t.id,t.name,t.tradeType,t.title,t.address,t.url,t.contacts,t.contactsJob,

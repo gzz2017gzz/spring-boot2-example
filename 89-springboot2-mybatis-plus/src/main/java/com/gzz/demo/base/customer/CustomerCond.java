@@ -1,5 +1,6 @@
 package com.gzz.demo.base.customer;
 
+import com.gzz.common.util.BaseCondition;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -10,15 +11,15 @@ import lombok.experimental.Accessors;
 /**
  * @类说明 【客户】DTO对象
  * @author 高振中
- * @date 2020-03-17 17:22:53
+ * @date 2020-04-02 20:34:07
  **/
 @Setter
 @Getter
 @Accessors(chain = true)
-@Builder	
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDTO{
+public class CustomerCond extends BaseCondition {
 	/**
 	 * 主键
 	 */

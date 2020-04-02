@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzz.demo.sys.menu.IMenuMapper">
+	<!-- 基本resultMap -->
+	<resultMap type="com.gzz.demo.sys.menu.Menu" id="Menu">
+		<id property="id" column="id"/>
+		<result property="parentId" column="parentId"/>
+		<result property="level" column="level"/>
+		<result property="type" column="type"/>
+		<result property="icon" column="icon"/>
+		<result property="name" column="name"/>
+		<result property="path" column="path"/>
+		<result property="orderNum" column="orderNum"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+		<!--自定义联表查询【菜单】-->
+	<select id="queryList" resultMap="Menu">
+		SELECT
+			t.id,t.parentId,t.level,t.type,t.icon,t.name,t.path,t.orderNum,
+			t.remark
+		FROM
+			sys_menu t
+		<where>
+			<if test="param.id!=null and param.id!=''">AND t.id=#{param.id}</if>
+			<if test="param.parentId!=null and param.parentId!=''">AND t.parentId=#{param.parentId}</if>
+			<if test="param.level!=null and param.level!=''">AND t.level=#{param.level}</if>
+			<if test="param.type!=null and param.type!=''">AND t.type=#{param.type}</if>
+			<if test="param.icon!=null and param.icon!=''">AND t.icon=#{param.icon}</if>
+			<if test="param.name!=null and param.name!=''">AND t.name=#{param.name}</if>
+			<if test="param.path!=null and param.path!=''">AND t.path=#{param.path}</if>
+			<if test="param.orderNum!=null and param.orderNum!=''">AND t.orderNum=#{param.orderNum}</if>
+			<if test="param.remark!=null and param.remark!=''">AND t.remark=#{param.remark}</if>
+		</where>
+	</select>
+	<!--insert【菜单】并返回主键-->
+	<insert id="insertMenu" parameterType="com.gzz.demo.sys.menu.Menu"  useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+		INSERT INTO sys_menu
+			(id,parentId,level,type,icon,name,path,orderNum,
+			remark)
+		VALUES
+			(#{id},#{parentId},#{level},#{type},#{icon},#{name},#{path},#{orderNum},
+			#{remark})
+	</insert>
+</mapper>

@@ -23,7 +23,7 @@ public class DefaultExceptionAdvice {
 	 **/
 	@ResponseStatus(HttpStatus.OK)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public Response  handleException(MethodArgumentNotValidException ex) {
-		return Response.failure("2000", ex.getBindingResult().getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()).toString());
+	public Result<String>  handleException(MethodArgumentNotValidException ex) {
+		return Result.error(10, ex.getBindingResult().getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()).toString());
 	}
 }

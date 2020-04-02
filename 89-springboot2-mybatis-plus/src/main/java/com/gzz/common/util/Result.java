@@ -1,4 +1,4 @@
-package com.gzz.common.config;
+package com.gzz.common.util;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

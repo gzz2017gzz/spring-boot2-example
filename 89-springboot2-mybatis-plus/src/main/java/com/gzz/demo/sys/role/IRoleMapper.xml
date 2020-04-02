@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzz.demo.sys.role.IRoleMapper">
+	<!-- 基本resultMap -->
+	<resultMap type="com.gzz.demo.sys.role.Role" id="Role">
+		<id property="id" column="id"/>
+		<result property="customerId" column="customerId"/>
+		<result property="name" column="name"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+		<!--自定义联表查询【角色】-->
+	<select id="queryList" resultMap="Role">
+		SELECT
+			t.id,t.customerId,t.name,t.remark
+		FROM
+			sys_role t
+		<where>
+			<if test="param.id!=null and param.id!=''">AND t.id=#{param.id}</if>
+			<if test="param.customerId!=null and param.customerId!=''">AND t.customerId=#{param.customerId}</if>
+			<if test="param.name!=null and param.name!=''">AND t.name=#{param.name}</if>
+			<if test="param.remark!=null and param.remark!=''">AND t.remark=#{param.remark}</if>
+		</where>
+	</select>
+	<!--insert【角色】并返回主键-->
+	<insert id="insertRole" parameterType="com.gzz.demo.sys.role.Role"  useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+		INSERT INTO sys_role
+			(id,customerId,name,remark)
+		VALUES
+			(#{id},#{customerId},#{name},#{remark})
+	</insert>
+</mapper>
