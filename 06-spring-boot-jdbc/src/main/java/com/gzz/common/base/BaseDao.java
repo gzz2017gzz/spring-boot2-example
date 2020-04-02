@@ -22,8 +22,8 @@ import lombok.extern.slf4j.Slf4j;
  * @author https://www.jianshu.com/u/3bd57d5f1074
  * @date 2020-02-02 02:20:20
  */
-@Scope("prototype")
 @Slf4j
+@Scope("prototype")
 public class BaseDao {
 
 	@Autowired

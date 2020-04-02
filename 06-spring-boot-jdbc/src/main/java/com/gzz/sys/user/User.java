@@ -1,6 +1,5 @@
 package com.gzz.sys.user;
 
-
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +8,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @类说明 【用户】实体
  * @author 高振中

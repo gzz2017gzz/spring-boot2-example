@@ -11,15 +11,15 @@ import lombok.experimental.Accessors;
 /**
  * @类说明 【客户】DTO对象
  * @author 高振中
- * @date 2020-04-02 20:34:07
+ * @date 2020-04-02 20:56:51
  **/
 @Setter
 @Getter
 @Accessors(chain = true)
-@Builder
+@Builder	
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerCond extends BaseCondition {
+public class CustomerCond extends BaseCondition  {
 	/**
 	 * 主键
 	 */
