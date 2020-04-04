@@ -22,14 +22,13 @@ public class UserCond extends BaseCondition {
 	 **/
 	@Override
 	public void addCondition() {
-		add(id, "AND t.id = ?");
-		add(name, "AND t.name LIKE ?", 3);
- 
+		add("AND t.id = ?", id);
+		add("AND t.name LIKE ?", name, 3);
+
 	}
 
 	// 查询条件,把不用的条件清理掉
 	private Long id;// 主键
 	private String name;// 姓名
- 
 
 }

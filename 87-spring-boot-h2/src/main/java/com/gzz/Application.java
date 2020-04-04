@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import com.alibaba.fastjson.JSON;
 import com.gzz.sys.user.User;
 import com.gzz.sys.user.UserCond;
@@ -25,6 +26,7 @@ public class Application {
 
 	@Autowired
 	private UserDao dao;
+ 
 
 	@PostConstruct
 	private void run() {

@@ -26,12 +26,12 @@ public class UserCond extends BaseCondition {
 	 **/
 	@Override
 	public void addCondition() {
-		add(id, "AND t.id = ?");
-		add(name, "AND t.name LIKE ?", 3);
-		add(sex, "AND t.sex LIKE ?", 3);
-		add(age, "AND t.age = ?");
-		add(phone, "AND t.phone LIKE ?", 3);
-		add(create_time, "AND t.create_time = ?");
+		add("AND t.id = ?", id);
+		add("AND t.name LIKE ?", name, 3);
+		add("AND t.sex LIKE ?", sex, 3);
+		add("AND t.age = ?", age);
+		add("AND t.phone LIKE ?", phone, 3);
+		add("AND t.create_time = ?", create_time);
 	}
 
 	private Integer id; // 主键

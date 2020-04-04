@@ -1,11 +1,12 @@
 package com.gzz.sys.user;
 
 import java.util.List;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.stereotype.Repository;
+
 import com.gzz.common.base.BaseDao;
 import com.gzz.common.base.Page;
-import com.gzz.common.base.SqlUtil;
 
 /**
  * @类说明 [user]数据访问层
@@ -23,7 +24,7 @@ public class UserDao extends BaseDao {
 	 */
 	public UserDao() {
 		select.append("SELECT t.id,t.name,t.sex,t.age,t.phone,t.create_time");
-		select.append(" FROM user t WHERE 1=1");
+		select.append(" FROM user t ");
 
 		insert.append("INSERT INTO user (name,sex,age,phone,create_time) ");
 		insert.append(" VALUES (:name,:sex,:age,:phone,:create_time)");
@@ -59,7 +60,7 @@ public class UserDao extends BaseDao {
 	 * @方法说明 物理删除user记录(多条)
 	 */
 	public int delete(Integer ids[]) {
-		String sql = "DELETE FROM user WHERE id" + SqlUtil.ArrayToIn(ids);
+		String sql = "DELETE FROM user WHERE id" + super.toIn(ids);
 		return jdbcTemplate.update(sql);
 	}
 
@@ -79,7 +80,7 @@ public class UserDao extends BaseDao {
 	 */
 	public Page<User> queryPage(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getCondition());
+		sb.append(cond.where());
 		// sb.append(cond.getOrderSql());//增加排序子句;
 		// logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
 		return queryPage(sb.toString(), cond, User.class);
@@ -90,9 +91,9 @@ public class UserDao extends BaseDao {
 	 */
 	public List<User> queryList(UserCond cond) {
 		StringBuilder sb = new StringBuilder(select);
-		sb.append(cond.getCondition());
+		sb.append(cond.where());
 		// sb.append(" ORDER BY operate_time DESC");
-		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(User.class));
+		return jdbcTemplate.query(sb.toString(), cond.array(), new BeanPropertyRowMapper<>(User.class));
 	}
 
 	/**
@@ -108,16 +109,8 @@ public class UserDao extends BaseDao {
 	 * @方法说明 按条件查询user记录个数
 	 */
 	public long queryCount(UserCond cond) {
-		String countSql = "SELECT COUNT(1) FROM user t WHERE 1=1" + cond.getCondition();
-		return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
-	}
-
-	/**
-	 * @方法说明 逻辑删除user记录
-	 */
-	public int deleteLogic(Integer ids[]) {
-		String sql = "UPDATE user SET delete_remark=1 WHERE id" + SqlUtil.ArrayToIn(ids);
-		return jdbcTemplate.update(sql);
+		String countSql = "SELECT COUNT(1) FROM user t " + cond.where();
+		return jdbcTemplate.queryForObject(countSql, cond.array(), Long.class);
 	}
 
 }
