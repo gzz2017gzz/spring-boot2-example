@@ -17,25 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
 	@Autowired
-    private ProcessRuntime processRuntime;
- 
-    @PostMapping("/documents")
-    public String processFile(@RequestBody String content) {
+	private ProcessRuntime processRuntime;
 
-        ProcessInstance processInstance = processRuntime.start(ProcessPayloadBuilder
-                                                                       .start()
-                                                                       .withProcessDefinitionKey("categorizeProcess")
-                                                                       .withVariable("fileContent",
-                                                                                     content)
-                                                                       .build());
-        String message = ">>> Created Process Instance: " + processInstance;
-        System.out.println(message);
-        return message;
-    }
+	@PostMapping("/documents")
+	public String processFile(@RequestBody String content) {
 
-    @GetMapping("/process-definitions")
-    public List<ProcessDefinition> getProcessDefinition(){
-        return processRuntime.processDefinitions(Pageable.of(0, 100)).getContent();
-    }
- 
+		ProcessInstance processInstance = processRuntime.start(ProcessPayloadBuilder.start()//
+				.withProcessDefinitionKey("categorizeProcess")//
+				.withVariable("fileContent", content)//
+				.build());//
+		String message = ">>> Created Process Instance: " + processInstance;
+		System.out.println(message);
+		return message;
+	}
+
+	@GetMapping("/process-definitions")
+	public List<ProcessDefinition> getProcessDefinition() {
+		return processRuntime.processDefinitions(Pageable.of(0, 100)).getContent();
+	}
+
 }

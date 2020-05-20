@@ -10,4 +10,4 @@ spring:
       db-history-used: true
    application:
       name: spring-boot-jdbc
-project.manifest.file.path: classpath:/default-project.json      
+project.manifest.file.path: classpath:/default-project.json   
