@@ -12,5 +12,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+		for (;;) {
+			System.out.println(1);
+		}
 	}
 }

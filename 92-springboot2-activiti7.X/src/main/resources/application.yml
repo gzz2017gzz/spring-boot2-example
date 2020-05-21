@@ -1,0 +1,13 @@
+spring: 
+   datasource: 
+      url: jdbc:mysql://localhost:3306/activity?serverTimezone=UTC
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+   activiti:
+      database-schema-update: true
+      history-level: full
+      db-history-used: true
+   application:
+      name: spring-boot-jdbc
+project.manifest.file.path: classpath:/default-project.json   
