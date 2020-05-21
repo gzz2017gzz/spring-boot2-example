@@ -20,7 +20,7 @@ public class TableDao {
 	public List<Field> queryFields(String tableName) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("	SELECT  column_name, column_comment, column_type, is_nullable, IF (column_key = 'pri', '是', '')  pri ");
-		sb.append("	FROM information_schema.columns WHERE table_schema = ? AND table_name = (SELECT DATABASE())");
+		sb.append("	FROM information_schema.columns WHERE table_name = ? AND table_schema = (SELECT DATABASE())");
 		return jdbcTemplate.query(sb.toString(), new BeanPropertyRowMapper<>(Field.class), tableName);
 	}
 
