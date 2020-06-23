@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @author https://www.jianshu.com/u/3bd57d5f1074
@@ -77,7 +78,9 @@ public class BookContrller {
 
 //	@ApiIgnore // 使用该注解忽略这个API
 	@RequestMapping(value = "/hi", method = RequestMethod.GET)
-	public String jsonTest() {
-		return " hi you!";
+	public String jsonTest(HttpServletRequest  request) {
+		String token = request.getHeader("token");
+		
+		return " hi you!"+token;
 	}
 }
