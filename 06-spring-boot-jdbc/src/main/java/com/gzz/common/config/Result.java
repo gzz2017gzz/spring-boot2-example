@@ -39,35 +39,35 @@ public class Result<T> {
 	}
 
 	/**
-	 * @类说明 【提示成功没数据】
+	 * @方法说明 【提示成功没数据】
 	 **/
 	public static <T> Result<T> success() {
 		return new Result<>(OK, SUCCESS);
 	}
 
 	/**
-	 * @类说明 【提示成功有数据】
+	 * @方法说明 【提示成功有数据】
 	 **/
 	public static <T> Result<T> success(T data) {
 		return new Result<>(OK, SUCCESS, data);
 	}
 
 	/**
-	 * @类说明 【自定义编码,自定义提示信息,有数据】
+	 * @方法说明 【自定义编码,自定义提示信息,有数据】
 	 **/
 	public static <T> Result<T> error(Integer code, String msg, T data) {
 		return new Result<>(code, msg, data);
 	}
 
 	/**
-	 * @类说明 【只提示失败没有数据】
+	 * @方法说明 【只提示失败没有数据】
 	 **/
 	public static <T> Result<T> error() {
 		return new Result<>(ERROR, FAILURE);
 	}
 
 	/**
-	 * @类说明 【自定义编码,自定义提示信息】
+	 * @方法说明 【自定义编码,自定义提示信息】
 	 **/
 	public static <T> Result<T> error(Integer code, String msg) {
 		return new Result<>(code, msg);

@@ -27,8 +27,8 @@ public class CustomerDao extends BaseDao {
 		sql.append("INSERT INTO sys_customer (id,name,tradeType,title,address,url,contacts,contactsJob,");
 		sql.append("contactsTel,contactsMail,contactsOther,phoneNo,remark)");
 		sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		Object[] params = { vo.getId(), vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(),//
-				 vo.getContactsTel(), vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark() };
+		Object[] params = { vo.getId(), vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), //
+				vo.getContactsTel(), vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark() };
 		// log.info(super.sql(sql.toString(), params));// 显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}
@@ -50,8 +50,8 @@ public class CustomerDao extends BaseDao {
 		sql.append("UPDATE sys_customer SET id=?,name=?,tradeType=?,title=?,address=?,url=?,contacts=?,contactsJob=?,");
 		sql.append("contactsTel=?,contactsMail=?,contactsOther=?,phoneNo=?,remark=?");
 		sql.append(" WHERE id=? ");
-		Object[] params = { vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), vo.getContactsTel(),//
-				 vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark(), vo.getId() };
+		Object[] params = { vo.getName(), vo.getTradeType(), vo.getTitle(), vo.getAddress(), vo.getUrl(), vo.getContacts(), vo.getContactsJob(), vo.getContactsTel(), //
+				vo.getContactsMail(), vo.getContactsOther(), vo.getPhoneNo(), vo.getRemark(), vo.getId() };
 		// log.info(super.sql(sql.toString(), params));// 显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}

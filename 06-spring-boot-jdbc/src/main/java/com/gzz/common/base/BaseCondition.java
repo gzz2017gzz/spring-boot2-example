@@ -64,7 +64,6 @@ public abstract class BaseCondition {
 	/**
 	 * @功能说明: 拼加条件使用等于大于小于....运算符(Long类型)
 	 */
-
 	final protected void add(final String sql, final Long value) {
 		if (value != null) {
 			condition.append(" " + sql);

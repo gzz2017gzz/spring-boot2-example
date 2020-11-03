@@ -120,7 +120,7 @@ public class BaseDao {
 	/**
 	 * @方法说明 把组数拼接成(?,?,?)的形式
 	 */
-	final public static String toIn(final Object ids[]) {
+	final protected static String toIn(final Object ids[]) {
 		StringBuffer sb = new StringBuffer(" (?");
 		for (int i = 1; i < ids.length; i++) {
 			sb.append(",?");
