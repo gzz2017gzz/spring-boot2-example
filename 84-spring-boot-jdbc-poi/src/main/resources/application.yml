@@ -1,5 +1,5 @@
 spring:
   datasource:
-    url: jdbc:mysql://192.168.1.158:3306/internal_control?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://47.92.80.184:3306/znk_new?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false
     username: root
     password: root

@@ -26,7 +26,7 @@ public class TableDao {
 
 	public List<Table> queryTables() {
 		String sql = "SELECT table_name,table_comment FROM information_schema.TABLES WHERE table_schema =(SELECT DATABASE())"
-//				+ " and table_name not like 'sys_%'"
+ 				+ " and (table_name like 'bill_%' or table_name like 'budget_%')"
 				+ " order by table_name";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Table.class));
 	}

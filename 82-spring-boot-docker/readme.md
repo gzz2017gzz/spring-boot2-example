@@ -12,6 +12,8 @@
 	</mirror>
 3.启动停止重启docker
 	systemctl start/restart/stop docker
+	systemctl start/restart/stop docker
+	systemctl start docker
 4.
 	mvn package #打包spring应用
 	mvn install dockerfile:build #把spring应用打成docker镜像

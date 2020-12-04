@@ -29,6 +29,7 @@ public class POIFillAndColorExample {
 		FileOutputStream fileOut = new FileOutputStream("d:/POIFillAndColorExample.xlsx");
 		workbook.write(fileOut);
 		fileOut.close();
+		workbook.close();
 
 	}
 }

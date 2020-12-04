@@ -2,9 +2,8 @@ package com.gzz.sys.user;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +35,7 @@ public class UserController {
 	 */
 	@PostMapping("save")
 	@ApiOperation(value = "新增【用户】记录")
-	public Result<Integer> save(@RequestBody @Valid User user) {
+	public Result<Integer> save(@RequestBody @Validated User user) {
 		return Result.success(userService.save(user));
 	}
 
@@ -54,7 +53,7 @@ public class UserController {
 	 */
 	@PostMapping("update")
 	@ApiOperation(value = "修改【用户】记录")
-	public Result<Integer> update(@RequestBody @Valid User user) {
+	public Result<Integer> update(@RequestBody @Validated User user) {
 		return Result.success(userService.update(user));
 	}
 

@@ -175,6 +175,9 @@ public abstract class BaseCondition {
 	 * @方法说明 把组数拼接成(?,?,?)的形式
 	 */
 	final public static String toIn(final Object ids[]) {
+		if (ids.length == 0) {
+			throw new RuntimeException("数组参数个数不能为零!");
+		}
 		StringBuffer sb = new StringBuffer(" (?");
 		for (int i = 1; i < ids.length; i++) {
 			sb.append(",?");

@@ -2,9 +2,8 @@ package com.gzz.sys.customer;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +35,7 @@ public class CustomerController {
 	 */
 	@PostMapping("save")
 	@ApiOperation(value = "新增【客户】记录")
-	public Result<Integer> save(@RequestBody @Valid Customer customer) {
+	public Result<Integer> save(@RequestBody @Validated Customer customer) {
 		return Result.success(customerService.save(customer));
 	}
 
@@ -54,7 +53,7 @@ public class CustomerController {
 	 */
 	@PostMapping("update")
 	@ApiOperation(value = "修改【客户】记录")
-	public Result<Integer> update(@RequestBody @Valid Customer customer) {
+	public Result<Integer> update(@RequestBody @Validated Customer customer) {
 		return Result.success(customerService.update(customer));
 	}
 

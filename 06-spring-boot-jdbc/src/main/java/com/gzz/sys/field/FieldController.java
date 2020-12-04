@@ -2,9 +2,8 @@ package com.gzz.sys.field;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +35,7 @@ public class FieldController {
 	 */
 	@PostMapping("save")
 	@ApiOperation(value = "新增【字段定义】记录")
-	public Result<Integer> save(@RequestBody @Valid Field field) {
+	public Result<Integer> save(@RequestBody @Validated Field field) {
 		return Result.success(fieldService.save(field));
 	}
 
@@ -54,7 +53,7 @@ public class FieldController {
 	 */
 	@PostMapping("update")
 	@ApiOperation(value = "修改【字段定义】记录")
-	public Result<Integer> update(@RequestBody @Valid Field field) {
+	public Result<Integer> update(@RequestBody @Validated Field field) {
 		return Result.success(fieldService.update(field));
 	}
 
