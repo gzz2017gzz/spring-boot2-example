@@ -86,7 +86,9 @@ public class Application {
 			rowm.createCell(0).setCellValue(table.getTable_name());
 			rowm.createCell(1).setCellValue(table.getTable_comment());
 		});
-
+	 
+		sheet1.autoSizeColumn(1); 
+ 
 		workbook.write(new File("d:/数据库结构.xls"));
 		workbook.close();
 	}

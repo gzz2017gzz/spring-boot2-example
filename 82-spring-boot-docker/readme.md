@@ -32,5 +32,5 @@ mkdir -p /etc/docker
 vim /etc/docker/daemon.json
 ```
 {
-  "registry-mirrors": ["https://registry.docker-cn.com"]
+  "registry-mirrors": ["https://mirror.ccs.tencentyun.com","http://hub-mirror.c.163.com","https://registry.docker-cn.com"]
 }
